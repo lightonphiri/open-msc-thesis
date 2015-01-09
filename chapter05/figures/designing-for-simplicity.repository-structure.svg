@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:latexdraw="http://latexdraw.sourceforge.net/namespaces/latexdraw"
+    version="1.1" baseProfile="full">
+    <defs>
+        <pattern latexdraw:type="vlines" latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern571" x="0" y="0"
+            width="600" height="545">
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 440.0 495.0 L 440.0 545.0 M 449.05555534362793 495.0 L 449.05555534362793 545.0 M 458.11111068725586 495.0 L 458.11111068725586 545.0 M 467.1666660308838 495.0 L 467.1666660308838 545.0 M 476.2222213745117 495.0 L 476.2222213745117 545.0 M 485.27777671813965 495.0 L 485.27777671813965 545.0 M 494.3333320617676 495.0 L 494.3333320617676 545.0 M 503.3888874053955 495.0 L 503.3888874053955 545.0 M 512.4444427490234 495.0 L 512.4444427490234 545.0 M 521.4999980926514 495.0 L 521.4999980926514 545.0 M 530.5555534362793 495.0 L 530.5555534362793 545.0 M 539.6111087799072 495.0 L 539.6111087799072 545.0 M 548.6666641235352 495.0 L 548.6666641235352 545.0 M 557.7222194671631 495.0 L 557.7222194671631 545.0 M 566.777774810791 495.0 L 566.777774810791 545.0 M 575.833330154419 495.0 L 575.833330154419 545.0 M 584.8888854980469 495.0 L 584.8888854980469 545.0 M 593.9444408416748 495.0 L 593.9444408416748 545.0 "/>
+            </g>
+        </pattern>
+    </defs>
+    <g>
+        <g latexdraw:type="rectangle" id="id558">
+            <rect x="351.0" y="101.0" width="338.0" height="478.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="text" id="id559"
+            font-family="Times New Roman" fill="black" font-size="18" latexdraw:x="430.0">
+            <text x="430.0" y="130.0"><![CDATA[CONTAINER OBJECT]]></text>
+        </g>
+        <g latexdraw:type="rectangle" id="id562">
+            <rect x="411.0" y="151.0" width="218.0" height="288.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id563">
+            <rect x="441.0" y="196.0" width="158.0" height="48.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id564">
+            <rect x="441.0" y="256.0" width="158.0" height="48.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id565">
+            <rect x="441.0" y="316.0" width="158.0" height="48.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id566">
+            <rect x="441.0" y="376.0" width="158.0" height="48.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="text" id="id567"
+            font-family="Times New Roman" fill="black" font-size="18" latexdraw:x="490.0">
+            <text x="490.0" y="180.0"><![CDATA[BUNDLE]]></text>
+        </g>
+        <g latexdraw:type="rectangle" id="id570">
+            <rect x="411.0" y="451.0" width="218.0" height="108.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id571">
+            <rect x="441.0" y="496.0" width="158.0" height="48.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="url(#pattern571)"/>
+        </g>
+        <g latexdraw:type="text" id="id572"
+            font-family="Times New Roman" fill="black" font-size="18" latexdraw:x="470.0">
+            <text x="470.0" y="480.0"><![CDATA[CONTAINER]]></text>
+        </g>
+        <g latexdraw:type="text" id="id575"
+            font-family="Times New Roman" fill="black" font-size="18" latexdraw:x="490.0">
+            <text x="490.0" y="225.0"><![CDATA[Identifier]]></text>
+        </g>
+        <g latexdraw:type="text" id="id578"
+            font-family="Times New Roman" fill="black" font-size="18" latexdraw:x="480.0">
+            <text x="480.0" y="275.0"><![CDATA[Descriptive]]></text>
+        </g>
+        <g latexdraw:type="text" id="id581"
+            font-family="Times New Roman" fill="black" font-size="18" latexdraw:x="487.0">
+            <text x="487.0" y="295.0"><![CDATA[Metadata]]></text>
+        </g>
+        <g latexdraw:type="text" id="id584"
+            font-family="Times New Roman" fill="black" font-size="18" latexdraw:x="477.0">
+            <text x="477.0" y="335.0"><![CDATA[Relationship]]></text>
+        </g>
+        <g latexdraw:type="text" id="id587"
+            font-family="Times New Roman" fill="black" font-size="18" latexdraw:x="481.0">
+            <text x="481.0" y="355.0"><![CDATA[Definitions]]></text>
+        </g>
+        <g latexdraw:type="text" id="id590"
+            font-family="Times New Roman" fill="black" font-size="18" latexdraw:x="480.0">
+            <text x="480.0" y="405.0"><![CDATA[Bundle Log]]></text>
+        </g>
+    </g>
+    <metadata>
+        <latexdraw:metadata>
+            <latexdraw:displayBorders>false</latexdraw:displayBorders>
+            <latexdraw:autoAdjust>true</latexdraw:autoAdjust>
+            <latexdraw:ppc>50</latexdraw:ppc>
+            <latexdraw:zoom>1.0</latexdraw:zoom>
+            <latexdraw:unit>cm</latexdraw:unit>
+            <latexdraw:classicGrid>false</latexdraw:classicGrid>
+            <latexdraw:gridGap>10</latexdraw:gridGap>
+            <latexdraw:code>0</latexdraw:code>
+            <latexdraw:displayGrid>true</latexdraw:displayGrid>
+            <latexdraw:magneticGrid>true</latexdraw:magneticGrid>
+            <latexdraw:autoUpdate>true</latexdraw:autoUpdate>
+            <latexdraw:version>2.0.8</latexdraw:version>
+            <latexdraw:size>
+                <latexdraw:width>1374</latexdraw:width>
+                <latexdraw:height>684</latexdraw:height>
+            </latexdraw:size>
+            <latexdraw:position>
+                <latexdraw:x>0</latexdraw:x>
+                <latexdraw:y>0</latexdraw:y>
+            </latexdraw:position>
+            <latexdraw:dividerPosition>0.7518195050946143</latexdraw:dividerPosition>
+            <latexdraw:displayCodePanel>true</latexdraw:displayCodePanel>
+            <latexdraw:displayXScale>true</latexdraw:displayXScale>
+            <latexdraw:displayYScale>true</latexdraw:displayYScale>
+            <latexdraw:delimitorOpacity>130</latexdraw:delimitorOpacity>
+        </latexdraw:metadata>
+    </metadata>
+</svg>

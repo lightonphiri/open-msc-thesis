@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" 
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	 xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/          
+	 http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2012-09-24T12:27:59Z</responseDate>
+  <request verb="ListSets">http://union.ndltd.org/OAI-PMH/</request>
+  <ListSets>
+    <set>
+      <setSpec>UPSALLA</setSpec>
+      <setName>DiVA Archive at Upsalla University</setName>
+    </set>
+    <set>
+      <setSpec>OCLC</setSpec>
+      <setName>OCLC</setName>
+    </set>
+    <set>
+      <setSpec>IBICT</setSpec>
+      <setName>IBICT Brazilian ETDs</setName>
+    </set>
+    <set>
+      <setSpec>VTETD</setSpec>
+      <setName>Virgina Tech. Theses and Dissertation</setName>
+    </set>
+    ...
+    ...
+    ...
+  </ListSets>
+</OAI-PMH>

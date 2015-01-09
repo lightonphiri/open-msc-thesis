@@ -1,0 +1,89 @@
+\section[Bleek\& Lloyd collection]{Bleek and Lloyd collection}\index{Bleek and Lloyd}
+\label{sec:case-studies:bleek-and-lloyd}
+
+\begin{figure}
+ %\begin{center}
+  \centering
+  \framebox[\textwidth]{%
+\includegraphics[width=0.95\textwidth]{chapter06/figures/case-studies.bleek-and-lloyd.A2_1_112_09231.eps}%
+}%
+\caption[Screenshot showing a sample page from Bleek\& Lloyd collection]{Screenshot showing a sample page from the ``Posts and trading'' story in the Lucy Lloyd !Kun notebooks}
+\label{fig:case-studies:bleek-and-lloyd:brief-history:case-studies.bleek-and-lloyd.A2_1_112_09231}
+% \end{center}
+\end{figure}
+
+%%%%%\subsection[Bushman folklore]{Bushman folklore}
+%%%%%\label{sec:case-studies:bleek-and-lloyd:bushman-folklore}
+%%%%%\subsection[Brief history]{Brief history}
+\subsection[Overview]{Overview}
+\label{sec:case-studies:bleek-and-lloyd:brief-history}
+
+The Bleek and Lloyd collection \citep{Skotnes2007} is a 19th century compilation of notebooks and drawings comprising of linguistic and ethnographic work of Lucy Lloyd and Wilhelm Bleek on the life of the \textbar Xam\index{Xam} and !Kun\index{Kun} Bushman people of Southern Africa. In 2003, the Lucy Lloyd Archive and Research centre at the University of Cape Town embarked on a large scale digitisation project and all the artifacts are in the process of being scanned and corresponding representation information generated. Table~\ref{tab:case-studies:overview:lloydbleek-database-collection} shows the current composition of the digitised objects and Figure~\ref{fig:case-studies:bleek-and-lloyd:brief-history:case-studies.bleek-and-lloyd.A2_1_112_09231} shows a sample page from one of the digitised notebooks.
+
+%\subsection{Non-Functional Requirements}
+%\label{sec:design-implementation:design-process:non-functional-requirements}
+%http://upload.wikimedia.org/wikipedia/commons/2/2b/Data_modeling_context.svg
+
+%\begin{comment}
+% PLEASE SEE PAGE 51---overview of strategies table
+%
+%http://jeffrey.famvdhoeven.nl/Researchtask%20IBM%20TU%20Delft%20-%20J.R.%20van%
+%20der%20Hoeven.pdf
+%\end{comment}
+
+%Nice table outline here
+%(\url{
+%http://www.slideshare.net/henry.muccini/software-architecture-design-decisions}
+%)
+%Questions
+%Options
+%criteria
+
+\tablespacing
+\input{chapter06/tables/table.case-studies.lloydbleek-collection-profile.tex}
+\bodyspacing
+
+\subsection{Object storage}
+\label{sec:case-studies:bleek-and-lloyd:implementation}
+
+\tablespacing
+\input{chapter06/tables/table.case-studies.bleek-and-lloyd.object-organisation.tex}
+\bodyspacing
+
+Table~\ref{tab:case-studies:bleek-and-lloyd:object-organisation} shows the object composition of the collection and Figure~\ref{fig:case-studies:bleek-and-lloyd:object-storage:object-relationships} shows the relationships among the objects.
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter06/figures/case-studies.bleek-and-lloyd.relationships.tex}
+ }
+ \caption{Collection digital object component structure}
+ \label{fig:case-studies:bleek-and-lloyd:object-storage:object-relationships}
+\end{figure}
+
+%%%%%\subsubsection{Data model}
+%%%%%\label{sec:case-studies:bleek-and-lloyd:implementation:data-model}
+
+The metadata objects are encoded using Dublin Core \citep{DCMI1999}; Listings~\ref{lst:case-studies:bleek-and-lloyd:data-model:metadata-schema:content},~\ref{lst:case-studies:bleek-and-lloyd:data-model:metadata-schema:virtual} and~\ref{lst:case-studies:bleek-and-lloyd:data-model:metadata-schema:container} show sample encoding for Content Objects, ``virtual'' Content Objects and Container Objects.
+
+%%%%%\subsubsection{Metadata schema}
+%%%%%\label{sec:case-studies:bleek-and-lloyd:implementation:metadata-schema}
+
+\lstinputlisting[float,frame=lines,caption=A digital content metadata file, label=lst:case-studies:bleek-and-lloyd:data-model:metadata-schema:content, language=XML]{chapter06/code/code.case-studies.bleek-and-lloyd.digital-content.metadata}
+
+\lstinputlisting[float,frame=lines, caption=A virtual object metadata file, label=lst:case-studies:bleek-and-lloyd:data-model:metadata-schema:virtual,language=XML]{chapter06/code/code.case-studies.bleek-and-lloyd.virtual-object.metadata}
+
+\lstinputlisting[float,frame=lines,caption=A container object metadata file,label=lst:case-studies:bleek-and-lloyd:data-model:metadata-schema:container,language=XML]{chapter06/code/code.case-studies.bleek-and-lloyd.container-object.metadata }
+
+\subsection[DLSes]{Digital Library Systems}
+\label{sec:case-studies:bleek-and-lloyd:use-cases}
+
+\subsubsection{The Digital Bleek and Lloyd collection}
+\label{sec:case-studies:bleek-and-lloyd:use-cases:the-digital-bleek-and-lloyd}
+
+The digital Bleek and Lloyd collection \citep{LloydBleek2007} is an online\footnote{\url{http://lloydbleekcollection.cs.uct.ac.za}} catalogue that was developed to store and enable access to digitised manuscripts described in Section~\ref{sec:case-studies:bleek-and-lloyd:brief-history}. The underlying software was initially designed to enable access to as many people as possible so usage requirements were minimal---it was not even necessary to use a Web server or database. The system was designed to be XML-centric, and is based on an implementation strategy that involves pre-generating scalable hyperlinked XHTML pages using XSLT \citep{Suleman2007}. However, the original system was not focused on preservation, extensibility or reusability. In an attempt to take advantage of these attributes and also simplify the resulting system, a prototype redesigned system \citep{Phiri2012} was developed using the repository described in Section~\ref{sec:case-studies:bleek-and-lloyd:implementation} as the underlying data storage layer.
+
+\subsubsection{Bonolo}
+\label{sec:case-studies:bleek-and-lloyd:use-cases:bonolo}
+
+The Bonolo project---undertaken in 2012---was initiated to investigate a new approach to building digital repository systems \citep{Hammer2011}. One of the project deliverable is a prototype generic \gls{dls} \citep{Hammer2011, Phiri2012a} that makes use of the repository described in Section~\ref{sec:case-studies:bleek-and-lloyd:implementation} as the data storage layer.

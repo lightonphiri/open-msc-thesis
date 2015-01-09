@@ -1,0 +1,35 @@
+<<fig=FALSE, echo=FALSE>>=
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+tikz('ggplot2-experiments-performance-capacity.tex', width=5.9, height=4.0)
+dataset <- read.table("../data/experiments-performance-capacity.dat", header=TRUE, sep=",")
+
+#
+experimentdataset <- melt(dataset, id.vars="Workload")
+
+#
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="Corpus"] <- "Corpus Size"
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="Index"] <- "Index Size"
+
+#
+#ggplot(backgroundtechnologies, aes(x=Experience, y=value, fill=Experience)) + geom_bar(position = "dodge", width=.75) + facet_wrap(~ variable, scales = "free", ncol = 2) + coord_cartesian(ylim=c(0, 20)) + labs(x = "", y = "", fill = "") + theme(axis.text.x = element_blank(), legend.position = "bottom", legend.direction="horizontal", legend.title=theme_blank()) + scale_x_discrete(breaks = NULL) + theme(legend.text = element_text(size = 9)) + scale_fill_grey(breaks = c(paste("","$<$", "1 yr"), "1 - 3 yrs", "3 - 6 yrs", paste("","$>$","6 yrs")))
+# as.factor(Workload)
+ggplot(data=experimentdataset, 
+       aes(x=as.factor(Workload), 
+           y=value, group=variable, 
+           shape=variable)) + 
+             geom_line() + 
+             geom_smooth(method="lm") + 
+             geom_point() + 
+             scale_x_discrete(labels=c("100", "200", "400", "800", "1.6k", "3.2k", "6.4k", "12.8k", "25.6k", "51.2k", "102.4k", "204.8k"    , "409.6k" ,"819.2k")) + 
+             labs(x="Workload (Documents)", 
+                  y="Size (MB)") + 
+                    theme(legend.position=c(0.12,0.85), 
+                          legend.title=element_blank(), 
+                          axis.title.x=element_text(vjust=-2), 
+                          axis.title.y=element_text(vjust=-0.5), 
+                          plot.margin=unit(c(1,1,1,1), "cm")) + 
+                            theme(axis.text.x = element_text(angle=90))
+@

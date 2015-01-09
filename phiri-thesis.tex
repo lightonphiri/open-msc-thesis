@@ -1,0 +1,889 @@
+% ****************************************************************************************** 
+% Thesis template and document class for Graduate School
+% Author  : Lighton Phiri <lphiri@cs.uct.ac.za>
+% Adapted from: http://www.jeffdwoskin.com/dissertation/
+% ****************************************************************************************** 
+%
+
+
+%%% For print copies
+%% set 'singlespace' option to set entire thesis to single space, and define "\printmode" to remove all hyperlinks for printed copies of the thesis. Delete all output files before changing this mode -- it will turn hyperref package on and off
+%%%\documentclass[dvips, 12pt, lot, lof, logs, onehalfspace]{phiri-thesis}
+%%%\newcommand{\printmode}{}
+
+%%% For the electronic copy, use doublespacing, define "\pubscsuctmode" to use outlined links, instead of colored links. 
+%%%\documentclass[12pt,lot, lof]{phiri-thesis}
+%%%\newcommand{\pubscsuctmode}{}
+% I prefer pubscsuctmode to be off for electronic copies for normal use, since the colored links are less distracting. However when printed in black and white, the colored links are difficult to read. 
+
+%%% For early drafts without some of the frontmatter
+% Also see the "ifodd" command below to disable more frontmatter
+\documentclass[dvips, 12pt, lot, lof, logs, onehalfspace]{phiri-thesis} % single included for experimentation
+% 
+% October 20, 2014
+% http://tex.stackexchange.com/q/38607/17923
+% 
+\usepackage{etex}
+%%%\newcommand{\pubscsuctmode}{} % added for experimentation purposes
+% 
+% April 2, 2013
+% This is it... done! After a gruelling 2 years and 61 days
+%\newcommand{\printmode}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\
+%%%% Author & title page info
+
+%\title{A Lightweight Digital Library Framework}
+\title{Simple Digital Libraries} % tntative new title
+
+\submitted{December 2013}  % degree conferral date for University of Cape Town (June, or December)
+\copyrightyear{2013}  % year in which the copyright is secured by publication of the dissertation.
+\author{Lighton Phiri}
+\adviser{Hussein Suleman}  %replace with the full name of your adviser
+%\departmentprefix{Program in}  % defaults to "Department of", but programs need to change this.
+\department{Computer Science}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\
+%%%% Tweak float placements
+% From: http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html "Controlling LaTeX Floats"
+% and based on: http://www.tex.ac.uk/cgi-bin/texfaq2html?label=floats
+% LaTeX defaults listed at: http://people.cs.uu.nl/piet/floats/node1.html
+
+% Alter some LaTeX defaults for better treatment of figures:
+    % See p.105 of "TeX Unbound" for suggested values.
+    % See pp. 199-200 of Lamport's "LaTeX" book for details.
+    %   General parameters, for ALL pages:
+    \renewcommand{\topfraction}{0.85}	% max fraction of floats at top
+    \renewcommand{\bottomfraction}{0.6}	% max fraction of floats at bottom
+    %   Parameters for TEXT pages (not float pages):
+    \setcounter{topnumber}{2}
+    \setcounter{bottomnumber}{2}
+    \setcounter{totalnumber}{4}     % 2 may work better
+    \setcounter{dbltopnumber}{2}    % for 2-column pages
+
+    % Prevent indentation for paragraphs
+    % September 8, 2012
+    %\setlength{\parindent}{0in}
+    
+    \renewcommand{\dbltopfraction}{0.66}	% fit big float above 2-col. text
+    \renewcommand{\textfraction}{0.15}	% allow minimal text w. figs
+    %   Parameters for FLOAT pages (not text pages):
+    \renewcommand{\floatpagefraction}{0.66}	% require fuller float pages
+	% N.B.: floatpagefraction MUST be less than topfraction !!
+    \renewcommand{\dblfloatpagefraction}{0.66}	% require fuller float pages
+
+% The documentclass already sets parameters to make a high penalty for widows and orphans. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\
+%%%% Use packages
+
+% April 7, 2013
+% http://mintaka.sdsu.edu/GF/bibliog/latex/LaTeXtoPDF.html
+\usepackage{pslatex} % Insane that this results in compilation taking ~3 hours... awe mwe
+
+% April 7, 2013
+% http://mintaka.sdsu.edu/GF/bibliog/latex/fonts.html
+%%%%%\usepackage{times} % professional + reduces page count *****
+%%%%%\usepackage{bookman} % fancy + dramatically increases page count ***
+%%%%%\usepackage{newcent} % semi-professional + increases page count ****
+
+% April 8, 2013
+% http://dsanta.users.ch/resources/type1.html
+%%%\usepackage[T1]{fontenc}
+%%%\usepackage{ae,aecompl}
+
+%\usepackage{amsfonts}
+
+%%% For figures
+%%%%%\usepackage{graphicx}
+\usepackage[dvips]{graphicx}
+%\usepackage{subfig,rotate}
+
+%%% for comments
+\usepackage{verbatim}
+
+%%% For tables
+\usepackage{multirow}
+% Longtable lets you have tables that span multiple pages.
+\usepackage{longtable}
+
+% Booktabs produces far nicer tables than the standard LaTeX tables.
+%   see: http://en.wikibooks.org/wiki/LaTeX/Tables
+\usepackage{booktabs}
+
+% Phiri <lightonphiri.org>
+% September 02, 2012
+% Rotating table headers/labels
+\usepackage{rotating}
+
+
+\begin{comment}
+Phiri <lightonphiri.org>
+September 08, 2012
+No indentation for new paragraphs, but leave empty line after
+\end{comment}
+
+\usepackage[parfill]{parskip}
+
+\begin{comment}
+Load enumitem package to prevent description list from intending item list
+http://tex.stackexchange.com/questions/56374/left-margin-flush-for-itemizes-ite
+m-labels-in-latex
+
+using sameline style gets rid of space after label. Put tild (~) to make this
+possible
+\end{comment}
+
+\usepackage{enumitem}
+\setlist[description]{style=sameline,leftmargin=\parindent,
+labelsep=\parindent}
+
+\begin{comment}
+ Make it possible to disable equation numbering/labelling
+ \begin{equation*}\end{equation*} does not work [1] without this package
+  [1] http://tex.stackexchange.com/a/26095/17923
+ \end{equation*}
+
+\end{comment}
+
+\usepackage{amsmath}
+
+\begin{comment}
+ use tikz package for integrating R graphics created with Sweave
+\end{comment}
+
+\usepackage{tikz}
+
+
+\begin{comment}
+ Change default treatment for subsubsection to enable numbering
+\end{comment}
+
+%\setcounter{secnumdepth}{3}
+
+\begin{comment}
+ Make it possible to include landscape pages in manuscript
+\end{comment}
+
+%\usepackage{pdflscape} % used with pdflatex
+% http://tex.stackexchange.com/a/354/17923
+\usepackage{lscape}
+
+
+\begin{comment}
+ LaTeX draw packages
+\end{comment}
+
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+
+\begin{comment}
+ Code listing package
+\end{comment}
+\usepackage{listings}
+%\usepackage{color}
+%\usepackage{xcolor}
+
+\begin{comment}
+ % January 9, 2013
+ % alter table, figure et al. captions
+\end{comment}
+\usepackage[labelsep=period]{caption}
+% http://www.peteryu.ca/tutorials/publishing/latex_captions#set_caption_label_numbering_style
+% http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+% January 9, 2013
+% This is becoming an obsession :(
+\renewcommand{\thefigure}{\thechapter-\arabic{figure}}
+\renewcommand{\thetable}{\thechapter-\arabic{table}}
+%
+%http://tex.stackexchange.com/a/49450/17923
+%\def\thelstlisting{}
+%\http://tex.stackexchange.com/q/89966/17923
+%http://tex.stackexchange.com/q/89966/17923
+\AtBeginDocument{\renewcommand*{\thelstlisting}{\thechapter-\arabic{lstlisting}}}
+%\captionsetup{labelsep=period,labelfont=it,textfont={bf,it}}
+%\DeclareCaptionFont{white}{\color{white}}
+%\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{0.90\textwidth}{#1#2#3}}
+%}
+%\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=black}
+
+% End listings package
+
+\begin{comment}
+ Microtype package.. cannot notice any difference so far :(
+\end{comment}
+\usepackage[protrusion=true]{microtype}
+
+\begin{comment}
+ BibLaTeX package
+\end{comment}
+
+\usepackage[english]{babel}
+% rename toc
+% http://tex.stackexchange.com/a/28518/17923
+\addto\captionsenglish{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {Table of Contents}%
+}
+
+\usepackage{csquotes}
+%%%\usepackage[citestyle=authoryear,bibstyle=authoryear,dashed=false,maxbibnames=100,maxcitenames=2,isbn=false,url=true,natbib=true,urldate=long,hyperref=true,backend=biber]{biblatex}
+\usepackage[citestyle=authoryear,bibstyle=authoryear,dashed=false,maxbibnames=100,maxcitenames=2,isbn=false,natbib=true,urldate=long,hyperref=true,backend=bibtex]{biblatex}
+
+% Hyperlinking entire citations was a huge problem :( found solution below :)
+% http://tex.stackexchange.com/a/27107/17923 caused underfull errors
+% http://tex.stackexchange.com/a/27616/17923 worked perfectly :d
+\makeatletter
+%Works without the last bracket ;-)
+\let\abx@macro@citeOrig\abx@macro@cite
+\renewbibmacro{cite}{%
+   \bibhyperref{%
+   \let\bibhyperref\relax\relax%
+   \abx@macro@citeOrig%
+   }%
+}
+\let\abx@macro@textciteOrig\abx@macro@textcite
+\renewbibmacro{textcite}{%
+   \bibhyperref{%
+   \let\bibhyperref\relax\relax%
+   \abx@macro@textciteOrig%
+   }%
+}%
+%
+%
+% August 9, 2013 --see \usepackage{etoolbox} entry ***
+%%%\pretocmd{\chapter}{\addtocontents{toc}{\protect\addvspace{5\p@}}}{}{}
+%%%\pretocmd{\section}{\addtocontents{toc}{\protect\addvspace{5\p@}}}{}{}
+%%%\pretocmd{\subsection}{\addtocontents{toc}{\protect\addvspace{5\p@}}}{}{}
+%%%\pretocmd{\theappendix}{\addtocontents{toc}{\protect\addvspace{5\p@}}}{}{}
+%%%\pretocmd{\thesubappendix}{\addtocontents{toc}{\protect\addvspace{5\p@}}}{}{}
+%
+%
+%%%\patchcmd{\@chapter}{%
+%%%        \addtocontents{lof}{\protect\addvspace{50\p@}}%
+%%%        \addtocontents{lot}{\protect\addvspace{50\p@}}%
+%%%}{}{}{\message{Failed to patch \string\@chapter}}
+%
+%
+\pretocmd{\chapter}{\addtocontents{lof}{\protect\addvspace{5\p@}}}{}{}
+\pretocmd{\chapter}{\addtocontents{lot}{\protect\addvspace{5\p@}}}{}{}
+\pretocmd{\section}{\addtocontents{lof}{\protect\addvspace{5\p@}}}{}{}
+\pretocmd{\section}{\addtocontents{lot}{\protect\addvspace{5\p@}}}{}{}
+\pretocmd{\subsection}{\addtocontents{lof}{\protect\addvspace{5\p@}}}{}{}
+\pretocmd{\subsection}{\addtocontents{lot}{\protect\addvspace{5\p@}}}{}{}
+\setlength{\@fptop}{0pt}
+\makeatother
+
+
+\begin{comment}
+% 
+% http://tex.stackexchange.com/questions/30857/avoiding-inelegant-splits-on-urls
+% Set low penalties for breaks at numbers, uppercase letters andlowercase
+%letters
+\setcounter{biburlnumpenalty}{100}
+\setcounter{biburlucpenalty}{100}
+\setcounter{biburllcpenalty}{100}
+
+% Define a category to selectively print entries with a higher lowercase penalty
+\DeclareBibliographyCategory{badbreaks}
+\addtocategory{badbreaks}{ctan}
+
+\AtEveryBibitem{%
+  \ifcategory{badbreaks}
+    {\defcounter{biburllcpenalty}{9000}}
+    {}}
+\end{comment}
+
+\addbibresource{phiri-thesis.bib}
+
+\begin{comment}
+ Replace default bullets to square bullets
+\end{comment}
+\usepackage{amssymb}
+\renewcommand{\labelitemi}{\tiny$\blacksquare$}
+
+\begin{comment}
+ % http://tex.stackexchange.com/a/9266/17923
+\end{comment}
+% Can't get this to work --yaba!
+%\pdfpageattr{/Group <</S /Transparency /I true /CS /DeviceRGB>>}
+
+\begin{comment}
+ % directory tree package
+ % 
+ % \DTsetlength{offset}{width}{sep}{rule-width}{dot-size}
+ % default options -> \DTsetlength{0.2em}{1em}{0.2em}{0.4pt}{1.6pt}
+\end{comment}
+\usepackage{dirtree}
+%\DTsetlength{0.2em}{1em}{0.2em}{0.4pt}{1.6pt}
+\DTsetlength{0.3em}{1em}{0.3em}{0.5pt}{3.0pt}
+
+
+\begin{comment}
+ % xcolor packaeg
+\end{comment}
+\usepackage{xcolor}
+% new command for creating colored fameboxes
+% http://tex.stackexchange.com/a/22928/17923
+\newcommand{\frameboxc}[2]{%
+    \colorlet{currentcolor}{.}%
+    {\color{#1}%
+    \fbox{\color{currentcolor}#2}}%
+}
+
+\begin{comment}
+ % nili mu panic mode...
+ % http://tex.stackexchange.com/a/11555/17923
+\end{comment}
+\usepackage{pbox}
+
+\begin{comment}
+ % December 26, 2012
+ % numbers in tables...
+ % http://www.bakoma-tex.com/doc/latex/siunitx/siunitx.pdf
+\end{comment}
+\usepackage{siunitx}
+
+\begin{comment}
+% January 8, 2013
+% http://stackoverflow.com/a/5691284/664424
+\end{comment}
+\usepackage[titletoc]{appendix}
+
+
+\begin{comment}
+ % list package versions
+ % http://tex.stackexchange.com/a/88008/17923
+\end{comment}
+\listfiles
+
+\begin{comment}
+ % January 8, 2013
+ % http://en.wikibooks.org/wiki/LaTeX/Indexing
+\end{comment}
+\usepackage{makeidx}
+\makeindex
+
+\begin{comment}
+ % January 9, 2013
+ % http://stackoverflow.com/a/1089881/664424
+ % 
+ % Error using subfig and subcaption@ the same damn time **
+ % ! Package subcaption Error: This package can't be used in cooperation
+(subcaption)                with the subfig package.
+
+See the subcaption package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...
+
+l.47   \endinput}
+
+\end{comment}
+\usepackage{subfig}
+
+\begin{comment}
+ % February 10, 2013
+ % http://stackoverflow.com/a/1358166/664424
+\end{comment}
+\usepackage{array}
+
+\begin{comment}
+ % February 13, 2013
+ % http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+\end{comment}
+%%%%%\usepackage{subcaption}
+
+\begin{comment}
+ % February 16, 2013
+ % http://tex.stackexchange.com/a/20141/17923
+ % messes up footnotes --not worth activating for now
+ % 
+\end{comment}
+%%%%%\usepackage{arydshln}
+
+\begin{comment}
+% February 17, 2013
+% http://www.latex-community.org/forum/viewtopic.php?f=45&t=22033
+\end{comment}
+%%%%\newcommand*{\headformat}[1]{\textbf{#1}}
+%%%%\newlength{\maxlen}
+%%%%\settowidth{\maxlen}{\headformat{Fedora Commons\}}
+%%%%\newcommand*{\head}[1]{%
+%%%%\multirow{4}{*}{
+%%%%\begin{sideways}
+%%%%\makebox[\maxlen][l]{\headformat{#1}}
+%%%%\end{sideways}}}
+%
+
+\begin{comment}
+ % February 18, 2013
+ % 
+\end{comment}
+%%%%%\usepackage{colortbl}
+
+\begin{comment}
+ % February 20, 2013
+ % http://tex.stackexchange.com/a/12538/17923
+\end{comment}
+\usepackage{dashrule}
+
+\begin{comment}
+ % April 1, 2013
+ % http://tex.stackexchange.com/a/54057/17923
+\end{comment}
+\usepackage{enumitem}
+
+
+\begin{comment}
+ % August 9, 2013
+ % http://tex.stackexchange.com/a/30409/17923
+\end{comment}
+%%%\usepackage[all]{nowidow}
+
+\begin{comment}
+ % August 9, 2013
+ % http://tex.stackexchange.com/a/56550/17923
+\end{comment}
+\usepackage{etoolbox}
+%%%
+%%%
+% August 10, 2013
+% http://www.macfreek.nl/memory/LaTeX_package_conflicts#TOCLoft_and_Subfig
+\usepackage[titles,subfigure]{tocloft}
+%%%
+%%% This failed... well it sort of worked, but errors popped up. No time to investigate
+\renewcommand\cftchapafterpnum{\vskip5pt}
+\renewcommand\cftsecafterpnum{\vskip5pt}
+\renewcommand\cftsubsecafterpnum{\vskip5pt}
+
+\setlength\cftbeforefigskip{5pt}
+\setlength\cftbeforetabskip{5pt}
+%%%
+%%%\setlength\cftbeforefigskip{\cftbeforechapskip}
+%%%\setlength\cftbeforetabskip{\cftbeforechapskip}
+
+
+\begin{comment}
+ % August 20, 2013
+ % 
+\end{comment}
+\usepackage[left=1in, right=1in, top=.25in]{geometry}
+
+%set parameters for longtable:
+% default caption width is 4in for longtable, but wider for normal tables
+\setlength{\LTcapwidth}{\textwidth}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Printed vs. online formatting
+\ifdefined\printmode
+
+% Printed copy
+% hyperref package's hidelinks option disables links for printed out version
+
+% April 2, 2013 --decided to just hide the links
+% 
+
+\usepackage[hidelinks]{hyperref} % April 2, 2013 --black& white printout
+\usepackage{breakurl} % September 12, 2012. Breaking references URLs
+%%\hypersetup{bookmarksnumbered,hyperindex,CJKbookmarks,breaklinks}
+\hypersetup{bookmarksnumbered,hyperindex,CJKbookmarks}
+
+\begin{comment}
+% January 8, 2013
+% change pdf bookmark appearance
+http://newsgroups.derkeiler.com/Archive/Comp/comp.text.tex/2006-03/msg01171.html
+http://tex.stackexchange.com/a/14651/17923 
+\end{comment}
+\pdfstringdefDisableCommands{
+\def\thechapter{Chapter \arabic{chapter}.}
+\def\thesection{\arabic{chapter}.\arabic{section}}
+}
+
+\begin{comment}
+ % January 8, 2013
+ % http://en.wikibooks.org/wiki/LaTeX/Glossary
+\end{comment}
+\usepackage[nonumberlist]{glossaries}
+\addto\captionsenglish{% Replace "english" with the language you use
+  \renewcommand{\glossaryname}%
+    {List of Abbreviations}%
+}
+\makeglossaries
+
+% copy the already-set title and author to use in the pdf properties
+\makeatletter
+\hypersetup{
+   pdfinfo={
+      Title=\@title,
+      Author=\@author,
+      Subject={Digital Libraries}, 
+      Keywords={Digital Libraries, DSpace, Repositories, Simplicity},
+      CreationDate={D:20130331093049}
+   }
+}
+\setlength{\@fptop}{0pt}
+\makeatother
+
+
+\else
+
+\ifdefined\pubscsuctmode
+%ProQuest copy -- http://www.princeton.edu/~mudd/thesis/Submissionguide.pdf
+
+% ProQuest requires a double spaced version (set previously). They will take an electronic copy, so we want links in the pdf, but also copies may be printed or made into microfilm in black and white, so we want outlined links instead of colored links.
+%%%%\usepackage[hyphens]{url} % clash with hyperref package
+\usepackage{hyperref}
+\usepackage{breakurl} % September 12, 2012. Breaking references URLs
+%%\hypersetup{bookmarksnumbered,hyperindex,CJKbookmarks,breaklinks}
+%%%%%\hypersetup{colorlinks=false,bookmarksnumbered,hyperindex,CJKbookmarks,pdfborder={0 0 1}}
+\hypersetup{colorlinks=false,bookmarksnumbered,hyperindex,CJKbookmarks}
+
+\begin{comment}
+% January 8, 2013
+% change pdf bookmark appearance
+http://newsgroups.derkeiler.com/Archive/Comp/comp.text.tex/2006-03/msg01171.html
+http://tex.stackexchange.com/a/14651/17923 
+\end{comment}
+\pdfstringdefDisableCommands{
+\def\thechapter{Chapter \arabic{chapter}.}
+\def\thesection{\arabic{chapter}.\arabic{section}}
+}
+
+\begin{comment}
+ % January 8, 2013
+ % http://en.wikibooks.org/wiki/LaTeX/Glossary
+\end{comment}
+\usepackage[nonumberlist]{glossaries}
+\addto\captionsenglish{% Replace "english" with the language you use
+  \renewcommand{\glossaryname}%
+    {List of Abbreviations}%
+}
+\makeglossaries
+
+% copy the already-set title and author to use in the pdf properties
+\makeatletter
+\hypersetup{
+   pdfinfo={
+      Title=\@title,
+      Author=\@author,
+      Subject={Digital Libraries}, 
+      Keywords={Digital Libraries, DSpace, Repositories, Simplicity},
+      CreationDate={D:20130331093049}
+   }
+}
+\setlength{\@fptop}{0pt}
+\makeatother
+
+\else
+% Online copy
+
+% adds internal linked references, pdf bookmarks, etc
+
+% turn all references and citations into hyperlinks:
+%  -- not for printed copies
+% -- automatically includes url package
+% options:
+%   colorlinks makes links by coloring the text instead of putting a rectangle around the text.
+\usepackage{hyperref}
+\usepackage{breakurl} % September 12, 2012. Breaking references URLs
+\hypersetup{colorlinks,linkcolor=blue,citecolor=blue,urlcolor=blue,bookmarksnumbered}
+%\hypersetup{colorlinks, linkcolor={dark-red}, citecolor={dark-blue}, urlcolor={medium-blue}}
+\hypersetup{
+   pdfinfo={
+      Title=\@title,
+      Author=\@author,
+      Subject={Digital Libraries}, 
+      Keywords={Digital Libraries, DSpace, Repositories, Simplicity},
+      CreationDate={D:20130331093049}
+   }
+}
+
+\begin{comment}
+% January 8, 2013
+% change pdf bookmark appearance
+http://newsgroups.derkeiler.com/Archive/Comp/comp.text.tex/2006-03/msg01171.html
+http://tex.stackexchange.com/a/14651/17923 
+\end{comment}
+\pdfstringdefDisableCommands{
+\def\thechapter{Chapter \arabic{chapter}.}
+\def\thesection{\arabic{chapter}.\arabic{section}}
+}
+
+\begin{comment}
+ % January 8, 2013
+ % http://en.wikibooks.org/wiki/LaTeX/Glossary
+\end{comment}
+\usepackage[nonumberlist]{glossaries}
+\addto\captionsenglish{% Replace "english" with the language you use
+  \renewcommand{\glossaryname}%
+    {List of Abbreviations}%
+}
+\makeglossaries
+
+% copy the already-set title and author to use in the pdf properties
+\makeatletter
+\hypersetup{
+   pdfinfo={
+      Title=\@title,
+      Author=\@author,
+      Subject={Digital Libraries}, 
+      Keywords={Digital Libraries, DSpace, Repositories, Simplicity},
+      CreationDate={D:20130331093049}
+   }
+}
+\setlength{\@fptop}{0pt}
+\makeatother
+
+% make the page number rather than the text be the link for ToC entries
+%\hypersetup{linktocpage}
+\fi % pubs.cs.uct.ac.za or online formatting
+\fi % printed or online formatting
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\
+%%%% Define commands
+
+% Define any custom commands that you want to use.
+% For example, highlight notes for future edits to the thesis
+%\newcommand{\todo}[1]{\textbf{\emph{TODO:}#1}}
+
+
+% create an environment that will indent text
+% see: http://latex.computersci.org/Reference/ListEnvironments
+% 	\raggedright makes them left aligned instead of justified
+\newenvironment{indenttext}{
+    \begin{list}{}{ \itemsep 0in \itemindent 0in
+    \labelsep 0in \labelwidth 0in
+    \listparindent 0in
+    \topsep 0in \partopsep 0in \parskip 0in \parsep 0in
+    \leftmargin 1em \rightmargin 0in
+    \raggedright
+    }
+    \item
+  }
+  {\end{list}}
+
+% another environment that's an indented list, with no spaces between items -- if we want multiple items/lines. Useful in tables. Use \item inside the environment.
+% 	\raggedright makes them left aligned instead of justified
+\newenvironment{indentlist}{
+    \begin{list}{}{ \itemsep 0in \itemindent 0in
+    \labelsep 0in \labelwidth 0in
+    \listparindent 0in
+    \topsep 0in \partopsep 0in \parskip 0in \parsep 0in
+    \leftmargin 1em \rightmargin 0in
+    \raggedright
+    }
+
+  }
+  {\end{list}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\
+%%%% Front-matter
+
+% For early drafts, you may want to disable some of the frontmatter. Simply change this to "\ifodd 1" to do so.
+\ifodd 0
+% front-matter disabled while writing chapters
+%\renewcommand*{\makedeclarationpage}{}
+\renewcommand{\maketitlepage}{}
+\renewcommand*{\makedeclarationpage}{}
+\renewcommand*{\makecopyrightpage}{}
+\renewcommand*{\makeabstract}{}
+
+% you can just skip the \acknowledgements and \dedication commands to leave out these sections.
+
+\else
+
+\declaration{
+\input{chapter00/0-declaration}
+}
+
+\abstract{
+% Abstract can be any length, but should be max 350 words for a Dissertation for ProQuest's print indicies (150 words for a Master's Thesis) or it will be truncated for those uses.
+\input{chapter00/0-abstract}
+}
+
+\acknowledgements{
+%I would like to thank...
+\input{chapter00/0-acknowledgements}
+}
+
+\dedication{
+\input{chapter00/0-dedication}
+}
+
+\fi  % disable frontmatter
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\
+%%%% Hide some chapters
+
+%%% If you want to produce a pdf that includes only certain chapters, specify them with includeonly, in addition to including all chapters below.
+%\includeonly{ch-intro/intro}
+%%% You can also specify multiple chapters.
+%\includeonly{ch-intro/intro,ch-usage/usage}
+%\includeonly{chap1,chap2,chap3}
+
+% Uploading to mufasa.cs.uct.ac.za/opengoo
+% Hussein's review
+%\includeonly{chapter03/3-pilot-study}
+
+%%%%%\includeonly{chapter01/1-introduction}
+%%%%%\includeonly{chapter01/1-introduction,chapter08/8-conclusion,appendicies/9-appendix-b,appendicies/9-appendix-d}
+%%%%%\includeonly{chapter02/2-background,chapter04/4-exploratory-study,chapter06/6-case-studies}
+%%%%%\includeonly{chapter05/5-implementation,chapter06/6-case-studies}
+%%%%%\includeonly{chapter07/7-evaluation}
+%%%%%\includeonly{chapter07/7-evaluation,appendicies/9-appendix-b,appendicies/9-appendix-d}
+%%%%%\includeonly{appendicies/9-appendix-b}
+%%%%%\includeonly{appendicies/9-appendix-d}
+%%%%%\includeonly{chapter08/8-conclusion}
+%%%%%\includeonly{chapter08/8-conclusion}
+%%%%%\includeonly{appendicies/9-appendix-b,appendicies/9-appendix-d}
+%%%%%\includeonly{}
+%%%%%\includeonly{chapter01/1-introduction,chapter02/2-background,chapter04/4-exploratory-study,chapter05/5-implementation,chapter06/6-case-studies,chapter07/7-evaluation,chapter08/8-conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Notes:
+
+% Footnotes should be placed after punctuation.\footnote{place here.}
+% Generally, place citations before the period~\cite{anotherauthor}.
+% The proper usage for i.e., and e.g., include commas ``(e.g., option A, option B)''
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Import chapters
+
+\begin{comment}
+ % glossaries
+ % 
+ % March 18, 2013
+ % http://en.wikibooks.org/wiki/LaTeX/Glossary
+ % http://www.eng.cam.ac.uk/help/tpl/textprocessing/glossaries.html # handling plurals
+ % http://theoval.cmp.uea.ac.uk/~nlct/latex/thesis/node26.html
+\end{comment}
+\newglossaryentry{pdfa}{name={PDF/A},description={PDF/A is an ISO-standardised version of the Portable Document Format (PDF)}}
+\newacronym{ahp}{AHP}{Analytic Hierarchy Process}
+\newacronym[longplural=Digital Libraries]{dl}{DL}{Digital Library}
+%%%%%\newacronym{dl-s}{DLs}{Digital Libraries}
+\newacronym{dlms}{DLMS}{Digital Library Management System}
+\newacronym[\glsshortpluralkey=DLSes,\glslongpluralkey=Digital Library Systems, plural=DLSes]{dls}{DLS}{Digital Library System}
+%%%%%\newacronym{dls-s}{DLSes}{Digital Library Systems}
+\newacronym[\glsshortpluralkey=ETDs, \glslongpluralkey=Electronic Thesis and Dissertations, plural=ETDs]{etd}{ETD}{Electronic Thesis and Dissertation}
+\newacronym{floss}{FLOSS}{Free/Libre/Open Source Software}
+\newacronym{oaipmh}{OAI-PMH}{Open Archives Initiative Protocol for Metadata Harvesting}
+\newacronym{xml}{XML}{Extensible Markup Language}
+\newacronym{5s}{5S}{Streams, Structures, Spaces and Societies}
+\newacronym{oasis}{OASIS}{Organisation for the Advancement of Structured Information Standards}
+\newacronym[\glsshortpluralkey=DOIs, \glslongpluralkey=Digital Object Identifiers, plural=DOIs]{doi}{DOI}{Digital Object Identifier}
+\newacronym[\glsshortpluralkey=PURLs, \glslongpluralkey=Persistent Uniform Resource Locators, plural=PURLs]{purl}{PURL}{Persistent Uniform Resource Locator}
+\newacronym[\glsshortpluralkey=URIs, \glslongpluralkey=Uniform Resource Identifiers, plural=URIs]{uri}{URI}{Uniform Resource Identifier}
+\newacronym{rap}{RAP}{Repository Access Protocol}
+\newacronym{ndltd}{NDLTD}{Networked Digital Library of Thesis and Dissertation}
+\newacronym{www}{WWW}{World Wide Web Technologies}
+\newacronym{saru}{SARU}{Spatial Archaeology Research Unit}
+
+\begin{document}
+
+% October 23, 2012 --disabled frontmatter; now generating toc manually
+\makefrontmatter
+
+\sloppy
+% If you've disabled frontmatter, you can insert the toc manually
+%\onehalfspace
+%\tableofcontents
+%\addtocontents{toc}{\protect\vspace{20pt}} % this doesn't seem to work :(
+%\clearpage
+
+%\clearpage
+% \ifdefined\phantomsection
+% \phantomsection  % makes hyperref recognize this section properly for pdf link
+%\else
+%\fi
+%\addcontentsline{toc}{section}{Glossary}
+%\printglossaries
+
+% \include lets us split up the document (and each include starts a new page):
+\include{chapter01/1-introduction}
+\include{chapter02/2-background}
+%%%%%\include{chapter03/3-pilot-study} % February 27, 2013 -- moved content to cases studies chapter
+\include{chapter04/4-exploratory-study}
+\include{chapter05/5-implementation}
+\include{chapter06/6-case-studies}
+\include{chapter07/7-evaluation}
+\include{chapter08/8-conclusion}
+\appendix % all chapters following will be labeled as appendices
+%%\begin{appendices}
+%%%http://newsgroups.derkeiler.com/Archive/Comp/comp.text.tex/2006-03/msg01171.html
+%%%http://tex.stackexchange.com/a/14651/17923
+%%%http://tex.stackexchange.com/q/65735/17923
+\pdfstringdefDisableCommands{%
+\def\thechapter{Appendix \Alph{chapter}.}%
+\def\thesection{\Alph{chapter}.\arabic{section}}
+%\def\appendixname{Bookmark-Appendix}%
+%\def\chaptername{\appendixname}
+}
+%%%%\include{appendicies/9-appendix-a}
+\include{appendicies/9-appendix-b}
+%%%%%\include{appendicies/9-appendix-c}
+\include{appendicies/9-appendix-d}
+%%\end{appendices}
+
+
+\begin{comment}
+% Make the bibliography single spaced
+\singlespacing
+\bibliographystyle{apalike}
+
+% add the Bibliography to the Table of Contents
+\cleardoublepage
+\ifdefined\phantomsection
+  \phantomsection  % makes hyperref recognize this section properly for pdf link
+\else
+\fi
+\addcontentsline{toc}{chapter}{Bibliography}
+
+% include your .bib file
+\bibliography{phiri-thesis}
+\end{comment}
+
+% Make the bibliography single spaced
+%\singlespacing
+%\bibliographystyle{apalike}
+
+% add the Bibliography to the Table of Contents
+\cleardoublepage
+ \ifdefined\phantomsection
+ \phantomsection  % makes hyperref recognize this section properly for pdf link
+\else
+\fi
+\addcontentsline{toc}{chapter}{Bibliography}
+
+% include your .bib file
+%\bibliography{phiri-thesis}
+% http://tex.stackexchange.com/questions/15653/perform-a-line-break-of-an-url-in-bibliography-manually-biblatex-hyperref
+% sloppy solves underfull and overfull DOIs problem
+% http://tex.stackexchange.com/a/15655/17923
+\begingroup
+\setlength\bibitemsep{12pt} % Increase spacing between entries
+%\sloppy
+\printbibliography
+\endgroup
+
+%
+%http://en.wikibooks.org/wiki/LaTeX/Indexing#Adding_index_to_table_of_contents
+%http://www.latex-community.org/forum/viewtopic.php?f=51&t=8096
+%
+\clearpage
+ \ifdefined\phantomsection
+ \phantomsection  % makes hyperref recognize this section properly for pdf link
+\else
+\fi
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+
+\end{document}

@@ -1,0 +1,54 @@
+%%%%%\begin{longtable}{p{0.30\linewidth} p{0.60\linewidth}}
+\begin{longtable}{
+>{\arraybackslash}p{0.32\linewidth}|
+>{\arraybackslash}p{0.58\linewidth}}
+ 
+ \caption{Data model categories for NoSQL database stores}
+\label{tab:background:data-storage-architectures:nosql-database-data-models} \\
+ %%%%%\toprule
+ %%%%%\hline
+ \textbf{Data Model} & \textbf{Description}\\
+ %%%%%\midrule
+ \cline{1-2}
+ \endfirsthead
+ 
+ \caption[]{(continued)}\\
+ %%%%%\toprule
+ %%%%%\hline
+ \textbf{Data Model} & \textbf{Description}\\
+ %%%%%\midrule
+ \cline{1-2}
+ \endhead
+ 
+ % Page footer
+ %%%%%\midrule
+ %%%%%\hline
+ \multicolumn{2}{r}{(Continued on next page)} \\
+ \endfoot
+ 
+ % Last page footer
+ %%%%%\bottomrule
+ \endlastfoot
+ 
+ \textbf{Column-Family Stores} &
+ {Data is stored with keys mapped to values grouped into column families} \\
+ 
+ \cline{1-2}
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ \textbf{Document Stores} &
+ {Data is stored in self-describing encoded data structures} \\
+ 
+ \cline{1-2}
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ \textbf{Graph Stores} &
+ {Data is stored as entities with corresponding relationships between entities} \\
+ 
+ \cline{1-2}
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ \textbf{Key-Value Stores} &
+ {Hash table with unique keys and corresponding pointer to blobs} \\
+ 
+\end{longtable}

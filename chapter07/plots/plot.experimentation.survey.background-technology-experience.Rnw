@@ -1,0 +1,81 @@
+<<fig=FALSE, echo=FALSE>>=
+# Author: Lighton Phiri
+# Date: January 2013
+# Purpose: ggplot2 kiviat (polar coordinate system) chart
+# 
+# Summary kiviat plot showing performance degradation of 
+# performance evaluation aspects
+# 
+
+# import libraries 
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+require(ggthemes)
+
+# generate tikZ-LaTeX input file
+tikz('plot.experimentation.survey.background-technology-experience.tex', width=5.5, height=3.5)
+
+# import datafeeds
+dataset <- read.table("../data/experiments-survey-background-technologies.dat", header=TRUE, sep=",")
+
+experimentdataset <- dataset
+
+# add dummy column for faceting
+experimentdataset["yaba"] <- "Technologies background"
+
+# Change variable titles
+levels(experimentdataset$Experience)[levels(experimentdataset$Experience) == "More than 6 years"] <- paste("$>$", "6 years", "$\\;\\;$")
+levels(experimentdataset$Experience)[levels(experimentdataset$Experience) == "Less than 1 year"] <- paste("$<$", "1 year", "$\\;\\;$")
+levels(experimentdataset$Experience)[levels(experimentdataset$Experience) == "1-3 years"] <- paste("1-3 years", "$\\;\\;$")
+levels(experimentdataset$Experience)[levels(experimentdataset$Experience) == "3-6 years"] <- paste("3-6 years", "$\\;\\;$")
+
+levels(experimentdataset$Technology)[levels(experimentdataset$Technology) == "Database-driven-Apps"] <- "DB apps"
+levels(experimentdataset$Technology)[levels(experimentdataset$Technology) == "Web-based-Apps"] <- "Web apps"
+#levels(dataset$Concept)[levels(dataset$Concept) == "Metadata"] <- "Metadata"
+
+#ggplot(data=dataset, aes(x=Storage, y=Frequency, fill=Storage, ymax=5)) + stat_boxplot(geom='errorbar') + geom_boxplot() + geom_point() + coord_cartesian(ylim=c(0,5)) + scale_y_discrete(breaks=c(1, 5), labels=c("Not at All", "All the time")) + scale_x_discrete(labels=element_blank())+ theme(legend.position=c(0.82,0.8), legend.title=element_blank(), axis.title.x=element_text(vjust=-2), axis.ticks.y=element_blank(), plot.margin=unit(c(0.2,0.15,0.05,0.05), "cm")) + theme(axis.text.x = element_text(angle=-90, vjust=0.5)) + labs(x="", y="") + coord_flip() + scale_fill_brewer(palette="Dark2", labels=c(paste("Digital Libraries", "$\\;\\;\\;\\;$"), paste("Digital Preservation", "$\\;\\;\\;\\;$"), paste("Metadata Standards", "$\\;\\;\\;\\;$"))) + theme(axis.ticks.margin = unit(0.5, "cm"))
+
+#ggplot(data=dataset, aes(x=Technology, y=Code, fill=Technology, ymax=4)) + stat_boxplot(geom='errorbar') + geom_boxplot() + geom_point() + coord_cartesian(ylim=c(0,4)) + scale_y_discrete(breaks=c(1, 4), labels=c(paste("$<$"," 1 year"), paste("$>$"," 6 years"))) + scale_x_discrete(labels=element_blank())+ theme(legend.position="none", legend.title=element_blank(), axis.title.x=element_text(vjust=-2), axis.ticks.y=element_blank(), plot.margin=unit(c(0.2,0.15,0.05,0.05), "cm")) + theme(axis.text.x = element_text(angle=-90, vjust=0.5)) + labs(x="", y="") + coord_flip() + scale_fill_brewer(palette="Dark2") + theme(axis.ticks.margin = unit(0.5, "cm"))
+
+# create coloured plot
+##ggplot(experimentdataset, aes(x=Experience, y=Count, fill=Experience, width=0.75)) + geom_bar(stat="identity") + labs(x="", y="") + facet_wrap(~ Technology,ncol=2) + theme(legend.position="none",legend.title=element_blank(), legend.position="bottom", axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.ticks.y=element_blank()) + scale_fill_brewer(palette="Dark2") + coord_flip()
+
+
+# create black& white plot
+####ggplot(experimentdataset, aes(x=Experience, y=Count, width=0.75)) + geom_bar(stat="identity") + labs(x="", y="") + facet_wrap(~ Technology,ncol=2) + theme(legend.position="none",legend.title=element_blank(), legend.position="bottom", axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.ticks.y=element_blank()) + coord_flip() ##+ scale_fill_grey() # add fill=Experience to fill bars using greyscale
+
+# create black& white plot
+ggplot(experimentdataset, 
+       aes(x=Technology, 
+           y=Count, 
+           fill=Experience, 
+           width=0.75)) + 
+             geom_bar(stat="identity") + 
+             labs(x="Technologies", y="Number of subjects") + 
+	     #theme_igray() + 
+	     #geom_rangeframe() + theme_tufte() +
+	     #theme_excel() +
+	     #scale_fill_excel() + 
+	     #scale_colour_excel() +
+	     #theme_few() + scale_colour_few() +
+	     facet_wrap(~ yaba) +
+	     theme_igray() +
+             theme(legend.title=element_blank(), 
+		   legend.position="bottom",
+		   legend.text=element_text(size=8),
+		   legend.key.height=unit(0.35,"cm"),
+		   axis.ticks.y=element_blank(),
+		   axis.title.x = element_text(vjust=-0.8,size=10),
+		   axis.title.y = element_text(vjust=-0.2,size=10),
+		   axis.text = element_text(size=8),
+		   strip.text = element_text(size=9),
+		   #plot.margin=unit(c(0.5,0.15,0.01,0.8), "cm")) + 
+		   plot.margin=unit(c(0.5,0.5,0.01,0.8), "cm")) +
+	     scale_y_continuous(breaks=seq(from=0,to=25,by=5)) +
+             coord_flip() + 
+             #scale_fill_grey(breaks=c(paste("$<$", "1 year", "$\\;\\;$"), paste("1-3 years", "$\\;\\;$"), paste("3-6 years", "$\\;\\;$"), paste("$>$", "6 years", "$\\;\\;$"))) #+ 
+             scale_fill_stata(breaks=c(paste("$<$", "1 year", "$\\;\\;$"), paste("1-3 years", "$\\;\\;$"), paste("3-6 years", "$\\;\\;$"), paste("$>$", "6 years", "$\\;\\;$"))) #+ 
+	     #scale_fill_discrete(breaks=c(paste("$<$", "1 year", "$\\;\\;$"), paste("1-3 years", "$\\;\\;$"), paste("3-6 years", "$\\;\\;$"), paste("$>$", "6 years", "$\\;\\;$")))
+@

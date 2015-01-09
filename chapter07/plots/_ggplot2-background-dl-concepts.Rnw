@@ -1,0 +1,24 @@
+<<fig=FALSE, echo=FALSE>>=
+# load required R third-party packages
+require(tikzDevice) # seamless integration with LaTeX
+require(ggplot2) # elagent graphics
+require(reshape2) # conversion from wide to long format
+tikz('ggplot2-background-dl-concepts.tex', width=5.9, height=3.5)
+dataset <- read.table("../data/survey-background-dl-concepts.dat", header=TRUE, sep="\t")
+
+# convert data from wide to long format
+dlconcepts <- melt(dataset, id.vars="Classification")
+
+# rename column headings
+colnames(dlconcepts) <- c("Rating", "Concept", "Count")
+
+# change Concept titles
+levels(dlconcepts$Concept)[levels(dlconcepts$Concept)=="DL"] <- "Digital Libraries"
+
+ggplot(dlconcepts, 
+       aes(x=Rating, fill=Rating)) + 
+         geom_histogram(aes(weight = Count), binwidth=.75, color="black", fill="white") + 
+         facet_wrap(~Concept, scales = "free_x", ncol=2) + 
+         scale_x_continuous("", limits = c(1, 5), breaks = seq(1, 5, by=1)) + 
+         scale_y_continuous("")
+@

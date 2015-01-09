@@ -1,0 +1,32 @@
+<<fig=FALSE, echo=FALSE>>=
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+tikz('ggplot2-background-technologies-boxplot.tex', width=5.9, height=3.5)
+
+dataset <- read.table("../data/experiments-survey-background-technologies-boxplot.dat", header=TRUE, sep=",")
+
+
+# Change variable titles
+#levels(dataset$Concept)[levels(dataset$Concept) == "DL"] <- "Digital Libraries"
+#levels(dataset$Concept)[levels(dataset$Concept) == "Preservation"] <- "Preservation"
+#levels(dataset$Concept)[levels(dataset$Concept) == "Metadata"] <- "Metadata"
+
+#ggplot(data=dataset, aes(x=Storage, y=Frequency, fill=Storage, ymax=5)) + stat_boxplot(geom='errorbar') + geom_boxplot() + geom_point() + coord_cartesian(ylim=c(0,5)) + scale_y_discrete(breaks=c(1, 5), labels=c("Not at All", "All the time")) + scale_x_discrete(labels=element_blank())+ theme(legend.position=c(0.82,0.8), legend.title=element_blank(), axis.title.x=element_text(vjust=-2), axis.ticks.y=element_blank(), plot.margin=unit(c(0.2,0.15,0.05,0.05), "cm")) + theme(axis.text.x = element_text(angle=-90, vjust=0.5)) + labs(x="", y="") + coord_flip() + scale_fill_brewer(palette="Dark2", labels=c(paste("Digital Libraries", "$\\;\\;\\;\\;$"), paste("Digital Preservation", "$\\;\\;\\;\\;$"), paste("Metadata Standards", "$\\;\\;\\;\\;$"))) + theme(axis.ticks.margin = unit(0.5, "cm"))
+
+ggplot(data=dataset, 
+       aes(x=Technology, y=Code, fill=Technology, ymax=4)) + 
+         stat_boxplot(geom='errorbar') + 
+         geom_boxplot() + 
+         geom_point() + 
+         coord_cartesian(ylim=c(0,4)) + 
+         scale_y_discrete(breaks=c(1, 4), labels=c(paste("$<$"," 1 year"), paste("$>$"," 6 years"))) + 
+         scale_x_discrete(labels=element_blank()) + 
+         theme(legend.position="none", legend.title=element_blank(), axis.title.x=element_text(vjust=-2), axis.ticks.y=element_blank(), plot.margin=unit(c(0.2,0.15,0.05,0.05), "cm")) + 
+         theme(axis.text.x = element_text(angle=-90, vjust=0.5)) + 
+         labs(x="", y="") + 
+         coord_flip() + 
+         scale_fill_brewer(palette="Dark2") + 
+         theme(axis.ticks.margin = unit(0.5, "cm"))
+@

@@ -1,0 +1,110 @@
+<<fig=FALSE, echo=FALSE>>=
+# Author: Lighton Phiri
+# Date: January 2013
+# Purpose: ggplot2 line plot
+# 
+# File-based search query phases.
+# 
+
+# import libraries 
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+require(scales)
+require(gridExtra)
+require(ggthemes)
+
+# generate tikZ-LaTeX input file
+tikz('plot.experimentation.performance.search.processing-phases-unindexed.tex', width=5.5, height=5.2)
+#tikz('plot.experimentation.performance.search.processing-phases-unindexed.tex', width=5.5, height=3.0)
+
+# import datafeeds
+datasetp1 <- read.table("../data/experiments-performance-search-basic-barplot.dat", header=TRUE, sep=",")
+datasetp2 <- read.table("../data/experiments-performance-search-basic-barplot.dat", header=TRUE, sep=",")
+
+# add comulative --derived-- columns
+datasetp1$TplusP <- datasetp1$Traversal + datasetp1$Parsing
+datasetp1$TplusPplusX <- datasetp1$Traversal + datasetp1$Parsing + datasetp1$XPath
+
+# convert datasetp1 to molten form for ggplot2
+experimentdatasetp1 <- melt(datasetp1[datasetp1$Structure=="h1",][c(1,3,7:8)], id.vars=c(1))
+experimentdatasetp2 <- melt(datasetp2[datasetp2$Structure=="h1",][c(1,3:5)], id.vars=c(1))
+# add dummy column for faceting
+experimentdatasetp1["yaba"] <- "Search (Cumulative)"
+experimentdatasetp2["yaba"] <- "Search (Distribution)"
+
+# rename search phases
+# p1
+levels(experimentdatasetp1$variable)[levels(experimentdatasetp1$variable)=="Processing"] <- paste("Total","$\\;\\;\\;$")
+levels(experimentdatasetp1$variable)[levels(experimentdatasetp1$variable)=="Traversal"] <- paste("Traversal","$\\;\\;\\;$")
+levels(experimentdatasetp1$variable)[levels(experimentdatasetp1$variable)=="TplusP"] <- paste("Traversal+Parsing","$\\;\\;\\;$")
+levels(experimentdatasetp1$variable)[levels(experimentdatasetp1$variable)=="TplusPplusX"] <- paste("Traversal+Parsing+XPath","$\\;\\;\\;$")
+# p2
+levels(experimentdatasetp2$variable)[levels(experimentdatasetp2$variable)=="Traversal"] <- paste("Traversal","$\\;\\;\\;\\;$")
+levels(experimentdatasetp2$variable)[levels(experimentdatasetp2$variable)=="Parsing"] <- paste("Parsing","$\\;\\;\\;\\;$")
+levels(experimentdatasetp2$variable)[levels(experimentdatasetp2$variable)=="XPath"] <- paste("XPath","$\\;\\;\\;\\;$")
+
+# create black& white plot. Notice that you are NOT using theme_bw() here Phiri --DO NOT forget this
+p1=ggplot(data=experimentdatasetp1, 
+       aes(x=as.factor(Workload), 
+           y=(value), 
+	   colour=variable,
+           group=variable)) +
+             geom_line(aes(linetype=variable), size=1.5) + 
+             geom_point(aes(shape=variable), fill="white", size=2.5) + 
+             scale_shape_manual(values=c(1,4,13)) + 
+             scale_linetype_manual(values=c("solid","dotdash","longdash")) + 
+	     facet_wrap(~ yaba, scales="free_x") +
+             scale_x_discrete(labels=c("100","200","400","800","1.6k","3.2k","6.4k","12.8k","25.6k","51.2k","102.4k","204.8k","409.6k","819.2k","1638.4k")) + 
+             scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x), labels = trans_format("log10", math_format(10^.x))) + 
+             labs(x="Workload size",y="log10(Time [ms])") + 
+             #guides(linetype=guide_legend(nrow=2,byrow=TRUE),shape=guide_legend(nrow=2,byrow=TRUE)) +
+	     theme_igray() +
+	     #scale_colour_tableau() +
+	     scale_colour_stata() +
+             theme(legend.title=element_blank(), 
+		   #legend.position=c(0.250,0.750), 
+		   legend.position="bottom",
+		   legend.key.height=unit(0.35,"cm"),
+		   legend.text=element_text(size=8),
+		   strip.text = element_text(size=9),
+		   #axis.text.x=element_blank(), 
+		   #axis.ticks.x=element_blank(),
+		   axis.title.x=element_text(vjust=-0.8,size=10),
+		   axis.title.y=element_text(vjust=-0.2,size=10),
+		   axis.text=element_text(size=8),
+		   axis.text.x=element_text(angle=90, vjust=0.5),
+		   #plot.margin=unit(c(0.2,0.15,0.01,0.8),"cm")
+		   plot.margin=unit(c(0.5,0.5,0,0.8),"cm"))
+
+p2=ggplot(experimentdatasetp2,
+       aes(x=as.factor(Workload),
+           y=(value),
+           fill=variable,
+           width=.75)) +
+             geom_bar(stat="identity") +
+	     facet_wrap(~ yaba, scales="free_x") +
+             scale_x_discrete(labels=c("100","200", "400", "800", "1.6k", "3.2k", "6.4k", "12.8k", "25.6k", "51.2k", "102.4k", "204.8k", "409.6k" ,"819.2k", "1638.4k")) +
+             scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x), labels = trans_format("log10", math_format(10^.x))) +
+             labs(x="Workload size", y="log10(Time [ms])") +
+	     theme_igray() +
+	     #scale_fill_tableau() +
+	     scale_fill_stata() +
+             theme(legend.title=element_blank(), 
+		   #legend.position=c(0.150,0.700), 
+		   legend.position="bottom",
+		   legend.key.height=unit(0.35,"cm"),
+		   legend.text=element_text(size=8),
+		   strip.text = element_text(size=9),
+		   axis.title.x=element_text(vjust=-0.8,size=10),
+		   axis.title.y=element_text(vjust=-0.2,size=10), 
+		   axis.text = element_text(size=8),
+		   axis.text.x=element_text(angle=90, vjust=0.5),
+		   #plot.margin=unit(c(0.01,0.15,0.8,0.8), "cm")
+		   plot.margin=unit(c(0.5,0.5,0,0.8),"cm")) #+
+             #scale_fill_grey()
+
+# call gridExtra for multiplot combination
+grid.arrange(p1, p2, nrow=2)
+@

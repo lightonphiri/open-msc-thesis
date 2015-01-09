@@ -1,0 +1,67 @@
+<<fig=FALSE, echo=FALSE>>=
+# Author: Lighton Phiri
+# Date: February 2013
+# Purpose: ggplot2 kiviat (polar coordinate system) chart
+# 
+# Summary kiviat plot showing performance degradation of 
+# performance evaluation aspects
+# 
+
+# import libraries 
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+require(scales)
+require(fmsb)
+require(ggthemes)
+
+# generate tikZ-LaTeX input file
+tikz('plot.experimentation.performance.summary.kiviat.tex', width=5.5, height=6.5)
+
+# import datafeeds
+dataset <- read.table("../data/experiments-performance-kiviat.dat", header=TRUE, sep=",")
+
+# re-order and rename workloads
+dataset$Workload <- factor(dataset$Workload, levels=c(100, 200, 400, 800, 1600, 3200, 6400, 12800, 25600, 51200, 102400, 204800, 409600, 819200, 1638400), labels=c("100","200","400","800","1.6k","3.2k","6.4k","12.8k","25.6k","51.2k","102.4k","204.8k","409.6k","819.2k","1638.4k"))
+
+# convert dataset to molten form for ggplot2
+experimentdataset <- melt(dataset, id.vars=c(1))
+
+# rename/normalise performance evaluation aspects
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="Indexing"] <- paste("Index","")
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="Ingestion"] <- paste("Ingest","")
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="OAI.PMH.data.provider"] <- paste("OAI-PMH","")
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="RSS.Feed"] <- paste("Feed","")
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="Search"] <- paste("Search","")
+
+# create colored plot
+##ggplot(experimentdataset, aes(x=variable, y=value, colour=as.factor(Workload), group=as.factor(Workload))) + geom_line() + coord_polar(theta="x", direction=-1) + scale_y_log10(breaks=trans_breaks("log10", function(x) 10^x), labels=trans_format("log10", math_format(10^.x))) + labs(x="", y="") + theme(legend.position="bottom", legend.title=element_blank(), plot.margin=unit(c(0.2,0.15,0.05,0.05),"cm")) + guides(col = guide_legend(nrow = 2))
+
+# create black& white plot. Notice that you are NOT using theme_bw() here Phiri --DO NOT forget this
+##ggplot(experimentdataset, aes(x=variable, y=value, group=as.factor(Workload), linetype=as.factor(Workload))) + geom_line() + scale_linetype_manual(values=c("solid","dashed","dotted","dotdash","longdash","solid","dashed","dotted","dotdash","longdash","solid","dashed","dotted","dotdash","longdash")) + coord_polar(theta="x", direction=-1) + scale_y_log10(breaks=trans_breaks("log10", function(x) 10^x), labels=trans_format("log10", math_format(10^.x))) + labs(x="", y="") + theme(legend.position="bottom", legend.title=element_blank(), plot.margin=unit(c(0.2,0.15,0.05,0.05),"cm")) + guides(lyt = guide_legend(nrow = 2))
+
+# create black& white plot. Notice that you are NOT using theme_bw() here Phiri --DO NOT forget this
+ggplot(experimentdataset, 
+       aes(x=variable, 
+           y=value, 
+	   colour=as.factor(Workload),
+           group=as.factor(Workload))) + 
+             geom_line(aes(linetype=as.factor(Workload)),size=1.5) + 
+             coord_polar(theta="x", direction=-1) + 
+             scale_linetype_manual(values=c("solid","dashed","dotted","dotdash","longdash","solid","dashed","dotted","dotdash","longdash","solid","dashed","dotted","dotdash","longdash")) + 
+             scale_y_log10(breaks=trans_breaks("log10", function(x) 10^x), labels=trans_format("log10", math_format(10^.x))) + 
+             labs(x="", y="log10(Time [ms])") + 
+	     theme_igray() +
+	     scale_colour_stata() +
+             theme(legend.title=element_blank(), 
+		   legend.position="bottom",
+		   legend.text=element_text(size=8),
+		   #legend.key.height=unit(0.35,"cm"),
+		   #plot.margin=unit(c(0.2,0.15,0.05,0.8),"cm"),
+		   plot.margin=unit(c(0.5,0.5,0,0.8),"cm"),
+		   strip.text = element_text(size=9),
+		   axis.text = element_text(size=8),
+		   axis.title.y = element_text(vjust=-0.2,size=10)) + 
+	     guides(linetype = guide_legend(nrow = 3))
+@

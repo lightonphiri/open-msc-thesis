@@ -1,0 +1,152 @@
+\section{Data storage schemes}
+\label{sec:background:data-storage-architectures}
+
+The repository sub-layer forms the core architectural component of a typical
+digital library system and more specifically, it is composed of two components:
+a bitstream\index{Bitstream} store and a metadata\index{Metadata} store, responsible for storing digital content
+and metadata\index{Metadata} records respectively. As shown in Table~\ref{tab:background:related-work:digital-libraries-software:floss-matrix},
+\glspl{dls} are generally implemented in such a manner that digital
+content is stored on the file system, whilst the metadata\index{Metadata} records are almost
+always housed in a relational database\index{RDMS}.
+
+This section discusses three prominent data storage solutions that can
+potentially be integrated within the repository sub-layer for metadata\index{Metadata} storage.
+The focus is to assess their suitability for integration with
+\glspl{dls}.
+
+\subsection{Relational databases}
+\label{sec:background:data-storage-architectures:relational-databases}
+
+Relational databases\index{Storage Schemes!RDBMS} have stood the test of time, having been around for
+decades. They have, until recently, been the preferred choice for data
+storage. There are a number of reasons \citep[see][chap. 3]{Elmasri2008} why relational databases have proved to
+be a popular storage solution, and these include:
+
+\begin{itemize}
+ \item The availability of a simple, but effective query language---SQL---
+capable of retrieving multifaceted views of data
+ \item Support for Data model relationships via table relations
+ \item Transaction support through ACID\footnote{Atomicity, Consistency, Isolation, Durability} properties
+ \item Support for data normalisation, thus preventing redundancy
+\end{itemize}
+
+Relational databases are, however, mostly suitable for problem domains
+that require frequent retrieval and update of relatively small quantities of
+data.
+
+\subsection{NoSQL databases}
+\label{sec:background:data-storage-architectures:nosql-databases}
+
+The large-scale production of data \citep{Gantz2008}, coupled with the now
+prevalent Big Data\footnote{\url{http://www-01.ibm.com/software/data/bigdata}},
+has resulted in a profound need for data storage architectures that are
+efficient, horizontally scalable, and easier to interface with. As a result,
+NoSQL databases recently emerged as potential alternatives to relational
+databases. NoSQL\index{Storage Schemes!NoSQL} databases are non-relational databases that embrace schemaless
+data, are capable of running on clusters, and generally trade off consistency
+for other properties such as performance \citep[see][chap.
+1]{Sadalage2004}.
+
+NoSQL database implementations are often categorised based on the manner in
+which they store data, and typically fall under the categories described in
+Table~\ref{tab:background:data-storage-architectures:nosql-database-data-models}.
+
+\tablespacing
+\input{chapter02/tables/table.background.data-storage-schemes.nosql-database-categories.tex}
+\bodyspacing
+
+NoSQL databases are highly optimised for retrieve and append operations and,
+as a result, there has recently been an increase in the number of applications
+that are making use of NoSQL data stores. However, the downside of NoSQL
+databases is that they cannot simultaneously guarantee data consistency, availability and partition tolerance; as defined in the CAP theorem
+\citep{Gilbert2002}.
+
+\subsection{Filesystems}
+\label{sec:background:data-storage-architectures:file-systems}
+
+File systems\index{Storage Schemes!File Systems} are implemented by default in all operating systems, and provide a
+persistent store for data. In addition, they provide a means to organise data
+in a manner that facilitates subsequent retrieval and update of data.
+
+Native file systems have, in the past, not generally been used as storage layers
+for enterprise applications, in part, due to the fact that they do not provide
+explicit support for transaction management and fast indexing of data. However,
+the emergence of clustered environments has resulted in robust and
+reliable distributed file system technologies such as Apache Hadoop
+\citep{Borthakur2007} and Google File System \citep{Ghemawat2003}.
+
+The opportunities presented by traditional file systems, and in particular their
+simplicity, efficiency and general ease of customisation make them prime
+candidates for storage of both digital content and metadata\index{Metadata} records. In
+addition, the use of flat files, and more specifically text files, for storage
+of metadata\index{Metadata} records could further complement and simplify the digital
+library repository sub-layer. Incidentally, Raymond \citep[see][chap.
+5]{Raymond2004,} highlights a number of advantages associated with using text
+files, and further emphasises that designing textual protocols ultimately
+results in future-proof systems.
+
+In general, there are a number of real-word application whose data storage
+implementations take advantage of file systems. Some notable example
+implementations of both digital libraries specific tools and general purpose
+tools are outlined below.
+
+\paragraph{BagIt file packaging format}
+
+The BagIt\index{File-based Stores!BagIt} File Packaging Format specification \citep{Boyko2012} defines a
+hierarchical file packaging format suitable for exchanging digital content. The
+BagIt format is streamlined for disk-based and network-based storage and
+transfer. The organisation of bags is centred on making use of file system
+directories as bags, which at a minimum contain: a data directory, at least one
+manifest file that lists data directory contents, and a bagit.txt file that
+identifies the directory as a bag.
+
+\paragraph{DokuWiki}
+
+DokuWiki\index{File-based Stores!DokuWiki} is a PHP based Wiki engine, mainly aimed at creating documentation, that is standards compliant and easy to use \citep{DokuWiki}. The storage architecture of DokuWiki principally makes use of the filesystem as its data store, with application data files stored in plain text files. This design strategy ensures that data is accessible even when the server goes down, and at the same time facilities backup and restore operations through the use of basic server scripts and FTP/sFTP.
+
+\paragraph{Git}
+
+% Pretty neat git object structure information
+% http://git-scm.com/book/en/Git-Internals-Git-Objects
+Git is a distributed version control system that functions as
+a general tool for filesystem directory content tracking, and is designed
+with a strong focus on speed, efficiency and real-world usability on
+large projects \citep[see][chap. 1]{Chacon2009}, to attain three core functional requirements below.
+
+\begin{itemize}
+ \item Store generic content
+ \item Track content changes in the repository
+ \item Facilitate a distributed architecture for the content
+\end{itemize}
+
+Git\index{File-based Stores!Git} is internally represented as a duplex data structure that is composed of a
+mutable index for caching information about the working directory; and an
+immutable repository. The Git object storage area is a Directed Acyclic Graph
+that is composed of four types of objects---blob objects; tree objects;
+commit objects; and tag objects \citep{VirtanenGit4CS}. In addition, the repository is
+implemented as a generic content-addressable filesystem with objects stored in a
+simple key-value data store \citep[see][chap.9]{Chacon2009}.
+
+\subparagraph{Pairtrees for collection storage}
+
+Pairtree\index{File-based Stores!Pairtree} is a file system convention for organising digital object stores, and
+has the advantage of making it possible for object specific operations to be
+performed by making use of native operating system tools \citep{Pairtrees}.
+
+\subsection{Summary}
+\label{sec:background:file-based-storage:summary}
+
+There are numerous available data storage options, and it is
+important to understand the varying options to fully identify the ones most
+applicable to specific problem domains. It is generally not always the case
+that a definitive storage solution is arrived at, however, a data model that
+better matches the kind of data storage and retrieval requirements should be the
+primary deciding factor. Table~\ref{tab:background:data-storage-architectures:comparison} is a
+summarised comparative matrix outlining the three storage solutions
+discussed in this section.
+
+It is that it is generally not always necessary to use an intermediate data management infrastructure, and in some cases, it may in all actuality be desirable not to use one at all; as is the case with the real world applications described in Section~\ref{sec:background:data-storage-architectures:file-systems}.
+
+\tablespacing
+\input{chapter02/tables/table.background.data-storage-schemes.data-storage-schemes.tex}
+\bodyspacing

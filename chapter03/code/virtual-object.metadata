@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource xmlns:bl="http://lloydbleekcollection.uct.ac.za/" 
+	  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+	  xmlns:dcterms="http://purl.org/dc/terms/">
+  <dc:identifier>2</dc:identifier>
+  <dc:title>Words and sentences</dc:title>
+  <dcterms:contributor>Adam Kleinhardt</dcterms:contributor>
+  <dc:subject>Words and sentences</dc:subject>
+  <bl:keywords>
+  ...
+  ...
+  </bl:keywords>
+  <dc:description>...</dc:description>
+  <bl:comments>...</bl:comments>
+  <dcterms:created>July 1866</dcterms:created>
+  <bl:pages>001-066</bl:pages>
+  <dcterms:requires>A1_4_1_00001.JPG</dcterms:requires>
+  ...
+  ...
+  <dcterms:requires>A1_4_1_00066.JPG</dcterms:requires>
+</resource>

@@ -1,0 +1,83 @@
+\section[Repository design]{Repository design}
+\label{sec:implementation:object-storage}
+
+%%%%%Iyi subsection niya design rationale\ldots ma mapping ndi zochokela ku Exploratory Study.
+
+\subsection[Design decisions]{Design decisions}
+\label{sec:implementation:simple-repository:object-identifiers}
+
+In Section~\ref{sec:background:software-design-decisions}, the significance of software design decisions were outlined; in addition prominent methods used to capture design decisions were highlighted. The design decisions associated with the architectural design of the repository sub-layer were arrived by taking into account the principles derived during the exploratory study (see Chapter~\ref{ch:exploratory-study}). Tables~\ref{tab:designing-for-simplicity:design-decisions:bitstream-storage},~\ref{tab:designing-for-simplicity:design-decisions:metadata-storage},~\ref{tab:designing-for-simplicity:design-decisions:object-naming-scheme} and~\ref{tab:designing-for-simplicity:design-decisions:object-structure} outline the detailed design decisions applied to design the repository.
+
+\tablespacing
+\input{chapter05/tables/table.designing-for-simplicity.design-decision.bitstream-storage.tex}
+\bodyspacing
+
+\tablespacing
+\input{chapter05/tables/table.designing-for-simplicity.design-decision.metadata-storage.tex}
+\bodyspacing
+
+\tablespacing
+\input{chapter05/tables/table.designing-for-simplicity.design-decision.object-naming-scheme.tex}
+\bodyspacing
+
+\tablespacing
+\input{chapter05/tables/table.designing-for-simplicity.design-decision.object-structure.tex}
+\bodyspacing
+
+\subsection[Architecture]{Architecture}
+\label{sec:implementation:simple-repository:object-storage}
+
+The architectural design is centred around designing a simple repository which at a bare minimum is capable of facilitating the core features of a \gls{dls}---long term preservation and ease of access to digital objects.
+
+\tablespacing
+\input{chapter05/tables/table.designing-for-simplicity.design-decision.repository-components.tex}
+\bodyspacing
+
+\begin{figure}[t]
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter05/figures/designing-for-simplicity.repository-hierarchical-structure.tex}
+ }
+ \caption{Simple repository object structure}
+ \label{fig:design:repository-design:repository-hierarchical-structure}
+\end{figure}
+
+The repository design is file-based and makes use of a typical native operating system filesystem as the core infrastructure. Table~\ref{tab:designing-for-simplicity:architecture:repository-components} shows the main components that make up the repository sub-layer, with all the components residing on the filesystem, arranged and organised as normal operating system files---regular files and/or directories---as shown in Figure~\ref{fig:design:repository-design:repository-hierarchical-structure}.
+
+\begin{figure}[t]
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter05/figures/designing-for-simplicity.repository-object-structure.tex}
+ }
+ \caption{Simple repository object structure}
+ \label{fig:design:repository-design:repository-object-structure}
+\end{figure}
+
+As shown in Figure~\ref{fig:design:repository-design:repository-hierarchical-structure}, a typical \gls{dls} repository would be located in an application accessible base root directory node, and is composed of two types of digital objects---Container Objects and Content Objects---both of which are created and stored within the repository with companion Metadata Objects that store representational information associated with the object. Figure~\ref{fig:design:repository-design:repository-object-structure} illustrates how Container and Content objects are stored on a typical filesystem.
+
+Container Objects can be recursively created within the root node as the repository scales, and exhibit an interesting characteristic of a enabling the creation of additional Container Objects within them. As shown in Figure~\ref{fig:design:repository-design:container-object}, the Metadata Object associated with Container Objects holds information that uniquely identifies the object; optionally describe the object in more detail, including relationships that might exist with other objects within the repository; and a detailed log of objects contained within it---the manifest.
+
+Content Objects represent digital objects---typically bitstreams---to be stored within the repository. As shown in Figure~\ref{fig:design:repository-design:digital-object}, the representational information stored in the Metadata Objects associated with Content Objects is similar to that of Container Objects, with the exception of manifest related information.
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter05/figures/designing-for-simplicity.container-object.tex}
+ }
+ \caption{Simple repository container object component structure}
+ \label{fig:design:repository-design:container-object}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter05/figures/designing-for-simplicity.digital-object.tex}
+ }
+ \caption{Simple repository digital object component structure}
+ \label{fig:design:repository-design:digital-object}
+\end{figure}
+
+\subsection{Summary}
+\label{sec:implementation:simple-repository:summary}
+
+In this chapter, the design of a prototype simple repository sub-layer was outlined through the mapping of design decisions and principles derived in Chapter~\ref{ch:exploratory-study}.

@@ -1,0 +1,62 @@
+%%%%%\begin{longtable}{p{0.3\linewidth} p{0.6\linewidth}}
+\begin{longtable}{
+>{\arraybackslash}p{0.25\linewidth}|
+>{\arraybackslash}p{0.20\linewidth}|
+>{\arraybackslash}p{0.45\linewidth}}
+
+\caption{Simple repository component composition}
+\label{tab:designing-for-simplicity:architecture:repository-components} \\
+
+ %%%%%\toprule
+ %%%%%\hline
+ \textbf{Component} & 
+ \textbf{File Type} & 
+ \textbf{Description}\\
+ %%%%%\midrule
+ %%%%%\hline
+ \cline{1-3}
+ \endfirsthead
+
+ \caption[]{(continued)}\\
+ %%%%%\toprule
+ %%%%%\hline
+ \textbf{Component} & 
+ \textbf{File Type} & 
+ \textbf{Description}\\
+ %%%%%\midrule
+ %%%%%\hline
+ \cline{1-3}
+ \endhead
+
+ % Page footer
+ %%%%%\midrule
+ %%%%%\hline
+ \multicolumn{3}{r}{(Continued on next page)} \\
+ \endfoot
+
+ % Last page footer
+ %%%%%\bottomrule
+ \endlastfoot
+
+ {\textbf{Container Object}}&
+ {Directory} &
+ {Structure used to store digital objects} \\
+
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-3}
+
+ {\textbf{Content Object}} &
+ {Regular file} &
+ {Content/bitstreams to be stored in the repository} \\
+
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-3}
+
+ {\textbf{Metadata Object}} &
+ {Regular file} &
+ {XML-encoded plain text file for storing metadata records} \\
+
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ %%%%%\cline{1-3}
+
+ \end{longtable}

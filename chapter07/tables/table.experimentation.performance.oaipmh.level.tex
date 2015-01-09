@@ -1,0 +1,89 @@
+%\begin{longtable}{p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth}
+%p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth}}
+%%\begin{longtable}{ccccccc}
+\begin{longtable}{
+>{\arraybackslash}m{0.07\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}}
+
+\caption{ListRecords response times for varying workload structures}
+\label{tab:experimentation:performance:oaipmh:level} \\
+
+ %%%%%\toprule
+ \hline
+ %%%%%{} & 
+ %%%%%\multicolumn{6}{c}{\textbf\textbf{Workload Structure}}\\
+ %%%%%\midrule
+ %%%%%\hline
+ {} & 
+ \multicolumn{2}{c|}{\textbf{Dataset \#1}} &  
+ \multicolumn{2}{c|}{\textbf{Dataset \#2}} &
+ \multicolumn{2}{c}{\textbf{Dataset \#3}}\\
+ %%%%%\midrule
+ \cline{2-7}
+ {} & 
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} &
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} &
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} \\
+ %%%%%\midrule
+ \hline \hline
+ \endfirsthead
+
+ \caption[]{(continued)}\\
+ %%%%%\toprule
+ \hline
+ %%%%%{} & 
+ %%%%%\multicolumn{6}{c}{\textbf\textbf{Workload Structure}}\\
+ %%%%%\midrule
+ %%%%%\hline
+ {} & 
+ \multicolumn{2}{c|}{\textbf{Dataset \#1}} &  
+ \multicolumn{2}{c|}{\textbf{Dataset \#2}} &
+ \multicolumn{2}{c}{\textbf{Dataset \#3}}\\
+ %%%%%\midrule
+ \cline{2-7}
+ {} &
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} &
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} &
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} \\
+ %%%%%\midrule
+ \hline \hline
+ \endhead
+
+ % Page footer
+ %%%%%\midrule
+ \hline
+ \multicolumn{7}{r}{(Continued on next page)} \\
+ \endfoot
+
+ % Last page footer
+ \bottomrule
+ \endlastfoot
+
+ \textbf{W1} & {\tablenum[table-format=7]{490}} & {--} & {\tablenum[table-format=7]{490}} & {--} & {\tablenum[table-format=7]{490}} & {--} \\ 
+ \textbf{W2} & {\tablenum[table-format=7]{980}} & {--} & {\tablenum[table-format=7]{980}} & {--} & {\tablenum[table-format=7]{980}} & {--} \\ 
+ \textbf{W3} & {\tablenum[table-format=7]{1980}} & {--} & {\tablenum[table-format=7]{2010}} & {--} & {\tablenum[table-format=7]{2010}} & {--} \\ 
+ \textbf{W4} & {\tablenum[table-format=7]{4080}} & {--} & {\tablenum[table-format=7]{4140}} & {--} & {\tablenum[table-format=7]{4120}} & {--} \\ 
+ \textbf{W5} & {\tablenum[table-format=7]{5410}} & {\tablenum[table-format=7]{3390}} & {\tablenum[table-format=7]{5510}} & {\tablenum[table-format=7]{3440}} & {\tablenum[table-format=7]{5460}} & {\tablenum[table-format=7]{3400}} \\ 
+ \textbf{W6} & {\tablenum[table-format=7]{5910}} & {\tablenum[table-format=7]{6010}} & {\tablenum[table-format=7]{6010}} & {\tablenum[table-format=7]{6120}} & {\tablenum[table-format=7]{5960}} & {\tablenum[table-format=7]{6040}} \\ 
+ \textbf{W7} & {\tablenum[table-format=7]{6720}} & {\tablenum[table-format=7]{6890}} & {\tablenum[table-format=7]{6940}} & {\tablenum[table-format=7]{7020}} & {\tablenum[table-format=7]{6780}} & {\tablenum[table-format=7]{6930}} \\ 
+ \textbf{W8} & {\tablenum[table-format=7]{8440}} & {\tablenum[table-format=7]{8570}} & {\tablenum[table-format=7]{8750}} & {\tablenum[table-format=7]{8890}} & {\tablenum[table-format=7]{8520}} & {\tablenum[table-format=7]{8650}} \\ 
+ \textbf{W9} & {\tablenum[table-format=7]{11780}} & {\tablenum[table-format=7]{12690}} & {\tablenum[table-format=7]{12360}} & {\tablenum[table-format=7]{13200}} & {\tablenum[table-format=7]{11950}} & {\tablenum[table-format=7]{12940}} \\ 
+\textbf{W10} & {\tablenum[table-format=7]{19090}} & {\tablenum[table-format=7]{19920}} & {\tablenum[table-format=7]{19930}} & {\tablenum[table-format=7]{20990}} & {\tablenum[table-format=7]{19670}} & {\tablenum[table-format=7]{20130}} \\ 
+\textbf{W11} & {\tablenum[table-format=7]{34260}} & {\tablenum[table-format=7]{36850}} & {\tablenum[table-format=7]{35580}} & {\tablenum[table-format=7]{37960}} & {\tablenum[table-format=7]{34690}} & {\tablenum[table-format=7]{36850}} \\ 
+\textbf{W12} & {\tablenum[table-format=7]{67590}} & {\tablenum[table-format=7]{73030}} & {\tablenum[table-format=7]{70460}} & {\tablenum[table-format=7]{74830}} & {\tablenum[table-format=7]{67500}} & {\tablenum[table-format=7]{74880}} \\ 
+\textbf{W13} & {\tablenum[table-format=7]{143860}} & {\tablenum[table-format=7]{157450}} & {\tablenum[table-format=7]{149260}} & {\tablenum[table-format=7]{160210}} & {\tablenum[table-format=7]{142840}} & {\tablenum[table-format=7]{159640}} \\ 
+\textbf{W14} & {\tablenum[table-format=7]{552250}} & {\tablenum[table-format=7]{611790}} & {\tablenum[table-format=7]{673340}} & {\tablenum[table-format=7]{724760}} & {\tablenum[table-format=7]{429660}} & {\tablenum[table-format=7]{454580}} \\ 
+\textbf{W15} & {\tablenum[table-format=7]{1827780}} & {\tablenum[table-format=7]{1976550}} & {\tablenum[table-format=7]{1239350}} & {\tablenum[table-format=7]{1402340}} & {\tablenum[table-format=7]{953260}} & {\tablenum[table-format=7]{1092660}} \\ 
+
+ \end{longtable}

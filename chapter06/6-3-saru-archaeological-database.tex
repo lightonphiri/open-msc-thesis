@@ -1,0 +1,78 @@
+\section[SARU archaeological database]{SARU archaeological database}\index{SARU}
+\label{sec:case-studies:saru-archaeological-database}
+
+\begin{figure}
+ %\begin{center}
+  \centering
+  \framebox[\textwidth]{%
+\includegraphics[width=0.95\textwidth]{chapter06/figures/case-studies.saru.die-mond-south-plant-fossil.eps}%
+}%
+\caption[Screenshot showing a sample rock art from SARU collection]{Screenshot showing the Die Mond South plant fossil from the Eastern Cederberg rock art site}
+\label{fig:case-studies:saru-archaeological-database:legacy-database-migration:die-mond-south-plant-fossil}
+% \end{center}
+\end{figure}
+
+%\subsection{Bleek and Lloyd Collection}
+%\label{sec:design-implementation:implementation-casestudies:bl}
+%
+%\subsection{NDLTD Union Catalog}
+%\label{sec:design-implementation:implementation-casestudies:ndltd}
+%
+%\subsection{SARU Archaeological Database}
+%\label{sec:design-implementation:implementation-casestudies:saru}
+%\subsection{Spatial archaeological analysis}
+%\label{sec:case-studies:saru-archaeological-database:spatial-archaeological-analysis}
+%
+%xxx
+
+%%%%%\subsection{Rock art paintings}
+%%%%%\label{sec:case-studies:saru-archaeological-database:rock-art-paintings}
+%%%%%\subsection{Legacy database}
+\subsection[Overview]{Overview}
+\label{sec:case-studies:saru-archaeological-database:legacy-database-migration}
+
+The Department of Archaeology\footnote{\url{http://web.uct.ac.za/depts/age}}'s \gls{saru} at the University of Cape Town has been compiling archaeological collections since the early 1950s. These collections are predominantly in the form of site records and corresponding artifacts within the vicinity of the sites. Table~\ref{tab:case-studies:overview:saru-database-collection} show the composition of collections that have been compiled thus far, and Figure~\ref{fig:case-studies:saru-archaeological-database:legacy-database-migration:die-mond-south-plant-fossil} shows an image of a rock art motif from one of the archaeological sites.
+
+Owing to the growing number of collections and a growing need by a number of researchers to access this information, an archaeological database was designed in 2005, in part, to produce layers suitable for integration with Geographic Information Systems. The site records are currently accessed via a Microsoft Access\footnote{\url{http://office.microsoft.com/en-us/access}} database-based desktop application used to store the digital archive \citep{Wiltshire2011}.
+
+\tablespacing
+\input{chapter06/tables/table.case-studies.saru-collection-profile.tex}
+\bodyspacing
+
+\subsection{Object storage}
+\label{sec:case-studies:saru-archaeological-database:implementation}
+
+%%%%%\subsubsection{Data model}
+%%%%%\label{sec:case-studies:saru-archaeological-database:implementation:data-model}
+
+The records from the database were re-organised to conform to the design described in Chapter~\ref{ch:implementation}. Table~\ref{tab:case-studies:saru:object-organisation} shows the object types identified in the collection and Figure~\ref{fig:case-studies:saru-storage:object-relationships} is an illustration of the repository structure and relationships among the objects. 
+
+\tablespacing
+\input{chapter06/tables/table.case-studies.saru.object-organisation.tex}
+\bodyspacing
+
+The metadata records were encoded using a custom tailored metadata scheme, conforming to the original format of data input forms used by research when conducting field studies. Listings ~\ref{lst:case-studies:saru-archaeological-database:container} and ~\ref{lst:case-studies:saru-archaeological-database:site-record} show encoding for a sample site record Container object and Content object, respectively.
+
+%%%%%\subsubsection{Metadata schema}
+%%%%%\label{sec:case-studies:saru-archaeological-database:implementation:metadata-schema}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter06/figures/case-studies.saru.relationships.tex}
+ }
+ \caption{Collection digital object component structure}
+ \label{fig:case-studies:saru-storage:object-relationships}
+\end{figure}
+
+\lstinputlisting[float,frame=lines,caption=A sample kloof/farm container object metadata file,label=lst:case-studies:saru-archaeological-database:container,language=XML]{chapter06/code/code.case-studies.saru.container-object.metadata}
+
+\lstinputlisting[float,frame=lines,caption=A sample site record content object metadata file,label=lst:case-studies:saru-archaeological-database:site-record,language=XML]{chapter06/code/code.case-studies.saru.digital-content.metadata}
+
+\subsection[DLSes]{Digital Library Systems}
+\label{sec:case-studies:saru-archaeological-database:use-cases}
+
+\subsubsection{School of rock art}
+\label{sec:case-studie :saru-archaeological-database:use-cases:school-of-rock-art}
+
+The School of Rock Art \citep{Crawford2012} is a Web application that was developed to act as an archaeology educational tool for elementary school students. The Web application is composed of three independent modules that all interact with the repository described in this section.

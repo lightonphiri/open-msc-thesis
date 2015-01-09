@@ -1,0 +1,191 @@
+%\begin{longtable}{p{0.10\linewidth} p{0.15\linewidth}
+%p{0.20\linewidth} p{0.15\linewidth} p{0.15\linewidth}}
+%%%%%\begin{longtable}{ccccc}
+\begin{longtable}{
+>{\arraybackslash}m{0.07\linewidth}|
+>{\centering\arraybackslash}m{0.15\linewidth}|
+>{\centering\arraybackslash}m{0.20\linewidth}|
+>{\centering\arraybackslash}m{0.15\linewidth}|
+>{\centering\arraybackslash}m{0.12\linewidth}
+}
+
+\caption{Response times for OAI-PMH verb requests}
+\label{tab:experimentation:performance:oaipmh:verbs-baseline} \\
+
+ %%%%%\toprule
+ \hline
+ %%{} &
+ %%\multicolumn{4}{c}{\textbf{OAI-PMH Verb}}\\
+ %%\midrule
+ {} &
+ \textbf{GetRecord} &
+ \textbf{ListIdentifiers} &
+ \textbf{ListRecords} &
+ \textbf{ListSets} \\
+ %%%%%\midrule
+ \hline \hline
+ \endfirsthead
+
+ \caption[]{(continued)}\\
+ %%%%%\toprule
+ \hline
+ %%{} &
+ %%\multicolumn{4}{c}{\textbf{OAI-PMH Verb}}\\
+ %%\midrule
+ {} &
+ \textbf{GetRecord} &
+ \textbf{ListIdentifiers} &
+ \textbf{ListRecords} &
+ \textbf{ListSets} \\
+ %%%%%%\midrule
+ \hline \hline
+ \endhead
+
+ % Page footer
+ %%%%%\midrule
+ \hline
+ \multicolumn{5}{r}{(Continued on next page)} \\
+ \endfoot
+
+ % Last page footer
+ \bottomrule
+ \endlastfoot
+
+ \textbf{W1} & {\tablenum[table-format=6]{10}} & {\tablenum[table-format=6]{10}} & {\tablenum[table-format=6]{480}} & {\tablenum[table-format=6]{0}} \\ 
+ \textbf{W2} & {\tablenum[table-format=6]{10}} & {\tablenum[table-format=6]{20}} & {\tablenum[table-format=6]{980}} & {\tablenum[table-format=6]{10}} \\ 
+ \textbf{W3} & {\tablenum[table-format=6]{10}} & {\tablenum[table-format=6]{60}} & {\tablenum[table-format=6]{2000}} & {\tablenum[table-format=6]{0}} \\ 
+ \textbf{W4} & {\tablenum[table-format=6]{20}} & {\tablenum[table-format=6]{170}} & {\tablenum[table-format=6]{4120}} & {\tablenum[table-format=6]{10}} \\ 
+ \textbf{W5} & {\tablenum[table-format=6]{20}} & {\tablenum[table-format=6]{390}} & {\tablenum[table-format=6]{5410}} & {\tablenum[table-format=6]{10}} \\ 
+ \textbf{W6} & {\tablenum[table-format=6]{50}} & {\tablenum[table-format=6]{770}} & {\tablenum[table-format=6]{5940}} & {\tablenum[table-format=6]{20}} \\ 
+ \textbf{W7} & {\tablenum[table-format=6]{80}} & {\tablenum[table-format=6]{1530}} & {\tablenum[table-format=6]{6730}} & {\tablenum[table-format=6]{40}} \\ 
+ \textbf{W8} & {\tablenum[table-format=6]{150}} & {\tablenum[table-format=6]{3090}} & {\tablenum[table-format=6]{8370}} & {\tablenum[table-format=6]{70}} \\ 
+ \textbf{W9} & {\tablenum[table-format=6]{300}} & {\tablenum[table-format=6]{6250}} & {\tablenum[table-format=6]{11680}} & {\tablenum[table-format=6]{120}} \\ 
+\textbf{W10} & {\tablenum[table-format=6]{590}} & {\tablenum[table-format=6]{13380}} & {\tablenum[table-format=6]{18900}} & {\tablenum[table-format=6]{240}} \\ 
+\textbf{W11} & {\tablenum[table-format=6]{1200}} & {\tablenum[table-format=6]{28460}} & {\tablenum[table-format=6]{33460}} & {\tablenum[table-format=6]{490}} \\ 
+\textbf{W12} & {\tablenum[table-format=6]{2450}} & {\tablenum[table-format=6]{61860}} & {\tablenum[table-format=6]{66950}} & {\tablenum[table-format=6]{990}} \\ 
+\textbf{W13} & {\tablenum[table-format=6]{4870}} & {\tablenum[table-format=6]{133940}} & {\tablenum[table-format=6]{139720}} & {\tablenum[table-format=6]{1990}} \\ 
+\textbf{W14} & {\tablenum[table-format=6]{10720}} & {\tablenum[table-format=6]{548080}} & {\tablenum[table-format=6]{586450}} & {\tablenum[table-format=6]{11610}} \\ 
+\textbf{W15} & {\tablenum[table-format=6]{608110}} & {\tablenum[table-format=6]{1922890}} & {\tablenum[table-format=6]{1937090}} & {\tablenum[table-format=6]{609180}} \\ 
+
+
+%%% \textbf{W1}&
+%%%\tablenum[table-format=6]{0.01}&
+%%%\tablenum[table-format=6]{0.01}&
+%%%\tablenum[table-format=6]{0.51}&
+%%%\tablenum[table-format=6]{0.00}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W2}&
+%%%\tablenum[table-format=6]{0.01}&
+%%%\tablenum[table-format=6]{0.02}&
+%%%\tablenum[table-format=6]{1.05}&
+%%%\tablenum[table-format=6]{0.01}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W3}&
+%%%\tablenum[table-format=6]{0.02}&
+%%%\tablenum[table-format=6]{0.05}&
+%%%\tablenum[table-format=6]{2.16}&
+%%%\tablenum[table-format=6]{0.01}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W4}&
+%%%\tablenum[table-format=6]{0.02}&
+%%%\tablenum[table-format=6]{0.16}&
+%%%\tablenum[table-format=6]{4.49}&
+%%%\tablenum[table-format=6]{0.01}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W5}&
+%%%\tablenum[table-format=6]{0.03}&
+%%%\tablenum[table-format=6]{0.38}&
+%%%\tablenum[table-format=6]{6.02}&
+%%%\tablenum[table-format=6]{0.01}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W6}&
+%%%\tablenum[table-format=6]{0.05}&
+%%%\tablenum[table-format=6]{0.74}&
+%%%\tablenum[table-format=6]{6.59}&
+%%%\tablenum[table-format=6]{0.02}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W7}&
+%%%\tablenum[table-format=6]{0.08}&
+%%%\tablenum[table-format=6]{1.52}&
+%%%\tablenum[table-format=6]{6.93}&
+%%%\tablenum[table-format=6]{0.03}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W8}&
+%%%\tablenum[table-format=6]{0.15}&
+%%%\tablenum[table-format=6]{3.07}&
+%%%\tablenum[table-format=6]{8.56}&
+%%%\tablenum[table-format=6]{0.06}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W9}&
+%%%\tablenum[table-format=6]{0.29}&
+%%%\tablenum[table-format=6]{6.31}&
+%%%\tablenum[table-format=6]{11.76}&
+%%%\tablenum[table-format=6]{0.12}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W10}&
+%%%\tablenum[table-format=6]{0.58}&
+%%%\tablenum[table-format=6]{13.37}&
+%%%\tablenum[table-format=6]{18.99}&
+%%%\tablenum[table-format=6]{0.23}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W11}&
+%%%\tablenum[table-format=6]{1.16}&
+%%%\tablenum[table-format=6]{28.68}&
+%%%\tablenum[table-format=6]{33.70}&
+%%%\tablenum[table-format=6]{0.46}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W12}&
+%%%\tablenum[table-format=6]{2.39}&
+%%5\tablenum[table-format=6]{61.80}&
+%%%\tablenum[table-format=6]{65.19}&
+%%%\tablenum[table-format=6]{0.96}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W13}&
+%%%\tablenum[table-format=6]{4.83}&
+%%%\tablenum[table-format=6]{138.39}&
+%%%\tablenum[table-format=6]{139.57}&
+%%%\tablenum[table-format=6]{1.98}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W14}&
+%%%\tablenum[table-format=6]{49.18}&
+%%%\tablenum[table-format=6]{402.47}&
+%%%\tablenum[table-format=6]{409.31}&
+%%%\tablenum[table-format=6]{43.92}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%  \textbf{W15}&
+%%%\tablenum[table-format=6]{472.15}&
+%%%\tablenum[table-format=6]{1622.84}&
+%%%\tablenum[table-format=6]{1628.89}&
+%%%\tablenum[table-format=6]{447.21}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+ \end{longtable}

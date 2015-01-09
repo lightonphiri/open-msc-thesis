@@ -1,0 +1,33 @@
+<<fig=FALSE, echo=FALSE>>=
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+tikz('ggplot2-background-storage.tex', width=5.9, height=5.5)
+dataset <- read.table("../data/survey-background-storage.dat", header=TRUE, sep="\t")
+
+# Added column to facilitate long data format
+dataset["Frequency"] = c("Not at all","Rarely","Some of the time", "Most of the time","All the time")
+
+#
+backgroundstorage <- melt(dataset, var.id="Frequency")
+
+# Change variable titles
+levels(backgroundstorage$variable)[levels(backgroundstorage$variable)=="Cloud.based"] <- "Cloud Store"
+levels(backgroundstorage$variable)[levels(backgroundstorage$variable)=="Database.based"] <- "Database Store"
+levels(backgroundstorage$variable)[levels(backgroundstorage$variable)=="File.based"] <- "File Store"
+
+#ggplot(backgroundstorage, aes(x=Frequency, y=value, fill=Frequency)) + geom_bar(width=.75) + facet_wrap(~ variable, scales = "free", ncol=2) + coord_cartesian(ylim=c(0, 15)) + labs(x = "",  y = "", fill = "") + theme(axis.text.x = element_blank(), legend.position = "bottom") + scale_x_discrete(breaks = NULL) + scale_fill_grey(breaks = c("Not at all", "Rarely", "Some of the time", "Most of the time", "All the time"))
+
+ggplot(backgroundstorage, 
+       aes(x=Frequency, y=value, fill=Frequency)) + 
+         geom_bar() + 
+         facet_wrap(~ variable, scales = "free", ncol=2) + 
+         labs(x = "",  y = "", fill = "") + 
+         theme(axis.text.x = element_blank(), 
+               legend.position = "bottom", 
+               plot.margin=unit(c(0.2,0.15,0.5,0.15), "cm")) + 
+                 scale_x_discrete(breaks = NULL) + 
+                 guides(fill=guide_legend(ncol=3)) + 
+                 scale_fill_brewer(palette="Dark2", labels = c(paste("$\\;$","Not at all","$\\;\\;\\;$"), paste("$\\;$","Rarely","$\\;\\;\\;$"), paste("$\\;$","Some of the time","$\\;\\;\\;\\;\\;\\;\\;$"), paste("$\\;$","Most of the time","$\\;\\;\\;\\;\\;\\;\\;$"), paste("$\\;$","All the time","$\\;\\;\\;$")))
+@

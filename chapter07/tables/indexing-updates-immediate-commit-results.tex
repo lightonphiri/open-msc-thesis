@@ -1,0 +1,134 @@
+%\begin{longtable}{p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth}
+%p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth}}
+\begin{longtable}{p{0.12\linewidth} S[table-format=4.2] S[table-format=4.2]
+S[table-format=4.2] S[table-format=4.2] S[table-format=4.2] S[table-format=4.2]
+S[table-format=4.2] S[table-format=4.2]}
+
+\caption{Indexing updates for varying batch sizes}
+\label{tab:evaluation:performance:workload-indexing-updates-immediate-commit}\\
+
+ \toprule
+ {} & \multicolumn{8}{c}{\textbf{Batch Size}}\\
+ \midrule
+ {} & 
+ \multicolumn{2}{c}{\textbf{1}} &  
+ \multicolumn{2}{c}{\textbf{10}} &
+ \multicolumn{2}{c}{\textbf{100}} & 
+ \multicolumn{2}{c}{\textbf{1000}}\\
+ \midrule
+ {} & 
+{\begin{sideways}\textbf{QTime}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{QTime}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{QTime}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{QTime}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}\\
+\midrule
+ \endfirsthead
+
+ \caption[]{(continued)}\\
+ \toprule
+ {} & \multicolumn{8}{c}{\textbf{Batch Size}}\\
+ \midrule
+ {} & \multicolumn{2}{c}{\textbf{1}} &  \multicolumn{2}{c}{\textbf{10}} &
+ \multicolumn{2}{c}{\textbf{100}} & \multicolumn{2}{c}{\textbf{1000}}\\
+ \midrule
+ {} & 
+{\begin{sideways}\textbf{QTime}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{QTime}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{QTime}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{QTime}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}\\
+\midrule
+ \endhead
+
+ % Page footer
+ \midrule
+ \multicolumn{9}{r}{(Continued on next page)} \\
+ \endfoot
+
+ % Last page footer
+ \bottomrule
+ \endlastfoot
+
+{w1} & {0.83} & {0.84} & {8.91} & {8.98} & {98.15} & {98.49} & {970.58} &
+{974.81} \\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+{w2} & {0.77} & {0.77} & {10.05} & {10.08} & {100.07} & {100.39} & {990.08} &
+{993.43} \\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+{w3} & {0.73} & {0.73} & {8.97} & {9.01} & {99.33} & {99.65} & {1001.34} &
+{1004.61} \\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+ {w4} & {1.17} & {1.17} & {10.06} & {10.09} & {98.5} & {98.82} & {1015.87} &
+{1019.11} \\
+ 
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+ {w5} & {0.64} & {0.64} & {9.68} & {9.71} & {95.91} & {96.22} & {974.67} &
+{977.9} \\
+ 
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+ {w6} & {0.66} & {0.66} & {8.66} & {8.7} & {95.84} & {96.16} & {972.2} &
+{975.35} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+{w7} & {1.23} & {1.24} & {9.52} & {9.55} & {96} & {96.33} & {971.52} & {974.69}
+\\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+{w8} & {0.96} & {0.96} & {8.89} & {8.92} & {94.01} & {94.31} & {971.74} &
+{974.82} \\
+ 
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+ {w9} & {0.63} & {0.63} & {9.01} & {9.04} & {101.52} & {101.8} & {980.05} &
+{982.98} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+{w10} & {1.07} & {1.08} & {7.86} & {7.88} & {100.14} & {100.4} & {977.09} &
+{979.81} \\ 
+ 
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+{w11} & {0.66} & {0.66} & {8.25} & {8.28} & {96.87} & {97.14} & {977.96} &
+{980.56} \\ 
+ 
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+{w12} & {0.7} & {0.7} & {8.97} & {9} & {95.01} & {95.24} & {1042.11} & {1044.39}
+\\ 
+ 
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+{w13} & {0.66} & {0.66} & {9.65} & {9.67} & {99.55} & {99.78} & {1041.51} &
+{1043.72} \\ 
+ 
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+{w14} & {0.65} & {0.66} & {9.02} & {9.04} & {99.53} & {99.75} & {1056.03} &
+{1058.38} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+{w15} & {0.7} & {0.7} & {10.16} & {10.18} & {98.71} & {98.94} & {1057.88} &
+{1060.13} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+ \end{longtable}

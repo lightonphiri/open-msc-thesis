@@ -1,0 +1,70 @@
+<<fig=FALSE, echo=FALSE>>=
+# Author: Lighton Phiri
+# Date: February 2013
+# Purpose: ggplot2 kiviat (polar coordinate system) chart
+# 
+# Summary kiviat plot showing performance degradation of 
+# performance evaluation aspects
+# 
+
+# import libraries 
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+require(ggthemes)
+
+# generate tikZ-LaTeX input file
+tikz('plot.experimentation.survey.background-dl-concepts-skill-level.tex', width=5.5, height=3.0)
+
+# import datafeeds
+dataset <- read.table("../data/survey-background-boxplot.dat", header=TRUE, sep=",")
+
+# add dummy column for faceting
+dataset["yaba"] <- "DL concepts background"
+
+# Change variable titles
+levels(dataset$Concept)[levels(dataset$Concept) == "DL"] <- "DLs"
+levels(dataset$Concept)[levels(dataset$Concept) == "Preservation"] <- "Preservation"
+levels(dataset$Concept)[levels(dataset$Concept) == "Metadata"] <- "Metadata"
+
+#ggplot(backgroundtechnologies, aes(x=Experience, y=value, fill=Experience)) + geom_bar(position = "dodge", width=.75) + facet_wrap(~ variable, scales = "free", ncol = 2) + coord_cartesian(ylim=c(0, 20)) + labs(x = "", y = "", fill = "") + theme(axis.text.x = element_blank(), legend.position = "bottom", legend.direction="horizontal", legend.title=element_blank()) + scale_x_discrete(breaks = NULL) + theme(legend.text = element_text(size = 9)) + scale_fill_grey(breaks = c(paste("","$<$", "1 yr"), "1 - 3 yrs", "3 - 6 yrs", paste("","$>$","6 yrs"))) + opts(legend.key.width = unit(0.5, "cm"))
+
+# create coloured plot
+##ggplot(data=dataset, aes(x=Concept, y=Classification, fill=Concept, ymax=5)) + stat_boxplot(geom='errorbar') + geom_boxplot() + geom_point() + coord_cartesian(ylim=c(0,5)) + scale_y_discrete(breaks=c(1, 5), labels=c("Novice", "Expert")) + scale_x_discrete(labels=element_blank())+ theme(legend.position="none", legend.title=element_blank(), axis.title.x=element_text(vjust=-2), axis.ticks.y=element_blank(), plot.margin=unit(c(0.2,0.15,0.05,0.05), "cm")) + theme(axis.text.x = element_text(angle=-90, vjust=0.5)) + labs(x="", y="") + coord_flip() + scale_fill_brewer(palette="Dark2", labels=c(paste("Digital Libraries", "$\\;\\;\\;\\;$"), paste("Digital Preservation", "$\\;\\;\\;\\;$"), paste("Metadata Standards", "$\\;\\;\\;\\;$"))) + theme(axis.ticks.margin = unit(0.5, "cm"))
+
+# create coloured plot
+ggplot(data=dataset, 
+       aes(x=Concept, 
+           y=Classification,
+	   fill=Concept, 
+	   ymin=1,
+	   lower=2,
+	   middle=3,
+	   upper=4,
+           ymax=5)) + 
+             #stat_boxplot(geom='errorbar') + 
+             #geom_boxplot(stat = "identity") + 
+             geom_boxplot() +
+	     stat_summary(fun.y=mean, geom="point", aes(shape="mean"), size=5, colour="white") + 
+	     scale_shape_manual("", values=("mean"=18)) + 
+             #geom_point() + 
+             coord_cartesian(ylim=c(0,5)) + 
+             scale_y_discrete(breaks=c(1,5), labels=c("Novice","Expert")) + 
+             labs(x="DL concepts", y="Number of subjects") + 
+	     facet_wrap(~ yaba) +
+	     theme_igray() +
+             theme(legend.position="none", 
+		   legend.title=element_blank(), 
+		   axis.title.x=element_text(vjust=-0.8,size=10),
+		   axis.title.y = element_text(vjust=-0.2,size=10),
+		   axis.text.x = element_text(angle=-90, vjust=0.5),
+		   axis.ticks.y=element_blank(), 
+		   axis.text = element_text(size=8),
+		   strip.text = element_text(size=9),
+		   #plot.margin=unit(c(0.2,0.15,0.8,0.8), "cm")) + 
+		   plot.margin=unit(c(0.5,0.5,0.8,0.8), "cm")) +
+             coord_flip() + 
+	     scale_fill_stata()
+	     #scale_fill_grey() # add fill=Concept to activate
+@

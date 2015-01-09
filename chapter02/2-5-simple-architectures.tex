@@ -1,0 +1,75 @@
+\section{Minimalist philosophy}\index{Minimalism}
+\label{sec:background:simple-architectures}
+
+The application of minimalism\index{Minimalism} in both software and hardware designs is widespread, and has been employed since the early stages of computing. The Unix\index{Unix} operating system is perhaps one prominent example that provides a unique case of the use of minimalism as a core design philosophy, and Raymond \citep{Raymond2004} outlines the benefits, on the Unix platform, of designing for simplicity\index{Simplicity}. This section discusses relevant architectures that were designed with simplicity\index{Simplicity} in mind.
+
+% Not quite sure if this subsubsection is relevant---might have to figure out
+% how to incorporate this information in a different section
+%\subsection{Ubiquitous Access to Information}
+%\label{sec:background:related-work:ubiquitous-access}
+%Various solutions have been devised to facilitate ubiquitous access to
+%knowledge by overcoming problems experienced in resource constrained
+%environments.
+
+%\subsubsection{One Laptop Per Child Project}
+%\label{sec:background:related-work:ubiquitous-access}
+
+%xxxx xxxx
+
+%\subsection{World Wide Web}
+%\label{sec:background:world-wide-web}
+% NOT YET SURE ABOUT INCLUDING THE WEB HERE
+%xxx xxx
+
+\subsection[Dublin Core]{Dublin Core element set}
+\label{sec:background:simple-architectures:dublin-core-element-set}
+
+The Dublin Core\index{Dublin Core} metadata\index{Metadata} element set defines a set of 15 resource description properties that are potentially applicable to a wide range of resources. One of the main goals of the Dublin Core\index{Dublin Core} element set is aimed at keeping the element set as small and simple as possible to facilitate the creation of resource metadata by non-experts \citep{Hillmann2005}.
+
+\tablespacing
+\input{chapter02/tables/table.background.minimalist-philosophy.dublin-core-element-set.tex}
+\bodyspacing
+
+The simplicity\index{Simplicity} of the element set arises from the fact that the 15 elements form the smallest possible set of elements required to describe a generic resource. In addition, as shown in Table~\ref{tab:background:simple-architectures:dublin-core-element-set}, the elements are self explanatory, effectively making it possible for a large section of most communities to make full use of the framework. Furthermore, all the elements are repeatable and at the same time optional. This flexibility of the scheme is, in part, the research why it is increasingly becoming popular.
+
+\subsection[Wikis]{Wiki software}\index{Wiki}
+\label{sec:background:simple-architectures:wiki-software}
+
+Wiki software allows users to openly collaborate with each other through the process of creation and modification of Web page content \citep{Leuf2001}. The success of Wiki software is, in part, attributed to the growing need for collaborative Web publishing tools. However, the simplicity\index{Simplicity} in the way content is managed, to leverage speed, flexibility and easy of use, is arguably the major contributing factor to their continued success. The strong emphasis on simplicity\index{Simplicity} in the design of Wikis is evident in Cunningham's original description: ``The simplest online database that could possibly work'' \citep{Ward1995,Leuf2001}.
+
+\subsection[XML]{Extensible markup language}
+\label{sec:background:simple-architectures:extensible-markup-language}
+
+\gls{xml}\index{XML} is a self-describing markup language that was specifically designed to transport and store data. \gls{xml} provides a hardware- and software-independent mode for carrying information, and was design for ease of use, implementation and interoperability from the onset. This is in fact evident from the original design goals that, in part, emphasised for the language to be easy to create documentations, easy to write programs for processing the documents and straightforwardly usable over the Internet \citep{Bray2008}.
+
+\gls{xml} has become one of the most commonly used tool for transmission of data in various applications due to the following reasons.
+
+\begin{itemize}
+ \item Extensibility through the use of custom extensible tags
+ \item Interoperability by being usable on a wide variety of hardware and software platforms
+ \item Openness through the open and freely available standard
+ \item Simplicity of resulting documents, effectively making them readable by machines and humans
+\end{itemize}
+
+The simplicity\index{Simplicity} of \gls{xml} particularly makes it an easy and flexible tool to work with, in part, due to the fact that the \gls{xml} document syntax is composed of a fairly minimal set of rules. Furthermore, the basic minimal set of rules can be expanded to grow more complex structures as the need arises.
+
+\subsection[OAI-PMH]{OAI protocol for metadata harvesting}
+\label{sec:background:oaipmh-protocol-for-metadata-harvesting}
+
+The \gls{oaipmh} \index{OAI-PMH} is a metadata harvesting interoperability framework \citep{Lagoze2002}. The protocol only defines a set of six request verbs\index{OAI-PMH!Verbs}, shown in Table~\ref{tab:background:simple-architectures:oaipmh-request-verbs}, that data providers need to implement. Downstream service providers then harvest metadata as a basis for providing value-added services.
+
+\tablespacing
+\input{chapter02/tables/table.background.minimalist-philosophy.oaipmh-request-verbs.tex}
+\bodyspacing
+
+The \gls{oaipmh} framework was initially conceived to provide a low-barrier to interoperability with the aim of providing a solution that was easy to implement and deploy \citep{Lagoze2001}. The use of widely used and existing standards, in particular \gls{xml} and Dublin Core\index{Dublin Core} for encoding metadata records and HTTP\index{HTML} as the underlying transfer protocol, renders the protocol flexible to work with. It is increasingly being widely used as an interoperability protocol.
+
+\subsection{Project Gutenberg}
+\label{sec:background:related-work:project-gutenberg}
+
+Project Gutenberg\footnote{\url{http://www.gutenberg.org}} is a pioneering initiative, aimed at encouraging the creation and distribution of eBooks, that was initiated in 1971 \citep{GutenbergAbout}. The project was the first single collection of free electronic books (eBooks) and its continued success is attributed to its philosophy \citep{Hart1992}, where minimalism is the overarching principle. This principle was adopted to ensure that the electronic texts were available in the simplest, easiest to use forms; independent of the software and hardware platforms used to access the texts.
+
+\subsection{Summary}
+\label{sec:background:simple-architectures:summary}
+
+This section has outlined, through a discussion of some prominent design approaches, how simplicity\index{Simplicity} in architectural designs can be leveraged and result in more flexible systems that are subsequently easy to work with. In conclusion, the key to designing easy to use tools, in part, lies in identifying the least possible components that can result in a functional unit and subsequently add complexity, in the form of optional components, as need arises. Minimalist designs should not only aim to result in architectures that are easier to extend, but also easier to work with.

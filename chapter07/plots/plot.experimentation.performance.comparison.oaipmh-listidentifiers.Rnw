@@ -1,0 +1,74 @@
+<<fig=FALSE, echo=FALSE>>=
+# Author: Lighton Phiri
+# Date: February 2013
+# Purpose: ggplot2 kiviat (polar coordinate system) chart
+# 
+# Summary kiviat plot showing performance degradation of 
+# performance evaluation aspects
+# 
+
+# import libraries 
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+require(scales)
+require(ggthemes)
+
+# generate tikZ-LaTeX input file
+tikz('plot.experimentation.performance.comparison.oaipmh-listidentifiers.tex', width=5.5, height=3.0)
+
+# import datafeeds
+dataset <- read.table("../data/experiments-performance-oaipmh-comparison.dat", header=TRUE, sep=",")
+
+# add derived total column
+##dataset$Total <- rowSums(dataset[2:4])
+# convert dataset to molten form for ggplot2
+experimentdataset <- melt(dataset, id.vars=c(1,2))
+#experimentdataset <- melt(dataset[dataset$Source=="h1",][1:4], id.vars=c(1))
+#experimentdataset <- melt(dataset[c(1,5)], id.vars=c(1))
+
+# rename feed sizes
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="X5X"] <- paste("Feed Size = 5","$\\;\\;\\;$")
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="X10X"] <- paste("Feed Size = 10","$\\;\\;\\;$")
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="X20X"] <- paste("Feed Size = 20","$\\;\\;\\;$")
+
+# rename approaches
+levels(experimentdataset$Source)[levels(experimentdataset$Source)=="FileRepo"] <- paste("File-Based Store","$\\;\\;\\;$")
+levels(experimentdataset$Source)[levels(experimentdataset$Source)=="DSpace"] <- paste("DSpace","$\\;\\;\\;$")
+
+
+# create colored plot
+##ggplot(data=experimentdataset, aes(x=as.factor(Workload), y=(value/1000), group=Source, color=Source, shape=Source, linetype=Source)) + geom_line() + geom_point() + scale_shape_manual(values=c(18,13)) + scale_linetype_manual(values=c("solid","dotdash")) + facet_wrap(~ variable, ncol=2) + scale_x_discrete(labels=c("100","200","400","800","1.6k","3.2k","6.4k","12.8k","25.6k","51.2k","102.4k","204.8k","409.6k","819.2k","1638.4k")) +  scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x), labels = trans_format("log10", math_format(10^.x))) +  labs(x="",y="")  + theme(legend.title=element_blank(), legend.position=c(0.155,0.94), plot.margin=unit(c(0.2,0.15,0.05,0.05),"cm"), axis.text.x = element_text(angle=90, vjust=0.5))
+
+# create black& white plot. Notice that you are NOT using theme_bw() here Phiri --DO NOT forget this
+ggplot(data=experimentdataset[experimentdataset$variable=="ListIdentifiers",], 
+       aes(x=as.factor(Workload), 
+           y=(value/1000), 
+           group=Source)) +
+             geom_line(aes(linetype=Source)) + 
+             geom_point(aes(shape=Source), fill="white") + 
+             scale_shape_manual(values=c(1,4)) + 
+             scale_linetype_manual(values=c("solid","dotdash")) + 
+             facet_wrap(~ variable, ncol=1, scales="free_x") + 
+             scale_x_discrete(labels=c("100","200","400","800","1.6k","3.2k","6.4k","12.8k","25.6k","51.2k","102.4k","204.8k","409.6k","819.2k","1638.4k")) +  
+             scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x), labels = trans_format("log10", math_format(10^.x))) + 
+             labs(x="Workload size",y="log10(Time [ms])") + 
+	     theme_igray() +
+             theme(legend.title=element_blank(), 
+		   #legend.position=c(0.18,0.85), 
+		   legend.position="bottom",
+		   legend.text=element_text(size=8),
+		   legend.key.height=unit(0.35,"cm"),
+		   #plot.margin=unit(c(0.2,0.15,0.8,0.8),"cm"), 
+		   plot.margin=unit(c(0.5,0.5,0,0.8),"cm"),
+		   strip.text = element_text(size=9),
+		   axis.title.x = element_text(vjust=-0.8,size=10),
+		   axis.title.y = element_text(vjust=-0.2,size=10),
+		   axis.text = element_text(size=8),
+		   axis.text.x = element_text(angle=90, vjust=0.5))
+
+# I cannot remember what the plot block below is for --too tired to find out why...
+#ggplot(data=experimentdataset, aes(x=as.factor(Workload), y=(value/1000), group=Source, color=Source, shape=Source, linetype=Source)) + geom_line() + geom_point() + scale_shape_manual(values=c(18,4,13)) + scale_linetype_manual(values=c("solid","dotdash","longdash")) + facet_wrap(~ variable,scales="free_y",ncol=1) + scale_x_discrete(labels=c("100","200","400","800","1.6k","3.2k","6.4k","12.8k","25.6k","51.2k","102.4k","204.8k","409.6k","819.2k","1638.4k")) +  labs(x="",y="")  + theme(legend.title=element_blank(), legend.position=c(0.115,0.92), plot.margin=unit(c(0.2,0.15,0.05,0.05),"cm"), axis.text.x = element_text(angle=90, vjust=0.5))
+
+@

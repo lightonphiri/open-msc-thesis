@@ -1,0 +1,66 @@
+\section[Software platforms]{Software platforms}\index{Digital Libraries!Software}
+\label{sec:background:digital-libraries-software}
+
+There are a number of different \gls{dl} software tools currently available. The ubiquitous availability of these tools could, in part, be as a result of specialised problems that these solutions are designed to solve. This section discusses seven prominent \gls{dl} software platforms.
+
+\subsection{CDS Invenio}
+
+CDS Invenio\index{Digital Libraries!Software!CDS Invenio}, formally known as CDSware\index{CDSware}, is an open source repository software, developed at CERN\footnote{\url{http://www.cern.ch}} and originally designed to run the CERN document server\footnote{\url{http://cdsweb.cern.ch}}. CDS Invenio provides an application framework with necessary tools and services for building and managing a \gls{dl} \citep{Vesely2004}.
+
+The ingested digital objects' metadata\index{Metadata} records are internally converted into a MARC\index{MARC} 21 ---MARCXML--- representation structure, while the actually fulltext bitstreams are automatically converted into PDF\index{PDF}. This ingested content is subsequently accessed by downstream services via OAI service providers, email alerts and search engines \citep{Pepe2005}.
+
+The implementation is based on a modular architecture. It is implemented using the Python Programming language, runs within an Apache/Python\index{Python} Web application server, and makes use of a MySQL\index{MySQL} backend database server for storage of metadata\index{Metadata} records.
+
+\subsection{DSpace}
+
+DSpace\index{Digital Libraries!Software!DSpace} is an open-source repository software that was specifically designed for storage of digital research and institutional materials. The architectural design was largely influenced by the need for materials to be stored and accessed over long periods of time \citep{Transley2003}.
+
+The digital object metadata\index{Metadata} records are encoded using qualified Dublin Core\index{Dublin Core}---to facilitate effective resource description. Digital objects are accessed and managed via application layer services that support protocols such as OAI-PMH\index{OAI-PMH}.
+
+DSpace\index{DSpace} is organised into a three-tier architecture, composed of: an application layer; a business logic layer; and a storage layer. The storage layer stores digital content within an asset store---a designated area within the operating system's filesystem; or can alternatively use a storage resource broker. The digital objects ---bitstreams\index{Bitstream} and corresponding metadata records--- are stored within a relational database management system \citep{Smith2003,Tansley2003a}. Furthermore software is implemented using the Java programming languages, and is thus deployed within a Servlet\index{Servlet} Engine. However, this architectural design approach arguably makes it difficult to recover digital objects in the event of a disaster since technical expertise would be required.
+
+\subsection{EPrints}
+
+EPrints\index{Digital Libraries!Software!EPrints} is an archival software that designed to create highly configurable Web-based archives. The initial design of the software can be traced back to a time when there was a need to foster open access to research publications, and provides a flexible \gls{dl} platform for building repositories \citep{Gutteridge2002}.
+
+Eprints\index{EPrints} records are represented as data objects that contain metadata\index{Metadata}. The software's plugin architecture enables the flexible design and development of export plugins capable of converting repository objects into a variety of other formats. This technique effectively makes it possible for the data objects to be disseminated via different services---such as OAI data provider modules.
+
+EPrints\index{EPrints} is implemented using Perl\index{Perl}, runs within an Apache HTTP\index{HTTP} server and uses a MySQL\index{MySQL} database server backend to store metadata records. However, the actual files in the archive are stored on the filesystem.
+
+\subsection{ETD-db}
+
+The ETD-db\index{Digital Libraries!Software!ETD-db} digital repository software for depositing, accessing and managing \gls{etd} collections. The software is more oriented towards helping facilitate the access and management of \glspl{etd}.
+
+The software was initially developed as is a series of Web pages and additional Perl\index{Perl} scripts that interact with a MySQL\index{MySQL} database backend \citep{ETDdbHome}. However, the latest version---\gls{etd} 2.0---is a Web application, implemented using the Ruby on Rails Web application framework. This was done in an effort to handle \gls{etd} collections more reliably and securely. In addition, the latest version is able to work with any relational database and can be hosted on any Web server that supports Ruby on Rails \citep{Park2011}.
+
+\subsection{Fedora Commons}
+
+Fedora\index{Digital Libraries!Software!Fedora-Commons} is an open source digital content repository framework designed for managing and delivering complex digital objects \citep{Lagoze2006}.
+
+The Fedora architecture is based on the Kahn and Wilensky framework \citep{Kahn2006}, discussed in Section~\ref{sec:background:reference-models-frameworks:kahn-wilensky}, with a distributed model that makes it possible for complex digital objects to make reference to content stored on remote storage systems. 
+
+The Fedora framework is composed of loosely coupled services ---implemented using the Java programming language--- that interact with each other to provide the functionally of the Web service as a whole. The Web service functionalities are subsequently exposed via REST\index{REST} and SOAP\index{SOAP} interfaces.
+
+\subsection{Greenstone}
+
+Greenstone\index{Digital Libraries!Software!Greenstone} is an open source digital collection building and distributing software. The software's ability to redistribute digital collections on self-installing CD-ROMs has made it a popular tool of choice in regions with very limited bandwidth \citep{Witten2001}.
+
+The most recent version---Greenstone3 \citep{Greenstone3}---is implemented in Java\index{Java}, making it platform independent. It was redesigned to improve the dynamic nature of the Greenstone toolkit and to further lower the potential overhead incurred by collection developers. In addition, it is distributed and can thus be spread across different servers. Furthermore, the new architecture is modular, utilising independent agent modules that communicate using single message calls \citep{Bainbridge2004}.
+
+Greenstone uses \gls{xml}\index{XML} to encode resource metadata records ---XLinks\index{XLink} are used to represent relationships between other documents. Using this strategy, resources and documents are retrievable through \gls{xml}\index{XML} communication. Furthermore, indexing documents enables effective searching and browsing of resources. 
+
+The software operates within an Apache Tomcat Servlet Engine.
+
+\subsection{Omeka}
+
+Omeka\index{Digital Libraries!Software!Omeka} is a Web-based publishing platform for publishing digital archives and collections \citep{Kucsma2010}. It is standards-based and highly interoperable---it makes use of unqualified Dublin Core and is \gls{oaipmh} compliant. In addition, it is relatively easy to use and has a very flexible design, which is customisable and highly extensible via the use of plugins.
+
+Omeka is implemented using the PHP\index{PHP} scripting language and uses MySQL\index{MySQL} database as a backend for storage of metadata\index{Metadata} records. However, the ingested resources---bitstreams--- are stored on the filesystem.
+
+\subsection{Summary}
+
+Table~\ref{tab:background:related-work:digital-libraries-software:floss-matrix} is a feature matrix of the digital libraries software discussed in this section.
+
+\tablespacing
+\input{chapter02/tables/table.background.software-platforms.dl-floss-feature-matrix.tex}
+\bodyspacing

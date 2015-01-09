@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:latexdraw="http://latexdraw.sourceforge.net/namespaces/latexdraw"
+    version="1.1" baseProfile="full">
+    <defs>
+        <pattern latexdraw:type="crosshatch"
+            latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern16" x="0" y="0"
+            width="468" height="290">
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 408.0 270.0 L 408.0 290.0 M 417.05555534362793 270.0 L 417.05555534362793 290.0 M 426.11111068725586 270.0 L 426.11111068725586 290.0 M 435.1666660308838 270.0 L 435.1666660308838 290.0 M 444.2222213745117 270.0 L 444.2222213745117 290.0 M 453.27777671813965 270.0 L 453.27777671813965 290.0 M 462.3333320617676 270.0 L 462.3333320617676 290.0 M 408.0 270.0 L 468.0 270.0 M 408.0 279.05555534362793 L 468.0 279.05555534362793 M 408.0 288.11111068725586 L 468.0 288.11111068725586 "/>
+            </g>
+        </pattern>
+        <pattern latexdraw:type="crosshatch"
+            latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern17" x="0" y="0"
+            width="468" height="140">
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 408.0 120.0 L 408.0 140.0 M 417.05555534362793 120.0 L 417.05555534362793 140.0 M 426.11111068725586 120.0 L 426.11111068725586 140.0 M 435.1666660308838 120.0 L 435.1666660308838 140.0 M 444.2222213745117 120.0 L 444.2222213745117 140.0 M 453.27777671813965 120.0 L 453.27777671813965 140.0 M 462.3333320617676 120.0 L 462.3333320617676 140.0 M 408.0 120.0 L 468.0 120.0 M 408.0 129.05555534362793 L 468.0 129.05555534362793 M 408.0 138.11111068725586 L 468.0 138.11111068725586 "/>
+            </g>
+        </pattern>
+        <pattern latexdraw:type="crosshatch"
+            latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern18" x="0" y="0"
+            width="468" height="190">
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 408.0 170.0 L 408.0 190.0 M 417.05555534362793 170.0 L 417.05555534362793 190.0 M 426.11111068725586 170.0 L 426.11111068725586 190.0 M 435.1666660308838 170.0 L 435.1666660308838 190.0 M 444.2222213745117 170.0 L 444.2222213745117 190.0 M 453.27777671813965 170.0 L 453.27777671813965 190.0 M 462.3333320617676 170.0 L 462.3333320617676 190.0 M 408.0 170.0 L 468.0 170.0 M 408.0 179.05555534362793 L 468.0 179.05555534362793 M 408.0 188.11111068725586 L 468.0 188.11111068725586 "/>
+            </g>
+        </pattern>
+        <pattern latexdraw:type="crosshatch"
+            latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern19" x="0" y="0"
+            width="468" height="240">
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 408.0 220.0 L 408.0 240.0 M 417.05555534362793 220.0 L 417.05555534362793 240.0 M 426.11111068725586 220.0 L 426.11111068725586 240.0 M 435.1666660308838 220.0 L 435.1666660308838 240.0 M 444.2222213745117 220.0 L 444.2222213745117 240.0 M 453.27777671813965 220.0 L 453.27777671813965 240.0 M 462.3333320617676 220.0 L 462.3333320617676 240.0 M 408.0 220.0 L 468.0 220.0 M 408.0 229.05555534362793 L 468.0 229.05555534362793 M 408.0 238.11111068725586 L 468.0 238.11111068725586 "/>
+            </g>
+        </pattern>
+        <marker overflow="visible" orient="auto" id="arrow2-20">
+            <path
+                d="M 0.0 0.0 L -2.985208333333333 1.0661458333333333 L -1.7911249999999999 0.0 L -2.985208333333333 -1.0661458333333333 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <marker overflow="visible" orient="auto" id="arrow2-21">
+            <path
+                d="M 0.0 0.0 L -2.985208333333333 1.0661458333333333 L -1.7911249999999999 0.0 L -2.985208333333333 -1.0661458333333333 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <pattern latexdraw:type="crosshatch"
+            latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern22" x="0" y="0"
+            width="250" height="175">
+            <rect fill="white" stroke="none" width="250" height="175"/>
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 190.0 145.0 L 190.0 175.0 M 199.05555534362793 145.0 L 199.05555534362793 175.0 M 208.11111068725586 145.0 L 208.11111068725586 175.0 M 217.1666660308838 145.0 L 217.1666660308838 175.0 M 226.22222137451172 145.0 L 226.22222137451172 175.0 M 235.27777671813965 145.0 L 235.27777671813965 175.0 M 244.33333206176758 145.0 L 244.33333206176758 175.0 M 190.0 145.0 L 250.0 145.0 M 190.0 154.05555534362793 L 250.0 154.05555534362793 M 190.0 163.11111068725586 L 250.0 163.11111068725586 M 190.0 172.1666660308838 L 250.0 172.1666660308838 "/>
+            </g>
+        </pattern>
+        <pattern latexdraw:type="crosshatch"
+            latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern23" x="0" y="0"
+            width="250" height="225">
+            <rect fill="white" stroke="none" width="250" height="225"/>
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 190.0 195.0 L 190.0 225.0 M 199.05555534362793 195.0 L 199.05555534362793 225.0 M 208.11111068725586 195.0 L 208.11111068725586 225.0 M 217.1666660308838 195.0 L 217.1666660308838 225.0 M 226.22222137451172 195.0 L 226.22222137451172 225.0 M 235.27777671813965 195.0 L 235.27777671813965 225.0 M 244.33333206176758 195.0 L 244.33333206176758 225.0 M 190.0 195.0 L 250.0 195.0 M 190.0 204.05555534362793 L 250.0 204.05555534362793 M 190.0 213.11111068725586 L 250.0 213.11111068725586 M 190.0 222.1666660308838 L 250.0 222.1666660308838 "/>
+            </g>
+        </pattern>
+        <pattern latexdraw:type="crosshatch"
+            latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern24" x="0" y="0"
+            width="250" height="275">
+            <rect fill="white" stroke="none" width="250" height="275"/>
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 190.0 245.0 L 190.0 275.0 M 199.05555534362793 245.0 L 199.05555534362793 275.0 M 208.11111068725586 245.0 L 208.11111068725586 275.0 M 217.1666660308838 245.0 L 217.1666660308838 275.0 M 226.22222137451172 245.0 L 226.22222137451172 275.0 M 235.27777671813965 245.0 L 235.27777671813965 275.0 M 244.33333206176758 245.0 L 244.33333206176758 275.0 M 190.0 245.0 L 250.0 245.0 M 190.0 254.05555534362793 L 250.0 254.05555534362793 M 190.0 263.11111068725586 L 250.0 263.11111068725586 M 190.0 272.1666660308838 L 250.0 272.1666660308838 "/>
+            </g>
+        </pattern>
+        <marker overflow="visible" orient="auto" id="arrow2-27">
+            <path
+                d="M 0.0 0.0 L -2.985208333333333 1.0661458333333333 L -1.7911249999999999 0.0 L -2.985208333333333 -1.0661458333333333 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <marker overflow="visible" orient="auto" id="arrow2-28">
+            <path
+                d="M 0.0 0.0 L -2.985208333333333 1.0661458333333333 L -1.7911249999999999 0.0 L -2.985208333333333 -1.0661458333333333 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <pattern latexdraw:type="crosshatch"
+            latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern38" x="0" y="0"
+            width="559" height="290">
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 499.0 270.0 L 499.0 290.0 M 508.05555534362793 270.0 L 508.05555534362793 290.0 M 517.1111106872559 270.0 L 517.1111106872559 290.0 M 526.1666660308838 270.0 L 526.1666660308838 290.0 M 535.2222213745117 270.0 L 535.2222213745117 290.0 M 544.2777767181396 270.0 L 544.2777767181396 290.0 M 553.3333320617676 270.0 L 553.3333320617676 290.0 M 499.0 270.0 L 559.0 270.0 M 499.0 279.05555534362793 L 559.0 279.05555534362793 M 499.0 288.11111068725586 L 559.0 288.11111068725586 "/>
+            </g>
+        </pattern>
+        <pattern latexdraw:type="crosshatch"
+            latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern39" x="0" y="0"
+            width="559" height="140">
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 499.0 120.0 L 499.0 140.0 M 508.05555534362793 120.0 L 508.05555534362793 140.0 M 517.1111106872559 120.0 L 517.1111106872559 140.0 M 526.1666660308838 120.0 L 526.1666660308838 140.0 M 535.2222213745117 120.0 L 535.2222213745117 140.0 M 544.2777767181396 120.0 L 544.2777767181396 140.0 M 553.3333320617676 120.0 L 553.3333320617676 140.0 M 499.0 120.0 L 559.0 120.0 M 499.0 129.05555534362793 L 559.0 129.05555534362793 M 499.0 138.11111068725586 L 559.0 138.11111068725586 "/>
+            </g>
+        </pattern>
+        <pattern latexdraw:type="crosshatch"
+            latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern40" x="0" y="0"
+            width="559" height="190">
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 499.0 170.0 L 499.0 190.0 M 508.05555534362793 170.0 L 508.05555534362793 190.0 M 517.1111106872559 170.0 L 517.1111106872559 190.0 M 526.1666660308838 170.0 L 526.1666660308838 190.0 M 535.2222213745117 170.0 L 535.2222213745117 190.0 M 544.2777767181396 170.0 L 544.2777767181396 190.0 M 553.3333320617676 170.0 L 553.3333320617676 190.0 M 499.0 170.0 L 559.0 170.0 M 499.0 179.05555534362793 L 559.0 179.05555534362793 M 499.0 188.11111068725586 L 559.0 188.11111068725586 "/>
+            </g>
+        </pattern>
+        <pattern latexdraw:type="crosshatch"
+            latexdraw:rotationAngle="0.0"
+            latexdraw:size="7.05555534362793"
+            patternUnits="userSpaceOnUse" id="pattern41" x="0" y="0"
+            width="559" height="240">
+            <g stroke="black" stroke-width="2.0" stroke-dasharray="none">
+                <path d="M 499.0 220.0 L 499.0 240.0 M 508.05555534362793 220.0 L 508.05555534362793 240.0 M 517.1111106872559 220.0 L 517.1111106872559 240.0 M 526.1666660308838 220.0 L 526.1666660308838 240.0 M 535.2222213745117 220.0 L 535.2222213745117 240.0 M 544.2777767181396 220.0 L 544.2777767181396 240.0 M 553.3333320617676 220.0 L 553.3333320617676 240.0 M 499.0 220.0 L 559.0 220.0 M 499.0 229.05555534362793 L 559.0 229.05555534362793 M 499.0 238.11111068725586 L 559.0 238.11111068725586 "/>
+            </g>
+        </pattern>
+    </defs>
+    <g>
+        <g latexdraw:type="rectangle" id="id10">
+            <rect x="180.5" y="121.5" width="87.0" height="170.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id11">
+            <rect x="399.5" y="111.5" width="77.0" height="37.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id12">
+            <rect x="399.5" y="161.5" width="77.0" height="37.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id13">
+            <rect x="399.5" y="211.5" width="77.0" height="37.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id14">
+            <rect x="399.5" y="261.5" width="77.0" height="37.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id15">
+            <rect x="690.5" y="119.5" width="60.0" height="169.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id16">
+            <rect x="409.5" y="271.5" width="57.0" height="17.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="url(#pattern16)"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id17">
+            <rect x="409.5" y="121.5" width="57.0" height="17.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="url(#pattern17)"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id18">
+            <rect x="409.5" y="171.5" width="57.0" height="17.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="url(#pattern18)"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id19">
+            <rect x="409.5" y="221.5" width="57.0" height="17.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="url(#pattern19)"/>
+        </g>
+        <g latexdraw:type="line" id="id20">
+            <line x1="290.0" x2="360.0" y1="160.0" y2="160.0"
+                stroke-width="20.0" stroke="black"
+                latexdraw:rotationAngle="0.0" marker-end="url(#arrow2-20)"/>
+        </g>
+        <g latexdraw:type="line" id="id21">
+            <line x1="290.0" x2="360.0" y1="248.0" y2="248.0"
+                stroke-width="20.0" stroke="black"
+                latexdraw:rotationAngle="0.0" marker-end="url(#arrow2-21)"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id22">
+            <rect x="191.25" y="146.25" width="57.5" height="27.5"
+                transform="translate(10.0 0.0) translate(-2.9289321899414062 -7.071067810058594)"
+                stroke-width="2.5" fill="#404040" stroke="#404040" latexdraw:type="shadow"/>
+            <rect x="191.25" y="146.25" width="57.5" height="27.5"
+                latexdraw:borderPos="outer" stroke-width="2.5"
+                stroke="black" fill="url(#pattern22)"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id23">
+            <rect x="191.5" y="196.5" width="57.0" height="27.0"
+                transform="translate(10.0 0.0) translate(-2.9289321899414062 -7.071067810058594)"
+                stroke-width="3.0" fill="#404040" stroke="#404040" latexdraw:type="shadow"/>
+            <rect x="191.5" y="196.5" width="57.0" height="27.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="url(#pattern23)"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id24">
+            <rect x="191.5" y="246.5" width="57.0" height="27.0"
+                transform="translate(10.0 0.0) translate(-2.9289321899414062 -7.071067810058594)"
+                stroke-width="3.0" fill="#404040" stroke="#404040" latexdraw:type="shadow"/>
+            <rect x="191.5" y="246.5" width="57.0" height="27.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="url(#pattern24)"/>
+        </g>
+        <g latexdraw:type="text" id="id25" font-family="Times New Roman"
+            fill="black" font-size="18" latexdraw:x="661.0" transform="rotate(-90.0) translate(-925.5234375 518.1796875)">
+            <text x="661.0" y="208.0"><![CDATA[Apache Solr API]]></text>
+        </g>
+        <g latexdraw:type="line" id="id27">
+            <line x1="675.0" x2="605.0" y1="160.0" y2="160.0"
+                stroke-width="20.0" stroke="black"
+                latexdraw:rotationAngle="0.0" marker-end="url(#arrow2-27)"/>
+        </g>
+        <g latexdraw:type="line" id="id28">
+            <line x1="675.0" x2="605.0" y1="248.0" y2="248.0"
+                stroke-width="20.0" stroke="black"
+                latexdraw:rotationAngle="0.0" marker-end="url(#arrow2-28)"/>
+        </g>
+        <g latexdraw:type="text" id="id29" font-family="Times New Roman"
+            fill="black" font-size="18" latexdraw:x="120.0" transform="rotate(-90.0) translate(-362.5234375 -51.2421875)">
+            <text x="120.0" y="213.0"><![CDATA[Workload]]></text>
+        </g>
+        <g latexdraw:type="text" id="id31" font-family="Times New Roman"
+            fill="black" font-size="18" latexdraw:x="435.0">
+            <text x="435.0" y="73.0"><![CDATA[Core Indicies]]></text>
+        </g>
+        <g latexdraw:type="rectangle" id="id33">
+            <rect x="377.25" y="94.25" width="211.5" height="221.5"
+                latexdraw:borderPos="outer" stroke-width="2.5"
+                stroke="black" fill="none" stroke-dasharray="8.0, 8.0"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id34">
+            <rect x="490.5" y="111.5" width="77.0" height="37.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id35">
+            <rect x="490.5" y="161.5" width="77.0" height="37.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id36">
+            <rect x="490.5" y="211.5" width="77.0" height="37.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id37">
+            <rect x="490.5" y="261.5" width="77.0" height="37.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id38">
+            <rect x="500.5" y="271.5" width="57.0" height="17.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="url(#pattern38)"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id39">
+            <rect x="500.5" y="121.5" width="57.0" height="17.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="url(#pattern39)"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id40">
+            <rect x="500.5" y="171.5" width="57.0" height="17.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="url(#pattern40)"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id41">
+            <rect x="500.5" y="221.5" width="57.0" height="17.0"
+                latexdraw:borderPos="outer" stroke-width="3.0"
+                stroke="black" fill="url(#pattern41)"/>
+        </g>
+    </g>
+    <metadata>
+        <latexdraw:metadata>
+            <latexdraw:displayBorders>true</latexdraw:displayBorders>
+            <latexdraw:autoAdjust>false</latexdraw:autoAdjust>
+            <latexdraw:border x="137.0" y="47.0" height="295.0" width="628.0"/>
+            <latexdraw:ppc>50</latexdraw:ppc>
+            <latexdraw:zoom>1.0</latexdraw:zoom>
+            <latexdraw:unit>cm</latexdraw:unit>
+            <latexdraw:classicGrid>false</latexdraw:classicGrid>
+            <latexdraw:gridGap>10</latexdraw:gridGap>
+            <latexdraw:code>0</latexdraw:code>
+            <latexdraw:displayGrid>true</latexdraw:displayGrid>
+            <latexdraw:magneticGrid>false</latexdraw:magneticGrid>
+            <latexdraw:autoUpdate>true</latexdraw:autoUpdate>
+            <latexdraw:version>2.0.8</latexdraw:version>
+            <latexdraw:size>
+                <latexdraw:width>1374</latexdraw:width>
+                <latexdraw:height>684</latexdraw:height>
+            </latexdraw:size>
+            <latexdraw:position>
+                <latexdraw:x>0</latexdraw:x>
+                <latexdraw:y>0</latexdraw:y>
+            </latexdraw:position>
+            <latexdraw:dividerPosition>0.6630276564774381</latexdraw:dividerPosition>
+            <latexdraw:displayCodePanel>true</latexdraw:displayCodePanel>
+            <latexdraw:displayXScale>true</latexdraw:displayXScale>
+            <latexdraw:displayYScale>true</latexdraw:displayYScale>
+            <latexdraw:delimitorOpacity>130</latexdraw:delimitorOpacity>
+        </latexdraw:metadata>
+    </metadata>
+</svg>

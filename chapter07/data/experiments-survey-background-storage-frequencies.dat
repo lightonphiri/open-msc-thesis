@@ -1,0 +1,16 @@
+Storage,Frequency,Count,Nalema
+Cloud,Not at all,13,1
+Cloud,Rarely,8,2
+Cloud,Some of the time,5,3
+Cloud,Most of the time,0,4
+Cloud,All the time,0,5
+Database,Not at all,0,1
+Database,Rarely,5,2
+Database,Some of the time,10,3
+Database,Most of the time,7,4
+Database,All the time,4,5
+File,Not at all,1,1
+File,Rarely,5,2
+File,Some of the time,8,3
+File,Most of the time,6,4
+File,All the time,6,5

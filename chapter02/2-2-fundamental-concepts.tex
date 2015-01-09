@@ -1,0 +1,37 @@
+\section{Fundamental concepts}\index{Digital Libraries!Concepts}
+\label{sec:background:fundamental-concepts}
+
+\subsection{Identifiers}\index{Digital Libraries!Naming Schemes}
+\label{sec:background:fundamental-concepts:identifiers}
+
+An identifier is a name given to an entity for current and future reference. Arms \citep{Arms1995} classifies identifiers as vital building blocks for \gls{dl} \index{Digital Libraries} and emphasises their role in ensuring that individual digital objects are easily identified and changes related to the objects are linked to the appropriate objects. He also notes that they are also essential for information retrieval and for providing links between objects.
+
+The importance of identifiers is made evident by the widespread adoption of standardised naming schemes such as \glspl{doi}\footnote{\url{http://www.doi.org}} \citep{Paskin2005,Paskin2010} \index{Digital Libraries!Naming Schemes!DOI}, Handles System\footnote{\url{http://www.handle.net}} and \glspl{purl}\footnote{\url{http://purl.oclc.org}}\index{Digital Libraries!Naming Schemes!PURL}.
+
+\glspl{uri} \citep{RFC39862005} are considered a suitable naming scheme for digital objects primarily because they can potentially be resolved through standard Web protocols; that facilitates interoperability, a feature that is significant in \gls{dl} \index{Digital Libraries} whose overall goal is the widespread dissemination of information.
+
+\subsection{Interoperability}\index{Digital Libraries!Interoperability}
+\label{sec:background:fundamental-concepts:interoperability}
+
+Interoperability\index{Interoperability} is a system attribute that enables a system to communicate and exchange information with other heterogeneous systems in a seamless manner. Interoperability\index{Interoperability} makes it possible for services, components and systems developed independently to potentially rely on one another to accomplish certain tasks with the overall goal of having individual components evolve independently, but be able to call on each other, thus exchanging information, efficiently and conveniently \citep{Paepcke1998}⁠. \gls{dl} interoperability has particularly made it possible for federated services \citep{Goncalves2001} to be developed, mainly due to the widespread use of the \gls{oaipmh}.
+
+There are various protocols that have been developed to facilitate interoperability among heterogeneous \glspl{dls}. Prominent interoperability protocols include: Z39.50\index{Z39.50} \citep{Lynch1994}⁠ a client-server protocol used for remote searching; \gls{oaipmh}\index{OAI-PMH} \citep{Lagoze2002}⁠, which has been extensively used for metadata\index{Metadata} harvesting; and RSS\index{RSS} \citep{Winer2007}⁠, a Web based feed format commonly used for obtaining updates on Web resources.
+
+\gls{xml} \index{XML} has emerged as the underlying language used to support a number of these interoperability protocols, largely due to its simplicity and platform independence.
+
+\subsection{Metadata}\index{Digital Libraries!Metadata}
+\label{sec:background:fundamental-concepts:metadata}
+
+Metadata\index{Metadata} is representational information that includes pertinent descriptive annotations necessary to understand a resource. Arms \citep{Arms1997}⁠ describes different categories of information as being organised as sets of digital objects---a fundamental unit of the \gls{dl} architecture---that are composed of digital material and key-metadata. He defines the key-metadata as information needed to manage the digital object in a networked environment. The role performed by metadata\index{Metadata} is both implicit and explicit and its functions can be more broadly divided into distinct categories. A typical digital object normally has administrative metadata\index{Metadata} for managing the digital object, descriptive metadata\index{Metadata} to facilitate the discovery of information, structural metadata\index{Metadata} for describing relationships within  the digital object and preservation metadata\index{Metadata} that stores provenance information. Metadata\index{Metadata} is made up of elements that are grouped into a standard set, to achieve a specific purpose, resulting in a metadata\index{Metadata} schema. There are a number of metadata\index{Metadata} schemes that have been developed as standards across various disciplines and they include, among others, Dublin Core\index{Metadata!Schemes!Dublin Core} \citep{DCMI1999}⁠, Learning Object Metadata\index{Metadata} (LOM)\index{Metadata!Schemes!LOM} \citep{IEEE2002}, Metadata\index{Metadata} Encoding and Transmission Standard (METS)\footnote{\url{http://www.loc.gov/standards/mets}}\index{Metadata!Schemes!METS} and Metadata\index{Metadata} Object Description Schema (MODS)\footnote{\url{http://www.loc.gov/standards/mods}}\index{Metadata!Schemes!MODS}⁠. Metadata\index{Metadata} can either be embedded within the digital object---as is the case with Portable Document Format (PDF)\index{PDF} and Hypertext Transfer Markup Language (HTML)\index{HTML} documents---or stored separately with links to the resources being described. Metadata\index{Metadata} in \gls{dl} \index{Digital Libraries} is often stored in databases for easy management and access.
+
+\subsection{Standards}\index{Digital Libraries!Concepts!Standards}
+\label{sec:background:fundamental-concepts:standards}
+
+The fast pace at which technology is moving has spawned different types of application software tools. This means that the choice of which technology to use in any given instance differs, thus complicating the process of integrating application software with other heterogeneous software tools. Standards become particularly useful in such situations because they form the basis for developing interoperable tools and services. A standard is a specification---a formal statement of a data format or protocol---that is maintained and endorsed by a recognised standards body \citep[see][chap. 2]{Suleman2010}⁠.
+
+Adopting and adhering to standards has many other added benefits---and Strand et al. \citep{Strand1994} observe that applications that are built on standards are more readily scalable, interoperable and portable, constituting software quality attributes that are important for the design, implementation and maintenance of \glspl{dl}. Standards also play a vital role in facilitating long term preservation of digital objects by ensuring that documents still become easily accessible in the future. This is done by ensuring that the standard itself does not change and by making the standard backwards compatible. Notable use of standards in \gls{dl} \index{Digital Libraries} include the use of \gls{xml}\index{XML} as the underlying format for metadata\index{Metadata} and \gls{oaipmh}\index{OAI-PMH} as an interoperability protocol. Digital content is also stored in well known standards, as is the case with documents that are normally stored in \gls{pdfa}\index{OAI-PMH} format. The use of standards in \glspl{dls}, however, has its own shortcomings; in certain instances, the use of standards can be a very expensive venture as it may involve a lot of cross-domain effort \citep{Lorist2001}⁠.
+
+\subsection{Summary}
+\label{sec:background:fundamental-concepts:summary}
+
+A \gls{dls} operates as a specialised type of information system and exhibits certain characteristics to attain its objects. This section discussed fundamental concepts, associated to \glspl{dls}, that help form the necessary building blocks for implementing \glspl{dl}.

@@ -1,0 +1,80 @@
+%%%%%\begin{longtable}{p{0.3\linewidth} p{0.6\linewidth}}
+\begin{longtable}{
+>{\arraybackslash}p{0.20\linewidth}|
+>{\arraybackslash}p{0.70\linewidth}}
+
+\caption{Simple repository object naming scheme design decision}
+\label{tab:designing-for-simplicity:design-decisions:object-naming-scheme} \\
+
+ %%%%%\toprule
+ %%%%%\hline
+ \textbf{Element} & \textbf{Description}\\
+ %%%%%\midrule
+ %%%%%\hline
+ \cline{1-2}
+ \endfirsthead
+
+ \caption[]{(continued)}\\
+ %%%%%\toprule
+ %%%%%\hline
+ \textbf{Element} & \textbf{Description}\\
+ %%%%%\midrule
+ %%%%%\hline
+ \cline{1-2}
+ \endhead
+
+ % Page footer
+ %%%%%\midrule
+ %%%%%\hline
+ \multicolumn{2}{r}{(Continued on next page)} \\
+ \endfoot
+
+ % Last page footer
+ %%%%%\bottomrule
+ \endlastfoot
+
+ {\textbf{Issues}}&
+ {Principle 5} \\
+
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ {\textbf{Decision}}&
+ {Use actual object name as unique identifier} \\
+
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ %%%%%{\textbf{Status}} &
+ %%%%%{Approved} \\
+
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ %%%%%\cline{1-2}
+
+ {\textbf{Assumptions}} &
+ {Native operating systems } \\
+
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ {\textbf{Alternatives}} &
+ {File hash values; automatically generated identifiers} \\
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ {\textbf{Rationale}} &
+ {Native operating systems ensure file naming uniqueness at directory level. In addition, it is a relatively simpler way of uniquely identifying objects as object naming control is given to end users, rather than imposing it on them} \\
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ {\textbf{Implications}} &
+ {Object integrity has a potential to be compromised; objects could potentially be duplicated by simply renaming them} \\
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ {\textbf{Notes}} &
+ {None} \\
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ %%%%%\cline{1-2}
+
+ \end{longtable}

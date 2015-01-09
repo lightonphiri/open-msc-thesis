@@ -1,0 +1,143 @@
+\section[Developer survey]{Developer survey}
+\label{sec:evaluation:developer-survey}
+
+%\subsection{User Study}
+%\label{sec:evaluation:developer-survey}
+
+The developer-oriented user study was conducted to assess the simplicity\index{Simplicity} of file-based repository\index{Repository} implementations and the easy of interaction with such implementations.
+
+\subsection{Target population}
+\label{sec:evaluation:developer-survey:target-population}
+
+The survey participants were recruited from a total of \num{34} Computer Science Honours (CSC4000) students, enrolled for the \gls{www}\index{WWW} elective course module at the University of Cape Town.
+
+The \gls{www}\index{WWW} module had a mandatory practical assignment, accounting for \SI{20}{\percent} of the overall assessment, in which the students were required to build generic Web\index{Web} applications, in groups, using the file-based repository store described in Section~\ref{sec:case-studies:bleek-and-lloyd}. Screenshots of the online questionnaire are in the Appendix section\footnote{Please see Appendix~\ref{ch:appendex-b:developer-survey:questionnaire-design} for details}, and show the assignment question. A request for survey participation was emailed to the class mailing list after the assignment due date, in which \num{26} out of the \num{34} students responded, as shown in Table~\ref{tab:experimentation:survey:target-population}
+
+\tablespacing
+\input{chapter07/tables/table.experimentation.survey.target-population.tex}
+\bodyspacing
+
+\subsection{Data collection}
+\label{sec:evaluation:developer-survey:data-collection}
+
+A post-experiment survey was conducted in the form of an online questionnaire\footnote{Please see to Appendix~\ref{ch:appendex-b:developer-survey:questionnaire-design} for details}, designed using LimeSurvey\footnote{\url{http://www.limesurvey.org}}\index{LimeSurvey}. The questionnaire was aimed at eliciting participants' experience in working with a file-based collection.
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter07/plots/plot.experimentation.survey.background-technology-experience.tex}
+ }
+ \caption[Survey participants' technological background]{Survey participants' background knowledge working with technologies relevant to the study.}
+ \label{fig:experimentation:survey:background-technology-experience}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter07/plots/plot.experimentation.survey.background-storage-usage-frequency.tex}
+ }
+ \caption[Survey participants' background using storage solutions]{Survey participants' background working with some selected popular storage solutions.}
+ \label{fig:experimentation:survey:background-storage-usage-frequency}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter07/plots/plot.experimentation.survey.background-dl-concepts-skill-level.tex}
+ }
+ \caption[Survey participants' knowledge of DL concepts]{Survey participants' knowledge of some fundamental DL concepts.}
+ \label{fig:experimentation:survey:background-dl-concepts-skill-level}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter07/plots/plot.experimentation.survey.programming-language-usage.tex}
+ }
+ \caption[Survey participants' programming languages usage]{Survey participants programming languages usage during service implementation.}
+ \label{fig:experimentation:survey:programming-language-usage}
+\end{figure}
+
+\subsection{Results}
+\label{sec:evaluation:developer-survey:results}
+
+The survey participants' background-related information is shown in Figures~\ref{fig:experimentation:survey:background-technology-experience},~\ref{fig:experimentation:survey:background-storage-usage-frequency} and~\ref{fig:experimentation:survey:background-dl-concepts-skill-level}. The implementation of the Web services was done using a variety of programming languages, as shown in Figure~\ref{fig:experimentation:survey:programming-language-usage}.
+
+The respondents' views on the simplicity\index{Simplicity} and ease of use of the repository\index{Repository} is shown in~\ref{fig:experimentation:survey:simplicity-understandability}; additionally, their rankings of possible storage solutions for metadata\index{Metadata} records are shown in Figure~\ref{fig:experimentation:survey:storage-solutions-ranking}. Finally, their preferences on the possible solutions to use for data management tasks/operations are shown in Figure~\ref{fig:experimentation:survey:data-management-operations}.
+
+%%\subsubsection{Programming Language Support}
+%%\label{sec:evaluation:developer-survey:results:extensibility}
+%
+% commented out due to duplication with plot...
+%\tablespacing
+%\input{chapter07/tables/table.experimentation.survey.programming-language-usage.tex}
+%\bodyspacing
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter07/plots/plot.experimentation.survey.storage-solutions-ranking.tex}
+ }
+ \caption[Survey participants' rankings of storage solutions]{Survey participants' rankings of data storage solutions.}
+ \label{fig:experimentation:survey:storage-solutions-ranking}
+\end{figure}
+
+%%%\subsubsection{Repository Simplicity}
+%%%\label{sec:evaluation:developer-survey:results:simplicity}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter07/plots/plot.experimentation.survey.simplicity-understandability.tex}
+ }
+ \caption[Survey participants' simplicity\& understandability ratings]{Survey participants' simplicity and understandability ratings of repository design.}
+ \label{fig:experimentation:survey:simplicity-understandability}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter07/plots/plot.experimentation.survey.data-management-operations.tex}
+ }
+ \caption[Survey participants' ratings of data management approaches]{Survey participants' ratings of data management approaches for DL operations.}
+ \label{fig:experimentation:survey:data-management-operations}
+\end{figure}
+
+%%\tablespacing
+%%\input{chapter07/tables/storage-solution-rankings.tex}
+%%\bodyspacing
+
+\subsection{Discussion}
+\label{sec:evaluation:developer-survey:discussion}
+
+The survey\index{Survey} results indicate that the target population generally had the necessary skillset required for this study. The majority of respondents had some form of experience working with Web applications and associated technologies (see Figure~\ref{fig:experimentation:survey:background-technology-experience}); the majority of them frequently worked with Database\index{Database} Management Systems and had some form of experience working with file-based systems (see Figure~\ref{fig:experimentation:survey:background-storage-usage-frequency}). In addition, all respondents were familiar with fundamental concepts associated with \glspl{dl} (see Figure~\ref{fig:experimentation:survey:background-dl-concepts-skill-level}).
+
+The range of Web\index{Web} services implemented by the target population and the variety of programming languages used to implement the services is indicative of the flexibility of the repository design. Furthermore, these results strongly suggest that the repository design did not significantly influence the choice of service and implementation language. This conclusion is further supported by an explicit survey question in Figure~\ref{appendix:appendicies:developer-suvery-one-page-005}, which was aimed at eliciting respondents' views on whether the repository structure had a direct influence on their programming language(s) of choice, to which \SI{15}{\percent} of the participants agreed.
+
+The strong preference of using databases as storage structures, shown in the results from Figures~\ref{fig:experimentation:survey:storage-solutions-ranking} and~\ref{fig:experimentation:survey:data-management-operations} is arguably as a result of the majority of participants' prior work with databases, and is best explained by the question that asked participants for reasons prior for their preferred storage solutions; the responses from some participants who ranked databases first are listed below.
+
+\begin{itemize}
+ \item ``I understand databases better.''
+ \item ``Simple to set up and sheer control''
+ \item ``Easy setup and connection to MySQL database''
+ \item ``Speed of accessing data, and its free.''
+ \item ``Ease of data manipulation and relations''
+ \item ``Easy to query''
+ \item ``Centralised management, ease of design, availability of support/literature''
+ \item ``The existing infrastructure for storing and retrieving data''
+ \item ``Querying a database table to retrieve a record is most useful for data.''
+\end{itemize}
+
+Interestingly, out of the total \num{12} participants whose preference was databases,the majority identified themselves as having little background information pertaining to metadata\index{Metadata} standards, \glspl{dl} and digital preservation. It can be argued that their lack of knowledge of these fundamental concepts could have influenced their subjective views. This is supported by some of their general comments listed below.
+
+\begin{itemize}
+ \item ``Had some difficulty working the metadata, despite looking at how to process DC\index{Dublin Core} metadata\index{Metadata} online, it slowed us down considerably.''
+ \item ``Good structure although confusing that each page has no metadata\index{Metadata} of its own(only the story).''
+ \item ``The hierarchy was not intuitive therefore took a while to understand however having crossed that hurdle was fairly easy to process.''
+ \item ``I guess it was OK but took some getting used to''
+\end{itemize}
+
+\subsection{Summary}
+\label{sec:evaluation:developer-survey:conclusion}
+
+The results from the developer survey showed that developer interaction with resulting systems is not significantly affected. More importantly, the results indicate that \gls{dls} management tasks could potentially be simplified.

@@ -1,0 +1,20 @@
+<<fig=FALSE, echo=FALSE>>=
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+tikz('ggplot2-experiments-performance-index-update.tex', width=5.9, height=6.5)
+dataset <- read.table("../data/experiments-performance-index-update.dat", header=TRUE, sep=",")
+
+#
+experimentdataset <- melt(dataset, id.vars=c(1:2))
+
+#
+#levels(experimentdataset$Structure)[levels(experimentdataset$Structure)=="1-Level"] <- paste("1-Level Hierarchy","$\\;\\;\\;\\;$")
+#levels(experimentdataset$Structure)[levels(experimentdataset$Structure)=="3-Level"] <- paste("3-Level Hierarchy","$\\;\\;\\;\\;$")
+
+
+#
+
+ggplot(data=dataset, aes(x=as.factor(Workload), y=(QTime/1000), group=as.factor(Commit), colour=as.factor(Commit), linetype=as.factor(Commit), shape=as.factor(Commit))) + geom_line() + geom_point() + facet_wrap( ~ Batch, ncol=2) + scale_x_discrete(labels=c("100","200", "400", "800", "1.6k", "3.2k", "6.4k", "12.8k", "25.6k", "51.2k", "102.4k", "204.8k", "409.6k" ,"819.2k", "1638.4k")) + labs(x="", y="") + theme(legend.title=element_blank(), legend.position="top", axis.title.x=element_text(vjust=-2), plot.margin=unit(c(0.2,0.15,0.05,0.05), "cm")) + theme(axis.text.x = element_text(angle=90, vjust=0.5))
+@

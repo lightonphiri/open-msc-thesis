@@ -1,0 +1,87 @@
+%%%%%\begin{longtable}{p{0.20\linewidth} p{0.20\linewidth} p{0.20\linewidth}
+%%%%%p{0.20\linewidth}}
+\begin{longtable}{
+>{\arraybackslash}p{0.20\linewidth}
+|>{\arraybackslash}p{0.20\linewidth}
+|>{\arraybackslash}p{0.20\linewidth}
+|>{\arraybackslash}p{0.20\linewidth}}
+ 
+ \caption{Comparative matrix for data storage solutions}
+\label{tab:background:data-storage-architectures:comparison} \\
+ %%%%%\toprule
+ %%%%%\cline{2-4}
+ \multicolumn{1}{c|}{} & 
+ \textbf{File Systems} & 
+ \textbf{RDBMS} &
+ \textbf{NoSQL} \\
+ %%%%%\midrule
+ \cline{1-4}
+ \endfirsthead
+ 
+ \caption[]{(continued)}\\
+ %%%%%\toprule
+ %%%%%\cline{2-4}
+ \multicolumn{1}{c|}{} & 
+ \textbf{File Systems} & 
+ \textbf{RDBMS} &
+ \textbf{NoSQL} \\
+ %%%%%\midrule
+ \cline{1-4}
+ \endhead
+ 
+ % Page footer
+ %%%%%\midrule
+ \hline
+ \multicolumn{4}{r}{(Continued on next page)} \\
+ \endfoot
+ 
+ % Last page footer
+ %%%%%\bottomrule
+ \endlastfoot
+ 
+ \textbf{Use Cases} &
+ {Miscellaneous} & 
+ {Relational data} &
+ {Large-scale data} \\
+ 
+ \cline{1-4}
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-4}
+ 
+ \textbf{Data Format} &
+ {Heterogeneous data} & 
+ {Structured data} &
+ {Unstructured data} \\
+ 
+ \cline{1-4}
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-4}
+ 
+ \textbf{Transaction Support} &
+ {Simple Locking} & 
+ {ACID compliant} & 
+ {CAP theorem support} \\
+ 
+ \cline{1-4}
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-4}
+ 
+ \textbf{Indexing} &
+ {Optional} & 
+ {Available} & 
+ {Available} \\
+ 
+ \cline{1-4}
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-4}
+ 
+ \textbf{Scalability} &
+ {Horizontal; Vertical} & 
+ {Vertical} & 
+ {Horizontal} \\
+ 
+ \cline{1-4}
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-4}
+ 
+ \textbf{Replication}&
+ {Partial support} & 
+ {Explicit support} & 
+ {Explicit support} \\
+ 
+\end{longtable}

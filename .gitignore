@@ -1,0 +1,31 @@
+*~
+*.backup
+*.*swp
+
+# LaTeX project files
+*.aux
+*.glo
+*.idx
+*.log
+*.toc
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc1
+*.out
+*.synctex.gz
+
+# Automatically generated files
+*.ps
+*.dvi

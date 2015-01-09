@@ -1,0 +1,167 @@
+%%\begin{longtable}{p{0.05\linewidth} p{0.05\linewidth} p{0.08\linewidth}
+%%p{0.08\linewidth} p{0.05\linewidth} p{0.08\linewidth} p{0.08\linewidth} 
+%%p{0.05\linewidth} p{0.08\linewidth} p{0.08\linewidth}}
+%%%\begin{longtable}{cccccccccc}
+\begin{longtable}{
+>{\centering\arraybackslash}p{0.07\linewidth}|
+>{\centering\arraybackslash}p{0.05\linewidth}|
+>{\centering\arraybackslash}p{0.08\linewidth}|
+>{\centering\arraybackslash}p{0.08\linewidth}|
+>{\centering\arraybackslash}p{0.05\linewidth}|
+>{\centering\arraybackslash}p{0.08\linewidth}|
+>{\centering\arraybackslash}p{0.08\linewidth}|
+>{\centering\arraybackslash}p{0.05\linewidth}|
+>{\centering\arraybackslash}p{0.08\linewidth}|
+>{\centering\arraybackslash}p{0.08\linewidth}}
+
+\caption{Impact of structure on item ingestion performance}
+\label{tab:experimentation:performance:ingest:level} \\
+
+ %%%%%\toprule
+ \hline
+  {} & 
+  \multicolumn{3}{c|}{\textbf{Dataset \#1}} &   
+  \multicolumn{3}{c|}{\textbf{Dataset \#2}} &
+  \multicolumn{3}{c}{\textbf{Dataset \#3}}\\
+ %%%%%\midrule
+ \cline{2-10}
+ {} &
+ {\begin{sideways}\textbf{Ingestion[ms]}\end{sideways}}&
+ {\begin{sideways}\textbf{Parsing}\end{sideways}}&
+ {\begin{sideways}\textbf{Disk write}\end{sideways}} &
+ {\begin{sideways}\textbf{Ingestion[ms]}\end{sideways}}&
+ {\begin{sideways}\textbf{Parsing}\end{sideways}}&
+ {\begin{sideways}\textbf{Disk write}\end{sideways}} &
+ {\begin{sideways}\textbf{Ingestion[ms]}\end{sideways}}&
+ {\begin{sideways}\textbf{Parsing}\end{sideways}}&
+ {\begin{sideways}\textbf{Disk write}\end{sideways}} \\
+ %%%%%\midrule
+ \hline \hline
+ %{} & 
+ %\textbf{Time} & 
+ %\textbf{Time} &
+ %\textbf{Time} \\
+ %\midrule
+ \endfirsthead
+
+ \caption[]{(continued)}\\
+ %%%%%\toprule
+ \hline
+  {} & 
+  \multicolumn{3}{c|}{\textbf{Dataset \#1}} &   
+  \multicolumn{3}{c|}{\textbf{Dataset \#2}} &
+  \multicolumn{3}{c}{\textbf{Dataset \#3}}\\
+ %%%%%\midrule
+ \cline{2-10}
+ {} &
+ {\begin{sideways}\textbf{Ingestion[ms]}\end{sideways}}&
+ {\begin{sideways}\textbf{Parsing}\end{sideways}}&
+ {\begin{sideways}\textbf{Disk write}\end{sideways}} &
+ {\begin{sideways}\textbf{Ingestion[ms]}\end{sideways}}&
+ {\begin{sideways}\textbf{Parsing}\end{sideways}}&
+ {\begin{sideways}\textbf{Disk write}\end{sideways}} &
+ {\begin{sideways}\textbf{Ingestion[ms]}\end{sideways}}&
+ {\begin{sideways}\textbf{Parsing}\end{sideways}}&
+ {\begin{sideways}\textbf{Disk write}\end{sideways}} \\
+
+ \hline 
+ \hline
+
+ \endhead
+
+ % Page footer
+ %%%%%\midrule
+ \hline
+ \multicolumn{10}{r}{(Continued on next page)} \\
+ \endfoot
+
+ % Last page footer
+ \bottomrule
+ \endlastfoot
+
+ %%%%%\rowcolor[gray]{0.9}
+ \textbf{W1} & {\tablenum[table-format=1.2]{4.79}} & {\SI{63.14}{\percent}} & {\SI{36.86}{\percent}} & {\tablenum[table-format=1.2]{4.15}} & {\SI{96.40}{\percent}} & {\SI{3.60}{\percent}} & {\tablenum[table-format=1.2]{4.12}} & {\SI{96.67}{\percent}} & {\SI{3.33}{\percent}} \\ 
+ \textbf{W2} & {\tablenum[table-format=1.2]{5.69}} & {\SI{97.76}{\percent}} & {\SI{2.24}{\percent}} & {\tablenum[table-format=1.2]{5.09}} & {\SI{97.42}{\percent}} & {\SI{2.58}{\percent}} & {\tablenum[table-format=1.2]{4.02}} & {\SI{96.35}{\percent}} & {\SI{3.65}{\percent}} \\ 
+ %%%%%\rowcolor[gray]{0.9}
+ \textbf{W3} & {\tablenum[table-format=1.2]{2.79}} & {\SI{95.69}{\percent}} & {\SI{4.31}{\percent}} & {\tablenum[table-format=1.2]{2.87}} & {\SI{95.53}{\percent}} & {\SI{4.47}{\percent}} & {\tablenum[table-format=1.2]{2.94}} & {\SI{95.51}{\percent}} & {\SI{4.49}{\percent}} \\ 
+ \textbf{W4} & {\tablenum[table-format=1.2]{2.78}} & {\SI{95.67}{\percent}} & {\SI{4.33}{\percent}} & {\tablenum[table-format=1.2]{4.08}} & {\SI{96.78}{\percent}} & {\SI{3.22}{\percent}} & {\tablenum[table-format=1.2]{2.84}} & {\SI{95.65}{\percent}} & {\SI{4.35}{\percent}} \\ 
+ %%%%%\rowcolor[gray]{0.9}
+ \textbf{W5} & {\tablenum[table-format=1.2]{2.84}} & {\SI{95.42}{\percent}} & {\SI{4.58}{\percent}} & {\tablenum[table-format=1.2]{2.86}} & {\SI{95.57}{\percent}} & {\SI{4.43}{\percent}} & {\tablenum[table-format=1.2]{2.94}} & {\SI{95.64}{\percent}} & {\SI{4.36}{\percent}} \\ 
+ \textbf{W6} & {\tablenum[table-format=1.2]{2.78}} & {\SI{95.68}{\percent}} & {\SI{4.32}{\percent}} & {\tablenum[table-format=1.2]{2.90}} & {\SI{95.67}{\percent}} & {\SI{4.33}{\percent}} & {\tablenum[table-format=1.2]{2.86}} & {\SI{95.41}{\percent}} & {\SI{4.59}{\percent}} \\ 
+ %%%%%\rowcolor[gray]{0.9}
+ \textbf{W7} & {\tablenum[table-format=1.2]{3.33}} & {\SI{96.10}{\percent}} & {\SI{3.90}{\percent}} & {\tablenum[table-format=1.2]{2.81}} & {\SI{95.76}{\percent}} & {\SI{4.24}{\percent}} & {\tablenum[table-format=1.2]{2.89}} & {\SI{94.96}{\percent}} & {\SI{5.04}{\percent}} \\ 
+ \textbf{W8} & {\tablenum[table-format=1.2]{2.80}} & {\SI{95.59}{\percent}} & {\SI{4.41}{\percent}} & {\tablenum[table-format=1.2]{2.80}} & {\SI{95.63}{\percent}} & {\SI{4.37}{\percent}} & {\tablenum[table-format=1.2]{2.86}} & {\SI{94.65}{\percent}} & {\SI{5.35}{\percent}} \\ 
+ %%%%%\rowcolor[gray]{0.9}
+ \textbf{W9} & {\tablenum[table-format=1.2]{2.80}} & {\SI{95.71}{\percent}} & {\SI{4.29}{\percent}} & {\tablenum[table-format=1.2]{2.86}} & {\SI{95.31}{\percent}} & {\SI{4.69}{\percent}} & {\tablenum[table-format=1.2]{4.95}} & {\SI{56.82}{\percent}} & {\SI{43.18}{\percent}} \\ 
+\textbf{W10} & {\tablenum[table-format=1.2]{2.89}} & {\SI{95.54}{\percent}} & {\SI{4.46}{\percent}} & {\tablenum[table-format=1.2]{2.79}} & {\SI{95.72}{\percent}} & {\SI{4.28}{\percent}} & {\tablenum[table-format=1.2]{2.88}} & {\SI{95.52}{\percent}} & {\SI{4.48}{\percent}} \\ 
+ %%%%%\rowcolor[gray]{0.9}
+\textbf{W11} & {\tablenum[table-format=1.2]{2.96}} & {\SI{95.33}{\percent}} & {\SI{4.67}{\percent}} & {\tablenum[table-format=1.2]{2.81}} & {\SI{95.33}{\percent}} & {\SI{4.67}{\percent}} & {\tablenum[table-format=1.2]{2.95}} & {\SI{95.45}{\percent}} & {\SI{4.55}{\percent}} \\ 
+\textbf{W12} & {\tablenum[table-format=1.2]{3.95}} & {\SI{96.26}{\percent}} & {\SI{3.74}{\percent}} & {\tablenum[table-format=1.2]{2.96}} & {\SI{95.40}{\percent}} & {\SI{4.60}{\percent}} & {\tablenum[table-format=1.2]{2.87}} & {\SI{95.62}{\percent}} & {\SI{4.38}{\percent}} \\ 
+ %%%%%\rowcolor[gray]{0.9}
+\textbf{W13} & {\tablenum[table-format=1.2]{2.92}} & {\SI{95.27}{\percent}} & {\SI{4.73}{\percent}} & {\tablenum[table-format=1.2]{3.13}} & {\SI{95.96}{\percent}} & {\SI{4.04}{\percent}} & {\tablenum[table-format=1.2]{2.81}} & {\SI{95.69}{\percent}} & {\SI{4.31}{\percent}} \\ 
+\textbf{W14} & {\tablenum[table-format=1.2]{2.83}} & {\SI{95.45}{\percent}} & {\SI{4.55}{\percent}} & {\tablenum[table-format=1.2]{2.85}} & {\SI{95.63}{\percent}} & {\SI{4.37}{\percent}} & {\tablenum[table-format=1.2]{2.78}} & {\SI{95.66}{\percent}} & {\SI{4.34}{\percent}} \\ 
+ %%%%%\rowcolor[gray]{0.9}
+\textbf{W15} & {\tablenum[table-format=1.2]{2.93}} & {\SI{95.38}{\percent}} & {\SI{4.62}{\percent}} & {\tablenum[table-format=1.2]{2.95}} & {\SI{95.48}{\percent}} & {\SI{4.52}{\percent}} & {\tablenum[table-format=1.2]{2.82}} & {\SI{95.50}{\percent}} & {\SI{4.50}{\percent}} \\ 
+
+
+%%\textbf{W1} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%\textbf{W2} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.14}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W3} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W4} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W5} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W6} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W7} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W8} & {\tablenum[table-format=1.2]{0.13}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.13}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W9} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W10} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W11} & {\tablenum[table-format=1.2]{0.14}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W12} & {\tablenum[table-format=1.2]{0.13}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W13} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W14} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+%%\textbf{W15} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} & {\tablenum[table-format=1.2]{0.12}} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+ \end{longtable}

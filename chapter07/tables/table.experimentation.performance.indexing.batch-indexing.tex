@@ -1,0 +1,215 @@
+%\begin{longtable} {p{0.20\linewidth} S[table-format=1.4]p{0.20\linewidth}
+%S[table-format=1.4]p{0.20\linewidth} S[table-format=1.4]p{0.30\linewidth}}
+
+%%%%%\begin{longtable} {
+%%%%%p{0.10\linewidth} 
+%%%%%S[table-format=1.4]
+%%%%%S[table-format=1.4] 
+%%%%%S[table-format=1.4]}
+\begin{longtable}{
+>{\arraybackslash}m{0.07\linewidth}|
+>{\centering\arraybackslash}m{0.18\linewidth}|
+>{\centering\arraybackslash}m{0.18\linewidth}|
+>{\centering\arraybackslash}m{0.28\linewidth}
+}
+ 
+ \caption{Baseline performance benchmarks for batch indexing}
+\label{tab:experimentation:performance:indexing:batch-indexing} \\
+ %%%%%\toprule
+ \hline
+ %%{} & 
+ %%\textbf{\pbox{20cm}{Index \\(MB)}} &
+ %%{} & 
+ %%\textbf{\pbox{20cm}{Time \\(secs)}} &
+ %%{} &
+ %%\textbf{\pbox{20cm}{Throughput\\(docs/sec)}} \\
+  {} & 
+ \textbf{Index [MB]} &
+ %%{} & 
+ \textbf{Time [s]} &
+ %%{} &
+ \textbf{Throughput [doc/s]} \\
+ %%%%%\midrule
+ \hline \hline
+ \endfirsthead
+ 
+ \caption[]{(continued)}\\
+ %%%%%\toprule
+ \hline
+ %%{} & 
+ %%\textbf{\pbox{20cm}{Index \\(MB)}} &
+ %%{} & 
+ %%\textbf{\pbox{20cm}{Time \\(secs)}} &
+ %%{} &
+ %%\textbf{\pbox{20cm}{Throughput\\(docs/sec)}} \\
+  {} & 
+ \textbf{Index [MB]} &
+ %%{} & 
+ \textbf{Time [s]} &
+ %%{} &
+ \textbf{Throughput [doc/s]} \\
+ %%%%%\midrule
+ \hline \hline
+ \endhead
+ 
+ % Page footer
+ %%%%%\midrule
+ \hline
+ \multicolumn{4}{r}{(Continued on next page)} \\
+ \endfoot
+ 
+ % Last page footer
+ \bottomrule
+ \endlastfoot
+
+ %W1&
+ \textbf{W1}&
+ {\tablenum[table-format=4.2]{0.40}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{1.11}}&
+ %%{}&
+ {\tablenum[table-format=4]{90}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+
+ %W2&
+ \textbf{W2}&
+ {\tablenum[table-format=4.2]{0.56}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{1.47}}&
+ %%{}&
+ {\tablenum[table-format=4]{136}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W3&
+ \textbf{W3}&
+ {\tablenum[table-format=4.2]{1.10}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{2.46}}&
+ %%{}&
+ {\tablenum[table-format=4]{163}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W4&
+ \textbf{W4}&
+ {\tablenum[table-format=4.2]{1.90}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{4.14}}&
+ %%{}&
+ {\tablenum[table-format=4]{193}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W5&
+ \textbf{W5}&
+ {\tablenum[table-format=4.2]{3.50}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{7.19}}&
+ %%{}&
+ {\tablenum[table-format=4]{223}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W6&
+ \textbf{W6}&
+ {\tablenum[table-format=4.2]{6.40}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{13.25}}&
+ %%{}&
+ {\tablenum[table-format=4]{242}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W7&
+ \textbf{W7}&
+ {\tablenum[table-format=4.2]{12.00}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{14.81}}&
+ %%{}&
+ {\tablenum[table-format=4]{432}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W8&
+ \textbf{W8}&
+ {\tablenum[table-format=4.2]{24.00}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{17.89}}&
+ %%{}&
+ {\tablenum[table-format=4]{715}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W9&
+ \textbf{W9}&
+ {\tablenum[table-format=4.2]{46.00}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{31.87}}&
+ %%{}&
+ {\tablenum[table-format=4]{803}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W10&
+ \textbf{W10}&
+ {\tablenum[table-format=4.2]{91.00}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{204.21}}&
+ %%{}&
+ {\tablenum[table-format=4]{251}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W11&
+ \textbf{W11}&
+ {\tablenum[table-format=4.2]{179.00}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{432.12}}&
+ %%{}&
+ {\tablenum[table-format=4]{237}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W12&
+ \textbf{W12}&
+ {\tablenum[table-format=4.2]{348.00}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{1331.99}}&
+ %%{}&
+ {\tablenum[table-format=4]{154}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W13&
+ \textbf{W13}&
+ {\tablenum[table-format=4.2]{962.00}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{2934.96}}&
+ %%{}&
+ {\tablenum[table-format=4]{140}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W14&
+ \textbf{W14}&
+ {\tablenum[table-format=4.2]{1433.60}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{8134.99}}&
+ %%{}&
+ {\tablenum[table-format=4]{101}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ 
+ %W15&
+ \textbf{W15}&
+ {\tablenum[table-format=4.2]{2662.40}}&
+ %%{}&
+ {\tablenum[table-format=4.2]{18261.88}}&
+ %%{}&
+ {\tablenum[table-format=4]{90}}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+
+\end{longtable}

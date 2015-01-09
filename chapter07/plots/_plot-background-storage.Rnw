@@ -1,0 +1,51 @@
+<<fig=FALSE, echo=FALSE>>=
+require(tikzDevice)
+require(lattice)
+tikz('plot-background-storage.tex', width=5.9, height=1.5)
+backgroundstorage <- read.table("../data/survey-background-storage.dat", header=TRUE, sep="\t")
+
+#
+layout(matrix(c(1, 2, 3), nrow=1, ncol=3, byrow=TRUE))
+
+par(xpd=T, oma=c(0.5,1,0.5,0.5), mar=c(1.5,5,3,2), cex=0.60)
+barplot(backgroundstorage$Database.based, font.main=1, main="Database Storage", horiz=FALSE, las=1,
+col=c("lightblue", "mistyrose", "lightcyan", "lavender", "cornsilk"), ylim=c(0,12), xlim=c(0, 8),  axes=FALSE, ann=FALSE, space=0.2)
+axis(2, las=1, at=seq(0, 12, by=3))
+#legend(6, 12, c("Not at all", "Rarely", "Some of the time", "Most of the time", "All the time"),
+#fill=c("lightblue", "mistyrose", "lightcyan", "lavender", "cornsilk"), bty="o", text.width=5.5)
+#grid()
+#abline(v=(seq(0,12,2)), col="lightgray", lty="dotted")
+#abline(h=(seq(0, 16, 2)), col="lightgray", lty="dotted")
+box("figure", "solid")
+
+#par(xpd=T, mar=c(1.5,5,3,2), cex=0.60)
+barplot(backgroundstorage$Cloud.based, font.main=1, main="Cloud Storage",
+horiz=FALSE, las=1, col=c("lightblue", "mistyrose", "lightcyan", "lavender", "cornsilk"), 
+ylim=c(0,15), xlim=c(0, 8), axes=FALSE, ann=FALSE, space=0.2)
+axis(2, las=1, at=seq(0, 15, by=3))
+#legend(6, 14, c("Not at all", "Rarely", "Some of the time", "Most of the time", "All the time"),
+#fill=c("lightblue", "mistyrose", "lightcyan", "lavender", "cornsilk"), bty="o", text.width=5.5)
+#grid()
+#abline(v=(seq(0,12,2)), col="lightgray", lty="dotted")
+#abline(h=(seq(0, 18, 2)), col="lightgray", lty="dotted")
+box("figure", "solid")
+
+#par(xpd=T, mar=c(1.5,5,3,1), cex=0.60)
+barplot(backgroundstorage$File.based, font.main=1, main="File Storage",
+horiz=FALSE, las=1, col=c("lightblue", "mistyrose", "lightcyan", "lavender", "cornsilk"),
+ylim=c(0,10), xlim=c(0,8), axes=FALSE, ann=FALSE, space=0.2)
+axis(2, las=1, at=seq(0, 10, by=2))
+#legend(6, 10, c("Not at all", "Rarely", "Some of the time", "Most of the time", "All the time"),
+#fill=c("lightblue", "mistyrose", "lightcyan", "lavender", "cornsilk"), bty="o", text.width=5.5)
+#grid()
+#abline(v=(seq(0,12,2)), col="lightgray", lty="dotted")
+#abline(h=(seq(0, 16, 1.4)), col="lightgray", lty="dotted")
+box("figure", "solid")
+
+#plot(1, type = "n", axes=FALSE, ylim=c(0,50), xlab="", ylab="")
+#legend(x="top",inset=0,legend=c("Not at all", "Rarely", "Some of the time", "Most of the time", "All the time"), lwd="5", bty="o", horiz=TRUE, col=c("lightblue", "mistyrose", "lightcyan", "lavender", "cornsilk"))
+
+#par(xpd=T, mar=c(0,0,0,0), oma=c(0,0,0,0))
+#legend("center",inset=0,legend=c("Not at all", "Rarely", "Some of the time", "Most of the time", "All the time"), lwd="5", bty="o", horiz=TRUE, col=c("lightblue", "mistyrose", "lightcyan", "lavender", "cornsilk"))
+#box("figure", "solid")
+@

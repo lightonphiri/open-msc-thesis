@@ -1,0 +1,1054 @@
+\section[Performance]{Performance} \label{sec:evaluation:performance}
+
+%%%\textbf{\color{red}TODO}: Read link below to get ideas on interpreting results
+%%%$\cdots$
+
+% very strange behavior after using \large... font size increases :^)
+%
+%\large{\href{%
+%http://lists.wikimedia.org/pipermail/wikitech-l/2012-December/064994.html }
+%{http://list.wikimedia.org/pipermail/wikitech-l/2012-December/064994.html}}
+
+%\subsection{Objective}
+%\label{sec:evaluation:performance:experiment-goals}
+
+
+%\subsection{Methodology}
+%\label{sec:evaluation:performance:experiment-design}
+
+A significant architectural change performed to the design and implementation of the simple repository outlined in Chapter~\ref{ch:implementation} involves changing the way metadata\index{Metadata} records are stored in the repository sub-layer of \glspl{dls}. More specifically, the proposed solution advocates for the use of a typical operating system file system for the storage of metadata\index{Metadata} records, as opposed to the conventional use of a database management system. This design decision is motivated by two key factors---simplicity\index{Simplicity} and manageability. However, conventional wisdom \citep{Nicola2003,Sears2007} points to the fact that system performance would evidently be adversely affected for relatively large collections.
+
+The remainder of this section outlines the performance experiments conducted to evaluate the simple repository design. Section~\ref{sec:experimentation:performance:test-environment} briefly describes the test environment set-up to conduct the experiments; Section~\ref{sec:evaluation:performance:test-environment:dataset} describes the test dataset and Secton~\ref{sec:evaluation:performance:test-environment:workload-design} describes the workloads used during experimentation. In Section~\ref{sec:evaluation:performance:aspect-benchmarks} a series of performance benchmarks are discussed, and a discussion of performance comparisons with DSpace\index{DSpace} is then discussed in Section~\ref{sec:evaluation:performance:performance-comparison}.
+
+%%\subsubsection{Hardware and Software Configuration}
+%%\label{sec:evaluation:performance:test-environment:hardware-and-software}
+\subsection{Test setup}\index{Execution Environment}
+\label{sec:experimentation:performance:test-environment}
+
+The experiments were all conducted locally---to isolate network-related hidden factors that could distort the measurements---on a standalone Intel Pentium (E5200@ 2.50 GHz) with 4 GB of RAM running Ubuntu 12.04.1 LTS. Apache 2.2.22 Web server and Jetty were used to host module implementations; and ApacheBench 2.3 and Siege 2.70 were used to simulate a single user request, with five run-averages taken for each aspect request. 
+
+Furthermore, in order to isolated computing resource hidden factors such as memory and CPU usage, the only applications that were set-up and subsequently executed on the machine were those related to the experiments being conducted. Table~\ref{tab:experimentation:performance:test-environment:platform-configuration} shows a summary of the configurations that were used to conduct the experiments.
+
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.test-environment.platform-configuration.tex}
+\bodyspacing
+
+%%%\subsection{Experimental set-up}
+%%%%%\subsection{Test dataset}
+%%%%%\label{sec:experimentation:performance:experimental-set-up}
+
+%%\subsubsection{Dataset}\index{Dataset}
+%%\label{sec:evaluation:performance:test-environment:dataset}
+\subsection{Test dataset}\index{Dataset}
+\label{sec:evaluation:performance:test-environment:dataset}
+
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.dataset.collection-profile.tex}
+\bodyspacing
+
+The dataset used for the experiments is a collection of XML\index{XML} records, encoded using simple Dublin Core\index{Dublin Core}, which were harvested from the NDLTD\index{NDLTD} Union Catalog\footnote{\url{http://union.ndltd.org/OAI-PMH}} using the OAI-PMH\index{OAI-PMH} 2.0 protocol. Table~\ref{tab:experimentation:performance:dataset:collection-profile} shows a summary of the dataset profile used for conducting the performance experiments, and the details of the repository and sub-collection structure are shown in Listing~\ref{lst:evaluation:performance:experiment-design:ndltd-catalog-identity-verb} and Listing~\ref{lst:evaluation:performance:experiment-design:ndltd-catalog-listsets-verb} respectively.
+
+The OAI-PMH unique $setSpec$ element names, shown in Listing~\ref{lst:evaluation:performance:experiment-design:ndltd-catalog-listsets-verb}, for each of the harvested records were used to create container structures that represent collection names for the resulting archive.
+
+%%\subsubsection{Experiment Workload Design}\index{Workload}
+%%\label{sec:evaluation:performance:test-environment:workload-design}
+\subsection{Workloads}\index{Workload}
+\label{sec:evaluation:performance:test-environment:workload-design}
+
+The \num{1907000} objects in the experiment dataset---summarised in Table~\ref{tab:experimentation:performance:dataset:collection-profile}---are aggregate metadata\index{Metadata} records from a total of \num{131} different institutional repositories from around the world; in addition the metadata\index{Metadata} records are encoded in Dublin Core\index{Dublin Core}, a metadata\index{Metadata} scheme which allows for all elements to be both optional and repeatable. As a result, the structure of the metadata\index{Metadata} records was not consistent throughout all the records. A random sampling\index{Random Sampling} technique was thus used to generate linearly increasing workloads, with records randomly selected from the \num{131} $setSpecs$\index{setSpec}.
+
+Table~\ref{tab:experimental-results:workload-design:experiment-workload-design} shows the \num{15} workloads initially modelled for use during the performance experimentation stage. An additional two datasets were then spawned to create experiment datasets with varying hierarchical structures. Table~\ref{tab:appendicies:performance:workload-design:dataset-models} shows the profiles for the three dataset workload\index{Workload} models, and Figure~\ref{fig:experimentation:performance:workload-design:directory-structures} illustrates the object organisation in one-level, two-level and three-level workload\index{Workload} models.
+
+\tablespacing
+\input{chapter07/tables/tpdl2013_benchmarks.table.experimental-results.workload-design}
+\bodyspacing
+
+\begin{comment}
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.workload-design.load1.tex}
+\bodyspacing
+
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.dataset.workloads.\index{Workload}tex}
+\bodyspacing
+\end{comment}
+
+\begin{comment}
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{
+ \input{chapter07/figures/experimentation.workload-hierarchical-structures.tex}
+ }
+ \caption{Digital object component structure}
+ \label{fig:experimentation:performance:test-set-up:workload-model:experimentation.workload-hierarchical-structures}
+\end{figure}
+\end{comment}
+
+\begin{comment}
+\begin{figure}
+\dirtree{%
+.1 \frameboxc{red}{\textbf{NDLTD}}.
+%.2 GATECH.
+%%%.2 \vdots.
+.2 \frameboxc{red}{\textbf{OCLC}}.
+.3 \vdots.
+.3 OCLCNo--477262203.metadata.
+%.3 OCLCNo--495476109.metadata.
+.3 \vdots.
+%.2 Quebec.
+%.2 Rhodes.
+%%%.2 \vdots.
+}
+ \caption[Collection archive one-level structure]{The basic collection archive one-level hierarchical structure. The setSpec was used as the container name for the metadata\index{Metadata} records.}
+ \label{fig:experimentation:performance:workload-design:dirtree1}
+\end{figure}
+
+\begin{figure}
+\dirtree{%
+.1 \frameboxc{red}{\textbf{NDLTD}}. 
+%%%.2 \vdots. 
+%.2 GATECH. 
+.2 \frameboxc{red}{\textbf{OCLC}}. 
+%.3 1629. 
+%%%.3 \vdots. 
+.3 \frameboxc{red}{\textbf{2010}}. 
+%.4 a. 
+.4 \vdots. 
+%.4 \frameboxc{red}{\textbf{z}}. 
+%.5 \vdots. 
+.4 OCLCNo--477262203.metadata. 
+%.5 OCLCNo--495476109.metadata. 
+.4 \vdots. 
+%.3 2011.
+.3 \vdots. 
+%.2 Quebec. 
+%%%.2 \vdots. 
+%.2 Rhodes. 
+%.2 \vdots. 
+}
+ \caption[Collection archive two-level structure]{The collection archive two-level hierarchical structure. The setSpec and publication date were used as first, second and third-level container names respectively.}
+ \label{fig:experimentation:performance:workload-design:dirtree2}
+\end{figure}
+
+\begin{figure}
+\dirtree{%
+.1 \frameboxc{red}{\textbf{NDLTD}}. 
+%%%.2 \vdots. 
+%.2 GATECH. 
+.2 \frameboxc{red}{\textbf{OCLC}}. 
+%.3 1629. 
+%%%.3 \vdots. 
+.3 \frameboxc{red}{\textbf{2010}}. 
+%.4 a. 
+%%%.4 \vdots. 
+.4 \frameboxc{red}{\textbf{z}}. 
+.5 \vdots. 
+.5 OCLCNo--477262203.metadata. 
+%.5 OCLCNo--495476109.metadata. 
+.5 \vdots. 
+%.3 2011.
+.3 \vdots. 
+%.2 Quebec. 
+%%%.2 \vdots. 
+%.2 Rhodes. 
+%.2 \vdots. 
+}
+ \caption[Collection archive three-level structure]{The collection archive three-level hierarchical structure. The setSpec, publication date and first character of creator name were used as first, second and third-level container names respectively.}
+ \label{fig:experimentation:performance:workload-design:dirtree3}
+\end{figure}
+
+Testing: dataset 1 is here~\ref{fig:experimentation:performance:workload-design:directory-structures:dataset1} and holistic structures are here~\ref{fig:experimentation:performance:workload-design:directory-structures}
+\end{comment}
+
+\begin{figure}[t!]
+\centering
+ \framebox[\textwidth]{%
+\subfloat[Dataset\#1 structure]{%
+\label{fig:experimentation:performance:workload-design:directory-structures:dataset1}%
+\begin{minipage}{0.30\textwidth}
+\dirtree{%
+.1 \frameboxc{red}{\textbf{NDLTD}}. %
+.2 \frameboxc{red}{\textbf{OCLC}}. %
+.3 \dots. %
+.3 \frameboxc{blue}{object}. %
+.3 \dots. %
+.3 \dots. %
+.3 \dots. %
+.3 \dots. %
+}%
+\end{minipage}
+}
+\subfloat[Dataset\#2 structure]{%
+\label{fig:experimentation:performance:workload-design:directory-structures:dataset2}%
+\begin{minipage}{0.30\textwidth}
+\dirtree{%
+.1 \frameboxc{red}{\textbf{NDLTD}}. %
+.2 \frameboxc{red}{\textbf{OCLC}}. %
+.3 \frameboxc{red}{\textbf{2010}}. %
+.4 \dots. %
+.4 \frameboxc{blue}{object}. %
+.4 \dots. %
+.3 \dots. %
+.3 \dots. %
+}%
+\end{minipage}
+}
+\subfloat[Dataset\#3 structure]{%
+\label{fig:experimentation:performance:workload-design:directory-structures:dataset3}%
+\begin{minipage}{0.30\textwidth}
+\dirtree{%
+.1 \frameboxc{red}{\textbf{NDLTD}}. %
+.2 \frameboxc{red}{\textbf{OCLC}}. %
+.3 \frameboxc{red}{\textbf{2010}}. %
+.4 \frameboxc{red}{\textbf{z}}. 
+.5 \dots. %
+.5 \frameboxc{blue}{object}. %
+.5 \dots. %
+.3 \dots. %
+}%
+\end{minipage}
+}
+}
+ \caption[Experiment datasets workload\index{Workload} structures]{The workload\index{Workload} hierarchical structures for the three experiment datasets. The $setSpec$, publication date and first character of creator name were used as first-, second- and third-level container names respectively.}
+ \label{fig:experimentation:performance:workload-design:directory-structures}
+\end{figure}
+
+% ##### %
+\begin{comment}
+\begin{figure}
+\centering
+\begin{subfigure}[b]{0.3\textwidth}
+\dirtree{%
+.1 \textbf{NDLTD}.
+.2 \textbf{OCLC}.
+.3 \vdots.
+.3 x.metadata.
+.3 \vdots.
+}
+\caption{dirtree1}
+\label{fig:dirtree1}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
+\dirtree{%
+.1 \textbf{NDLTD}. 
+.2 \textbf{OCLC}. 
+.3 \textbf{2010}. 
+.4 \vdots. 
+.4 x.metadata. 
+.4 \vdots. 
+.3 \vdots. 
+}
+\caption{dirtree2}
+\label{fig:dirtree2}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
+\dirtree{%
+.1 \textbf{NDLTD}. 
+.2 \textbf{OCLC}. 
+.3 \textbf{2010}. 
+.4 \textbf{z}. 
+.5 \vdots. 
+.5 x.metadata. 
+.5 \vdots. 
+.3 \vdots. 
+}
+\caption{dirtree3}
+\label{fig:dirtree3}
+\end{subfigure}
+\caption{Combined dirtree structures}\label{fig:dirtrees}
+\end{figure}
+\end{comment}
+% ##### %
+
+\begin{landscape}
+\centering
+\lstinputlisting[float,breaklines=true,showstringspaces=false,
+breakatwhitespace=true , frame=lines ,
+xleftmargin=50pt,framexleftmargin=20pt,caption=NDLTD union catalog OAI-PMH Identity verb response\index{OAI-PMH!Verbs!Identify},
+label=lst:evaluation:performance:experiment-design:ndltd-catalog-identity-verb,
+language=XML]{chapter07/code/code.experimentation.performance.dataset.union-ndltd-org-Identify.xml}
+\end{landscape}
+
+\begin{landscape}
+\centering
+\lstinputlisting[float,breaklines=true,showstringspaces=false,
+breakatwhitespace=true , frame=lines , xleftmargin=50pt,framexleftmargin=20pt,caption=NDLTD union catalog OAI-PMH ListSets\index{OAI-PMH!Verbs!ListSets} verb response\index{OAI-PMH!Verbs!ListSets},
+label=lst:evaluation:performance:experiment-design:ndltd-catalog-listsets-verb,
+language=XML]{%
+chapter07/code/code.experimentation.performance.dataset.union-ndltd-org-ListSets.xml}
+\end{landscape}
+
+\subsection{Benchmarks}
+\label{sec:evaluation:performance:aspect-benchmarks}
+
+A series of performance benchmarks were conducted on some typical \gls{dl} services, in order to assess the overall performance of the architecture.
+
+The purpose of the performance experiments was to evaluate the performance and scalability of collections as the workload---in relation to collection size---was increased. The performance experiments were carried out on the following list of services,---with the exception of indexing--- derived from a transaction log analysis of a production digital library system\footnote{\url{http://pubs.cs.uct.ac.za}}---a subject repository running EPrints 2.1.1\index{Digital Libraries!Software!EPrints}.
+
+\begin{itemize}
+ \item Item ingestion
+ \item Full-text search
+ \item Indexing operations
+ \item OAI-PMH data provider
+ \item Feed generation
+\end{itemize}
+
+The series of experiments were designed specifically to determine the break-even points at which performance and scalability drastically degrades. Nielsen's three important limits for response times \citep{Nielsen1993} were used as a basis for determining desirable response times for varying workloads.\index{Workload}
+
+The detailed descriptions of the experiments conducted on the services/aspects now follows.
+
+\subsubsection{Item ingestion}\index{Ingestion}
+\label{sec:evaluation:performance:ingestion}
+
+The ingestion\index{Ingestion} process for a typical \gls{dls} in part involves importation of metadata\index{Metadata} associated with the bitstreams being ingested. The purpose of experiments conducted for this aspect was to determine the relative ingestion\index{Ingestion} performance of metadata\index{Metadata} records, in terms of response time, with varying workload\index{Workload} sizes.
+
+\paragraph{Experiment: Item ingestion\index{Ingestion} response time}
+\label{sec:evaluation:performance:ingestion:experiment1}
+
+This experiment was aimed at assessing the ingestion\index{Ingestion} response time for the \num{15} workloads.\index{Workload}
+
+\subparagraph{Methodology}
+
+A single record was randomly harvested from the OCLC setSpec\footnote{The OCLC setSpec was common to all the 15 workloads}, using datestamp-based selective harvesting \citep{Lagoze2002}, in order to harvest records that were created, deleted, or modified after the initial bulk harvesting described in Section~\ref{sec:evaluation:performance:test-environment:dataset}. The second and third-level container objects were then created in advance, for workloads in which the container objects in question were not present, to isolate the latency that would result from creating missing containers. The ingestion\index{Ingestion} process was then simulated through a script that read the record to be ingested and wrote the contents of the record to each of the 15 workload\index{Workload} collections. The times taken to successfully write the record to disk were then noted.
+
+\subparagraph{Results}
+
+The experiment results are shown in Table~\ref{tab:experimentation:performance:ingest:level} and Figure~\ref{fig:experimentation:performance:ingest:plot.experimentation.performance.ingest.single-item}.
+
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.ingest.level.tex}
+\bodyspacing
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.ingest.single-item.tex}
+ }
+ \caption[Impact of structure on item ingestion\index{Ingestion} performance]{The average time, in milliseconds, taken to ingest a single item into an existing collection.}
+ \label{fig:experimentation:performance:ingest:plot.experimentation.performance.ingest.single-item}
+\end{figure}
+
+%%\subsubsection{Discussion}
+%%\label{sec:evaluation:performance:ingestion:discussion}
+\subparagraph{Discussion}
+
+The ingestion\index{Ingestion} response times remain constant irrespective of the workload\index{Workload} size. This is because the only overhead incurred results from disk write IO. It should be noted that this experiment mimicked an ideal situation where the destination location for the item is known before hand.
+
+%%\subsubsection{Conclusion}
+%%\label{sec:evaluation:performance:ingestion:conclusion}
+
+The workload\index{Workload} size does not affect the ingestion\index{Ingestion} response time.
+
+\subsubsection{Full-text search}
+\label{sec:evaluation:performance:search-and-browse}
+
+The purpose of these experiments was to determine the impact on collection size on
+query performance for indexed and non-indexed collections.
+
+\paragraph{Experiment: Search performance for unindexed collections}
+\label{sec:evaluation:performance:search-browse:experiment1}
+
+This experiment was conducted to determine query performance of non-indexed collections.
+
+\subparagraph{Methodology}
+
+The most frequently occurring terms in the workloads were identified and search\index{Search} requests issued to determine response times. The search\index{Search} module implementation involved traversing collection containers and successively parsing\index{Parsing} and querying each metadata\index{Metadata} file in the collection for the search\index{Search} phrase in question.
+
+\subparagraph{Results}
+
+The mean response times taken to generate search\index{Search} query resultsets are shown in Figure~\ref{fig:experimentation:performance:search:processing-phases-cumulative}. In order to ascertain the overall distribution of the search\index{Search} response times, the time taken for the various search\index{Search} phases---directory traversal, parsing\index{Parsing} and XPath\index{XPath} querying---was noted; Table~\ref{tab:experimentation:performance:search:processing-phases-benchmark} and Figure~\ref{fig:experimentation:performance:search:processing-phases-cumulative} show these times for the \num{15} workloads.\index{Workload}
+
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.search.processing-phases-benchmark.tex}
+\bodyspacing
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.search.processing-phases-unindexed.tex}
+ }
+ \caption[Baseline performance benchmarks for full-text search]{The cumulative times taken for the different search\index{Search} query processing phases---directory traversal, XML\index{XML} parsing\index{Parsing} and XPath\index{XPath} query times.}
+ \label{fig:experimentation:performance:search:processing-phases-cumulative}
+\end{figure}
+
+
+%\begin{figure}
+% \centering
+% \framebox[\textwidth]{%
+%\input{chapter07/plots/plot.experimentation.performance.search.processing-phases-cumulative.tex}
+% }
+% \caption[Cumulative search\index{Search} query processing times]{The cumulative times taken for the different search\index{Search} query processing phases---directory traversal, XML\index{XML} parsing\index{Parsing} and XPath\index{XPath} query times.}
+% \label{fig:experimentation:performance:search:processing-phases-cumulative}
+%\end{figure}
+
+%\begin{figure}
+% \centering
+% \framebox[\textwidth]{%
+%\input{chapter07/plots/plot.experimentation.performance.search.processing-phases-distribution.tex}
+% }
+% \caption[Time breakdown of search\index{Search} query processing phases]{Breakdown of time taken for the different search\index{Search} query processing phases.}
+% \label{fig:experimentation:performance:search:processing-phases-distribution}
+%\end{figure}
+
+
+\subparagraph{Discussion}
+
+The results in Figure~\ref{fig:experimentation:performance:search:processing-phases-cumulative} indicate an increasing linear correlation between the workload\index{Workload} size and the query response time. This is largely due to the fact that all metadata\index{Metadata} records need to be analysed each time a search\index{Search} query is issued.
+
+In addition, Table~\ref{tab:experimentation:performance:search:processing-phases-benchmark} indicates that a significant amount of time is spent parsing\index{Parsing} and querying the records, with each of the tasks accounting for an average of \SI{39}{\percent} and \SI{46}{\percent} respectively. Furthermore, this occurs before the workload\index{Workload} size exceeds \num{409600}, at which point the parsing\index{Parsing} phase becomes extremely expensive---accounting for \SI{95}{\percent} of the total search\index{Search} query time.
+
+%%\paragraph{Conclusion}
+
+The query response time increases linearly as the workload\index{Workload} size is increased and is drastically affected by larger workloads.\index{Workload} The only effective way to get better performance would be to use an index.
+
+
+\paragraph{Experiment: Impact of collection structure on search\index{Search} performance }
+\label{sec:evaluation:performance:search-browse:experiment2}
+
+This experiment was conducted to assess the search\index{Search} query response times relative to a collection structure. The results obtained in Section~\ref{sec:evaluation:performance:search-browse:experiment2}, derived from a one-level collection structure, were compared with workloads of varying levels.
+
+\subparagraph{Methodology}
+
+The search\index{Search} queries issued in Section~\ref{sec:evaluation:performance:search-browse:experiment2} were issued to two-level and a three-level, illustrated in Figure~\ref{fig:experimentation:performance:workload-design:directory-structures:dataset2} and Figure~\ref{fig:experimentation:performance:workload-design:directory-structures:dataset3} respectively, structured workloads.\index{Workload} The response times were noted and compared with those obtained from one-level structured workloads.\index{Workload}
+
+\subparagraph{Results}
+
+Table~\ref{tab:experimentation:performance:search:processing-phases-levels} shows the change in response times for two-level and three-level workloads relative to one-level workloads; and Figure~\ref{fig:experimentation:performance:search:processing-phases-levels} is a graphical representation of the response times for the different search\index{Search} query phases.
+
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.search.processing-phases-levels.tex}
+\bodyspacing
+
+%%\tablespacing
+%%\input{chapter07/tables/table.experimentation.performance.search.processing-phases-benchmark.tex}
+%%\bodyspacing
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.search.processing-phases-levels.tex}
+ }
+ \caption[Impact of structure on query performance]{Impact of directory structure on query performance, split up into the different search\index{Search} phases---traversal, parsing\index{Parsing} and xpath phases.}
+ \label{fig:experimentation:performance:search:processing-phases-levels}
+\end{figure}
+
+% 
+% March 23, 2013
+% Decided to use facets as opposed to individually separating plots---reclaiming space
+\begin{comment}
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.search.processing-phases-traversal-levels.tex}
+ }
+ \caption[Impact of structure on traversal query phase]{Impact of structure on traversal query phase.}
+ \label{fig:experimentation:performance:search:processing-phases-traversal-levels}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.search.processing-phases-parsing-levels.tex}
+ }
+ \caption[Impact of structure on parsing\index{Parsing} query phase]{Impact of structure on parsing\index{Parsing} query phase.}
+ \label{fig:experimentation:performance:search:processing-phases-parsing-levels}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.search.processing-phases-xpath-levels.tex}
+ }
+ \caption[Impact of structure on XPath\index{XPath} query phase]{Impact of structure on XPath\index{XPath} query phase.}
+ \label{fig:experimentation:performance:search:processing-phases-xpath-levels}
+\end{figure}
+\end{comment}
+
+\subparagraph{Discussion}
+
+There is a significant linear increase in the search\index{Search} query response times before the workload\index{Workload} size goes beyond \num{409600}, with the Parsing\index{Parsing} and XPath\index{XPath} times remaining constant as the traversal times change.
+
+%%\paragraph{Conclusion}
+%%xxx
+
+\subsubsection{Indexing operations}
+\label{sec:evaluation:performance:indexing}
+
+The integration of \glspl{dls} with indexing\index{Index} services is
+increasingly becoming common to facilitate seamless discovery of information
+through search\index{Search} and browse\index{Browse} services. The experiments conducted for the index
+evaluation aspect were aimed at benchmarking various indexing\index{Index} operations
+associated with digital collections.
+
+The Apache Solr\index{Apache!Solr} search\index{Search} platform was deployed within a Jetty\index{Jetty} Servlet engine, and
+subsequently integrated with the 15 workloads.\index{Workload} The workloads were conveniently
+set-up as 15 separate Apache Solr Cores\index{Apache!Solr!Cores} and the following factors were
+investigated relative to the different workload\index{Workload} sizes described in Section~\ref{sec:evaluation:performance:test-environment:workload-design}.
+
+\begin{itemize}
+ \item Batch indexing\index{Index} of collections
+ \item Incremental updates to existing collections
+\end{itemize}
+
+% 
+% Not necessary to include this figure in manuscript
+\begin{comment}
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/figures/experimentation.performance.indexing.solr-core-set-up.tex}
+ }
+ \caption[Apache Solr Core set-up]{Experiment set-up for Apache Solr Cores within Jetty Servlet engine}
+ \label{fig:experimentation:performance:indexing:solr-core-set-up}
+\end{figure}
+\end{comment}
+
+\paragraph{Experiment: Batch collection indexing\index{Index} benchmarks}
+\label{sec:evaluation:performance:indexing:experiment1}
+
+Batch indexing\index{Index} of collections is a common use-case; for instance, storage and
+retrieval systems will in certain instances require re-indexing of content when
+records have been updated with new values. This experiment was aimed at
+benchmarking the batch indexing\index{Index} of varying workloads.\index{Workload}
+
+\subparagraph{Methodology}
+
+The Apache Solr Data Import Request Handler\index{Apache!Solr!Data Import Handler} \citep{SolrDIH2012} was
+configured for all the 15 workload\index{Workload} cores to perform full builds. A full
+data-import command was then issued, and repeated 5 times, for each of the 15
+workload cores. The minimum time taken to perform successful data-import
+operations was then recorded.
+
+\subparagraph{Results}
+
+The batch indexing\index{Index} experiment results are shown in Table~\ref{tab:experimentation:performance:indexing:batch-indexing} and Figure~\ref{fig:experimentation:performance:indexing:index-throughput}.
+
+\subparagraph{Discussion}
+
+The results strongly indicate that there is a linear relationship between the workload\index{Workload} size and the resulting index\index{Index} size, with an average ratio of 1:2. This is largely as a result of indexing\index{Index} all the \num{15} Dublin Core\index{Dublin Core} repeatable fields. In addition, all the record fields were stored in the index\index{Index} when conducting the experiment. In an ideal scenario, only relevant fields would have to be indexed and stored, significantly reducing the resulting index\index{Index} size.
+
+The indexing\index{Index} operation throughput generally increases with increasing workload, reaching a peak value of \num{803} documents/second at workload\index{Workload} $W9$---as shown in Figure~\ref{fig:experimentation:performance:indexing:index-throughput}, after which it plummets. This scenario is attributed to the fact that Apache Solr indexing\index{Index} is, in part, dependent on the size on the index---the index\index{Index} size linearly increases with workload\index{Workload} size. Furthermore, the 2 GB RAM on the graduate becomes inadequate as the workload\index{Workload} increases, thus degrading the performance.
+
+% 
+% Plot merged within facet showing size, times& throughout
+\begin{comment}
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.indexing.index-size.tex}
+ }
+ \caption[Index size relative to collection size]{Linear relationship between index\index{Index} sizes on disk and the collection corpus workload\index{Workload} sizes.}
+ \label{fig:experimentation:performance:indexing:index-size}
+\end{figure}
+\end{comment}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.indexing.index-throughput.tex}
+ }
+ \caption[Baseline performance benchmarks for batch indexing]{Indexing operations performance benchmarks results showing the size of the indices on disk, the time taken to generate the indices, and the indexing\index{Index} process throughput. Notice how the throughput plummets when the workload\index{Workload} goes beyond \num{25600} documents.}
+ \label{fig:experimentation:performance:indexing:index-throughput}
+\end{figure}
+
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.indexing.batch-indexing.tex}
+\bodyspacing
+
+\paragraph{Experiment: Incremental collection indexing\index{Index} benchmarks}
+\label{sec:evaluation:performance:indexing:experiment2}
+
+This experiment was conducted to assess the performance of the indexing\index{Index} process, relative to the size of the collection, when collections are updated with new content.
+
+\subparagraph{Methodology}
+
+A batch of \num{1000} latest records\footnote{OAI-PMH 'from' parameter was used to harvest records not previously harvested} were harvested from the NDLTD portal and added to existing workload\index{Workload} indices using Apache Solr XSLT UpdateRequestHandler \citep{SolrXSLTURH2012}. The number of documents added to the indices was varied between \numlist{1;10;100;1000}. In addition, the changes were only committed to the indices after all records had been added to the index.
+
+\subparagraph{Results}
+
+Table~\ref{tab:experimentation:performance:indexing:incremental-indexing} and Figure~\ref{fig:experimentation:performance:indexing:incremental-indexing} show the experiment results.
+
+%%
+%%\tablespacing
+%%\input{chapter07/tables/indexing-updates-immediate-commit-results.tex}
+%%\bodyspacing
+%%
+%%xxx
+%%
+%%\subsubsection{Experiment 3: Incremental Updates With Buffered Commits}
+%%\label{sec:evaluation:performance:indexing:experiment3}
+%%
+%%This experiment was conducted to assess the performance of the indexing
+%%
+%%\paragraph{Methodology}
+%%
+%%
+%%
+%%\paragraph{Results}
+% 
+% Already appears in appendices
+\begin{comment}
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.indexing.incremental-indexing-phases.tex}
+\bodyspacing
+\end{comment}
+
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.indexing.incremental-indexing.tex}
+\bodyspacing
+
+%%xxx
+%%
+%%\begin{figure}
+%% \centering
+%% \framebox[\textwidth]{%
+%%\input{chapter07/plots/ggplot2-experiments-performance-index-update-barplot.tex}
+%% }
+%% \caption[Indexing Update Time Distribution]{Indexing updated time distribution
+%%for different batch sizes.}
+%% \label{fig:evaluation:experiment02:plot-experiments-performance-index-update-ba
+%%rplot}
+%%\end{figure}
+%%
+%%xxx
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.indexing.incremental-indexing.tex}
+ }
+ \caption[Impact of batch size on indexing\index{Index} performance]{Incremental Index documents update operations performance benchmarks.}
+ \label{fig:experimentation:performance:indexing:incremental-indexing}
+\end{figure}
+
+\subparagraph{Discussion}
+
+The conversion process of records to Apache Solr ingest format takes up a considerable amount of time during parsing. In addition, it is significantly faster to schedule commits for large sets of newer records in contrast to issuing commits after addition of each record, since the cumulative commit times for individual items in a typical batch are avoided.
+
+%%\subsubsection{Discussion}
+%%\label{sec:evaluation:performance:indexing:discussion}
+
+%%\subsubsection{Conclusion}
+%%\label{sec:evaluation:performance:indexing:conclusion}
+
+%%xxx
+
+\subsubsection[OAI-PMH]{OAI-PMH data provider}\index{OAI-PMH!Data Provider}
+\label{sec:evaluation:performance:oaipmh-data-provider}
+
+The main objective of experiments associated with this aspect was to determine
+the performance of an integrated file-based collection OAI-PMH data provider\index{OAI-PMH!Data Provider} in
+relation to the collection size.
+
+The XMLFile\index{XMLFile} Perl\index{Perl} data provider\index{OAI-PMH!Data Provider} module \citep{Suleman2002} was used to conduct the
+experiments. The module was configured and deployed within a
+mod\_perl\footnote{An Apache/2.x HTTP server embedded Perl interpreter}
+enabled Apache 2.2.22 Web server\index{Apache!Apache/2.x}. The following factors were considered,
+relative to the workloads described in Section~\ref{sec:evaluation:performance:test-environment:workload-design}.
+
+\begin{itemize}
+ \item The collection structure
+ \item The size of the resumptionToken
+\end{itemize}
+
+\paragraph{Experiment: OAI-PMH data provider\index{OAI-PMH!Data Provider} baseline benchmarks}
+\label{sec:evaluation:performance:oaipmh-data-provider:experiment1}
+
+This experiment was conducted to derive baseline results for a basic OAI-PMH
+data provider\index{OAI-PMH!Data Provider} environment set up.
+
+\subparagraph{Methodology} %\hspace*{\fill} \\ % provision for dirtree
+
+%\bigskip
+The OAI-PMH data provider\index{OAI-PMH!Data Provider} for each archive was configured with a resumptionToken of
+1000 and the records in each workload\index{Workload} arranged in a one-level hierarchical
+structure, as shown in Figure~\ref{fig:experimentation:performance:workload-design:directory-structures:dataset1}
+
+The tests performed involved submitting GetRecord\index{OAI-PMH!Verbs!GetRecord}, ListIdentifiers\index{OAI-PMH!Verbs!ListIdentifiers}, ListRecords\index{OAI-PMH!Verbs!ListRecords}, and ListSets\index{OAI-PMH!Verbs!ListSets} requests to each of the individual 15 workloads.\index{Workload} Siege\index{Siege} was used to to simulate a single user request with a total of 5 repeated runs for each request; the average response times for each case were then recorded.
+
+\subparagraph{Results}
+
+The response times for the four OAI-PMH verbs\index{OAI-PMH!Verbs} are shown in Figure~\ref{fig:experimentation:performance:oaipmh:verbs-baseline}.
+
+% 
+% 
+\begin{comment}workloads.\index{Workload}
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.oaipmh.verbs-baseline.tex}
+\bodyspacing
+\end{comment}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.oaipmh.verbs-baseline.tex}
+ }
+ \caption[Baseline performance benchmarks for OAI-PMH data provider]{OAI-PMH data provider\index{OAI-PMH!Data Provider} baseline performance benchmarks results for all four request verbs.}
+ \label{fig:experimentation:performance:oaipmh:verbs-baseline}
+\end{figure}
+
+
+\subparagraph{Discussion}
+
+The ListRecords\index{OAI-PMH!Verbs!ListRecords} and ListIdentifiers\index{OAI-PMH!Verbs!ListIdentifiers} verbs are the most expensive of the OAI-PMH verbs, each taking more than \num{2} seconds when the workload\index{Workload} size goes beyond \num{400} and \num{6400} respectively. In contrast, the GetRecord\index{OAI-PMH!Verbs!GetRecord} and ListSets\index{OAI-PMH!Verbs!ListSets} verbs only go beyond acceptable limits when the workload\index{Workload} size exceeds \num{204800} and \num{819200} respectively. 
+
+\paragraph{Experiment: Impact of collection structure}
+\label{sec:evaluation:performance:oaipmh-data-provider:experiment2}
+
+The results obtained from the baseline experiment conducted in Experiment 1
+involved the use of a one-level collection structure illustrated in Figure~\ref{fig:experimentation:performance:workload-design:directory-structures:dataset1}. This experiment was
+conducted to assess the impact that a multi-level structure would have on the
+overall performance of an OAI-PMH data provider\index{OAI-PMH!Data Provider} whilst varying the workload.
+
+\subparagraph{Methodology} %\hspace*{\fill} \\ % provision for dirtree
+
+A three-level collection structure, shown in Figure~\ref{fig:experimentation:performance:workload-design:directory-structures:dataset3}, was used. Siege was then used to to simulate a single user request with a total of 5 repeated runs for GetRecord, ListIdentifiers, ListRecords\index{OAI-PMH!Verbs!ListRecords} and ListSets\index{OAI-PMH!Verbs!ListSets} verbs; the average response times for each case were then recorded.
+
+\subparagraph{Results}
+
+Figure~\ref{fig:experimentation:performance:oaipmh:level} show results of the impact on performance of collection structure on the OAI-PMH verbs.
+
+% 
+% Already available in appendices
+\begin{comment}
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.oaipmh.level.tex}
+\bodyspacing
+\end{comment}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.oaipmh.level.tex}
+ }
+ \caption[Impact of collection structure on OAI-PMH]{Impact of collection structure on OAI-PMH data provider\index{OAI-PMH!Data Provider} performance. Note that with the exception of workloads with less than \num{1000} documents, ListIdentifiers\index{OAI-PMH!Verbs!ListIdentifiers} and ListRecords\index{OAI-PMH!Verbs!ListRecords} are partial incomplete-list responses for the first N=\num{1000} records.}
+ \label{fig:experimentation:performance:oaipmh:level}
+\end{figure}
+% 
+%  (Top Left) The time taken to generate result set for an individual record. (Top Right) The time taken to generate the first N list identifiers. (Bottom Right) The time taken to list collection sets. (Bottom Left) The time take to generate the first N list records
+
+% 
+% March 23, 2013
+% Decided to use facets as opposed to individually separating plots---reclaiming space
+\begin{comment}
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.oaipmh.getrecord-level.tex}
+ }
+ \caption[OAI-PMH data provider\index{OAI-PMH!Data Provider} GetRecord\index{OAI-PMH!Verbs!GetRecord} performance]{OAI-PMH data provider\index{OAI-PMH!Data Provider} GetRecord\index{OAI-PMH!Verbs!GetRecord} performance}
+ \label{fig:experimentation:performance:oaipmh:getrecord-level}
+\end{figure}
+
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.oaipmh.listidentifiers-level.tex}
+ }
+ \caption[OAI-PMH data provider\index{OAI-PMH!Data Provider} ListIdentifiers\index{OAI-PMH!Verbs!ListIdentifiers} performance]{OAI-PMH data provider\index{OAI-PMH!Data Provider} ListIdentifiers\index{OAI-PMH!Verbs!ListIdentifiers} performance}
+ \label{fig:experimentation:performance:oaipmh:listidentifiers-level}
+\end{figure}
+
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.oaipmh.listrecords-level.tex}
+ }
+ \caption[OAI-PMH data provider\index{OAI-PMH!Data Provider} ListRecords\index{OAI-PMH!Verbs!ListRecords} performance]{OAI-PMH data provider\index{OAI-PMH!Data Provider} ListRecords\index{OAI-PMH!Verbs!ListRecords} performance}
+ \label{fig:experimentation:performance:oaipmh:listrecords-level}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.oaipmh.listsets-level.tex}
+ }
+ \caption[OAI-PMH data provider\index{OAI-PMH!Data Provider} ListSets\index{OAI-PMH!Verbs!ListSets} performance]{OAI-PMH data provider\index{OAI-PMH!Data Provider} ListSets\index{OAI-PMH!Verbs!ListSets} performance}
+ \label{fig:experimentation:performance:oaipmh:listsets-level}
+\end{figure}
+\end{comment}
+
+\subparagraph{Discussion}
+
+The difference in response times, of ListIdentifiers\index{OAI-PMH!Verbs!ListIdentifiers} and ListRecords\index{OAI-PMH!Verbs!ListRecords} verbs, for the different levels only becomes apparent with relatively larger workloads.\index{Workload} This difference is as a result of the latency incurred during directory traversal, an operation that takes a relatively shorter time to complete. This is further evidenced by the results from the ListSets\index{OAI-PMH!Verbs!ListSets} verb (see Figure~\ref{fig:experimentation:performance:oaipmh:level}), an operation that is significantly dependent on directory traversal.
+
+\paragraph{Experiment: Impact of resumptionToken size}\index{OAI-PMH!resumptionToken}
+\label{sec:evaluation:performance:oaipmh-data-provider:experiment3}
+
+The flow control for incomplete list responses in Experiment 1 was handled based on the recommendations from the guidelines for repository implementers \citep{Lagoze2002a}. This involved the use of a resumptionToken size of \num{1000} records. This experiment was conducted to determine the impact of varying the resumptionToken sizes as the workload\index{Workload} increased.
+
+\subparagraph{Methodology} %\hspace*{\fill} \\ % provision for dirtree
+
+The resumptionToken sizes were varied between \numlist{10;100;1000}, whilst conducting ListIdentifiers\index{OAI-PMH!Verbs!ListIdentifiers} and ListRecords\index{OAI-PMH!Verbs!ListRecords} requests for the first and last list responses. Siege\index{Siege} was used to simulate a single user request with a total of 5 repeated runs for each request; the average response times for each case were then recorded.
+
+\subparagraph{Results}
+
+The results of the experiment are shown in Figure~\ref{fig:experimentation:performance:oaipmh:resumptiontoken-size} in the form of response times for ListRecord verb when resumptionToken size is 0 (First list recordset) and when resumptionToken size is $N$ (Last list recordset); with $N$ representing the last list response.
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.oaipmh.resumptiontoken-size.tex}
+ }
+ \caption[Impact of resumptionToken size on OAI-PMH]{Impact of resumptionToken size on OAI-PMH data provider\index{OAI-PMH!Data Provider} performance. The plots show the time taken to generate archives' first partial incomplete list set and the archives' last list set.}
+ \label{fig:experimentation:performance:oaipmh:resumptiontoken-size}
+\end{figure}
+
+% 
+% Already available in appendices
+\begin{comment}
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.oaipmh.resumptiontoken-size.tex}
+\bodyspacing
+\end{comment}
+
+\subparagraph{Discussion}
+
+The results indicate that harvesting recordsets using a smaller resumptionToken size is faster than otherwise. In addition, there is not a noticeable change when the resumptionToken cursor is varied.
+
+\paragraph{Experiment: Impact of resumptionToken size and structure}
+\label{sec:evaluation:performance:oaipmh-data-provider:experiment4}
+
+This experiment was conducted to assess the combined effect of a structured
+collection and varying resumptionToken sizes.
+
+\subparagraph{Methodology} %\hspace*{\fill} \\ % provision for dirtree
+
+The collection structures shown in Figure~\ref{fig:experimentation:performance:workload-design:directory-structures} was used and resumptionToken sizes varied as in the experiment described in Section~\ref{sec:evaluation:performance:oaipmh-data-provider:experiment3}. Siege was then used to compute response times for generating incomplete list responses for the ListRecords\index{OAI-PMH!Verbs!ListRecords} OAI-PMH verb.
+
+\subparagraph{Results}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.oaipmh.resumptiontoken-size-level.tex}
+ }
+ \caption[Impact of resumptionToken size\& structure on OAI-PMH]{Impact of varying resumptionToken sizes and collection structure on the OAI-PMH Data Provider performance.}
+ \label{fig:experimentation:performance:oaipmh:resumptiontoken-size-level}
+\end{figure}
+
+Figure~\ref{fig:experimentation:performance:oaipmh:resumptiontoken-size-level} shows results of the combined effect of hierarchical structure and resumptionToken size.
+
+\subparagraph{Discussion}
+
+The results indicate that it is significantly faster to harvest records from workloads with fewer hierarchical levels and at the same time smaller resumptionToken sizes. The reason for this is two-fold: first, the traversal time for workloads with fewer levels is reduced; and secondly, the time taken to sort records with smaller resumptionToken sizes is faster.
+
+\subsubsection[Feed generator]{Feed generator}\index{RSS}
+\label{sec:evaluation:performance:rss-feed}
+
+The purpose of this experiment was to determine how the relative size
+of file-based collections could potentially impact the performance of an
+integrated RSS feed generator module.
+
+\paragraph{Experiment: Impact of collection structure}
+\label{sec:evaluation:performance:rss-feed:experiment1}
+
+This experiment was conducted to investigate the performance of a file-based RSS module for non-indexed collections.
+
+\subparagraph{Methodology}
+
+The approach used to determine top N latest records took advantage of the operating system creation and modification timestamps. This approach was used to avoid the overhead that results from parsing\index{Parsing} individual records. Each of the \num{15} workloads were traversed to determine the response times when generating top $N$ latest records.
+
+This technique was repeated for one-level, two-level and three-level hierarchical structures and using results from one-level structures as the baseline, the change in response times was noted to determine the effect of altering the collection structures.
+
+\subparagraph{Results}
+
+Figure~\ref{fig:experimentation:performance:rss-feed:feed-size} shows the times taken to generate the top $N$ most recently added records to each of the \num{15} workloads.\index{Workload} Table~\ref{tab:experimentation:performance:rss-feed:level} and Figure~\ref{fig:experimentation:performance:rss-feed:level} show the change ($\Delta$ Dataset\#2 and $\Delta$ Dataset\#3) in response times---relative to one-level structured workloads results shown in Table~\ref{tab:appendicies:performance:rss:levels}---for each of the workloads when rearranged into two-level and three-level structures.
+
+% 
+% Already available in appendices
+\begin{comment}
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.rss-feed.feed-size.tex}
+\bodyspacing
+\end{comment}
+
+\tablespacing
+\input{chapter07/tables/table.experimentation.performance.rss-feed.level.tex}
+\bodyspacing
+
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{\input{chapter07/plots/plot.experimentation.performance.rss-feed.feed-size.tex}
+ }
+\caption[Impact of feed size on feed generation]{Impact of feed size on feed generation performance}
+ \label{fig:experimentation:performance:rss-feed:feed-size}
+\end{figure}
+
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.rss-feed.level.tex}
+ }
+\caption[Impact of structure on feed generation]{Impact of structure on feed generation performance}
+ \label{fig:experimentation:performance:rss-feed:level}
+\end{figure}
+
+
+\subparagraph{Discussion}
+
+The results presented in Figure~\ref{fig:experimentation:performance:rss-feed:feed-size} indicate that there is not a noticeable change in the overall performance when the collection structure is changed. This is primarily due to the fact that the only significant factor involved during feed generation is the comparison of metadata\index{Metadata} file timestamps---an operation which is very efficient. Another significant factor involved in the feed generation process is directory traversal time, which remains almost constant for varying feed sizes, since the structure remains unchanged. However, increasing the feed sizes to larger sizes would result in some noticeable variation, since the time for comparing file timestamps would be increased significantly.
+
+Table~\ref{tab:experimentation:performance:rss-feed:level} and Figure~\ref{fig:experimentation:performance:rss-feed:level} show a noticeable change in the response times for two-level and three-level structured workload\index{Workload} collections, relative to one-level structured workloads.\index{Workload} This change is as a result of the increase in the traversal times as the hierarchies are increased.
+
+\begin{comment}
+\subsubsection{Experiment: RSS Feed Generation Using Indexed Collections}
+\label{sec:evaluation:performance:rss-feed:experiment2}
+
+This experiment was aimed at determining the response times for generating regular collection updates for indexed collections. The experiment was conducted on the premise that a potential RSS feed module would be implemented in such a manner as to take advantage of pre-existing indices.
+
+\paragraph{Methodology} %\hspace*{\fill} \\ % provision for dirtree
+
+The pre-generated Apache Solr indices that resulted from the experiment
+conducted in Section~\ref{sec:evaluation:performance:indexing} were used.
+Siege was used to determine the response times for all the 15 workloads.\index{Workload}
+
+\paragraph{Results}
+
+xxx
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/ggplot2-experiments-performance-rss.tex}
+ }
+\caption[RSS Feed Response Times for Indexed Workloads]{RSS Feed Response Times for Indexed Workloads}
+ \label{fig:evaluation:experiment02:plot-experiments-performance-rss}
+\end{figure}
+
+
+
+%%\subsubsection{Discussion}
+%%\label{sec:evaluation:performance:rss-feed:discussion}
+
+\paragraph{Discussion}
+
+xxx
+
+%%\subsubsection{Conclusion}
+%%\label{sec:evalution:performance:rss-feed:conclusion}
+\end{comment}
+
+%%\begin{comment}
+\subsection{Comparisons}
+\label{sec:evaluation:performance:performance-comparison}
+
+\gls{dl} scalability \citep{Misra2008} and stress-testing \citep{Bainbridge2009} experiments conducted in the past have mostly been focused on specific aspects of \glspl{dls}. However, some comparative studies \citep{FIZ2012} have been conducted, specifically aimed at gathering data used to make improvements to tools and services.
+
+The comparative experiments conducted are similar to the work presented by Misra et al. \citep{Misra2008}. However, as opposed to the ingest-focused benchmarks they conducted, the results presented in this section involved varying aspects of \glspl{dl}. In addition, they were specifically conducted to compare two different approaches---the simple repository design and DSpace 3.1\index{DSpace} \citep{DSpace2013}.
+%The purpose of these comparison experiments was to compare performance of existing solution
+%with proposed solution.
+
+\begin{comment}
+\subsubsection{Experiment: DSpace performance comparisons}
+\label{sec:evaluation:performance:comparison:experiment1}
+
+This experiment was conducted to evaluate and compare performance results from potential non-indexed file-based repositories with DSpace-based repositories.
+\end{comment}
+%%\subsubsection{Methodology}
+%%\label{sec:evaluation:performance:performance-comparison:methodology}
+\subsubsection{Methodology}
+\label{sec:evaluation:performance:performance-comparison:methodology}
+
+A total of \num{15} DSpace \num{3.1}\index{DSpace} instances were set up corresponding to the \num{15} experiment workloads.\index{Workload} The community and collection hierarchies corresponding to workload\index{Workload} name and $setSpecs$ respectively, in each of the \num{15} workloads, were then pre-created; this process was necessitated by the fact that item ingestion\index{Ingestion} within DSpace\index{DSpace} can only be performed on existing collections.
+
+The following evaluation aspects were then performed on the DSpace\index{DSpace} instances and subsequently compared with performance results from workloads ingested into the \num{15} file-based repositories.
+
+\begin{itemize}
+ \item Item ingestion\index{Ingestion} performance
+ \item Search query performance
+ \item OAI-PMH data-provider performance
+\end{itemize}
+
+%%\subsubsection{Results}
+%%\label{sec:evaluation:performance:performance-comparison:results}
+
+\subsubsection{Results}
+\label{sec:evaluation:performance:performance-comparison:results}
+
+Figure~\ref{fig:experimentation:performance:comparision:ingest} is a comparison of the ingest response times for a potential non-indexed file-based repository and DSpace\index{DSpace}; Figure~\ref{fig:experimentation:performance:comparision:oaipmh} show OAI-PMH comparisons; and Figure~\ref{fig:experimentation:performance:comparision:search} show the comparison of search\index{Search} query performance between the two approaches.
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.comparison.ingest.tex}
+ }
+\caption[Comparison of single item ingestion\index{Ingestion} performance]{A plot showing a comparison of ingestion\index{Ingestion} performance between the simple repository and DSpace.}
+ \label{fig:experimentation:performance:comparision:ingest}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.comparison.search.tex}
+ }
+\caption[Comparison of full-text search\index{Search} performance]{A plot showing a comparison of full-text search\index{Search} performance between the simple repository and DSpace.}
+ \label{fig:experimentation:performance:comparision:search}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.comparison.oaipmh.tex}
+ }
+\caption[Comparison of OAI-PMH performance]{A plot showing a comparison of OAI-PMH performance between the simple repository and DSpace.}
+ \label{fig:experimentation:performance:comparision:oaipmh}
+\end{figure}
+
+% 
+% March 23, 2013
+% Decided to use facets as opposed to individually separating plots---reclaiming space
+\begin{comment}
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.comparison.oaipmh-listidentifiers.tex}
+ }
+\caption[OAI-PMH ListIdentifiers\index{OAI-PMH!Verbs!ListIdentifiers} performance comparison]{OAI-PMH ListIdentifiers\index{OAI-PMH!Verbs!ListIdentifiers} performance comparison.}
+ \label{fig:experimentation:performance:comparision:oaipmh-listidentifiers}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.comparison.oaipmh-listrecords.tex}
+ }
+\caption[OAI-PMH ListRecords\index{OAI-PMH!Verbs!ListRecords} performance comparison]{OAI-PMH ListRecords\index{OAI-PMH!Verbs!ListRecords} performance comparison.}
+ \label{fig:experimentation:performance:comparision:oaipmh-listrecords}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.comparison.oaipmh-listsets.tex}
+ }
+\caption[OAI-PMH ListSets\index{OAI-PMH!Verbs!ListSets} performance comparison]{OAI-PMH ListSets\index{OAI-PMH!Verbs!ListSets} performance comparison.}
+ \label{fig:experimentation:performance:comparision:oaipmh-listsets}
+\end{figure}
+\end{comment}
+
+%%\subsubsection{Discussion}
+%%\label{sec:evaluation:performance:performance-comparison:discussion}
+\subsubsection{Discussion}
+\label{sec:evaluation:performance:performance-comparison:discussion}
+
+Figure~\ref{fig:experimentation:performance:comparision:ingest} shows that the average time taken to ingest a single item using the proposed approach is significantly more efficient than DSpace\index{DSpace}. Furthermore, the ingest time generally remains constant as the workload\index{Workload} is increased. The reason for this is that parsing\index{Parsing} and repository disk write are the only ingest phases required to ingest an item into the repository, with parsing\index{Parsing} and disk writes accounting for {\SI{90}\percent} and {\SI{10}\percent} of the total ingest time respectively. In contrast, the DSpace\index{DSpace} ingest phase comprises of an item-level database write phase (org.dspace.content.Item), a collection-level database write phase (org.dspace.content.Collection) and an indexing\index{Index} phase (org.dspace.search.DSIndexer).
+
+Search operations and OAI-PMH data provider\index{OAI-PMH!Data Provider} operations, shown in Figure~\ref{fig:experimentation:performance:comparision:search} and Figure~\ref{fig:experimentation:performance:comparision:oaipmh}, are orders of magnitude faster on DSpace\index{DSpace} in comparison to a file-based store. The response times on DSpace\index{DSpace} for these operations are significantly a result of a third-party search\index{Search} service (Apache Solr) integrated with the application to facilitate fast search. The uneven plots---top and bottom plots corresponding to DSpace\index{DSpace}---in Figure~\ref{fig:experimentation:performance:comparision:oaipmh} are as a result of the difference in the structure of the metadata\index{Metadata} records from the different collections---the DSpace\index{DSpace} instances used in the experiments were configured using an OAI 2.0 data provider\index{OAI-PMH!Data Provider} that uses a Solr\index{Apache!Solr} data source by default.
+
+These findings suggest that comparable speeds could be easily attained if the file-based repository was integrated with a search\index{Search} service. Incidentally, integration of a file-based repository with a search\index{Search} service was shown to be possible in~\ref{sec:evaluation:performance:indexing}.
+
+\subsection{Summary}
+\label{sec:evaluation:performance:conclusion}
+
+The results of the performance experiments helped confirm the following:
+
+\begin{itemize}
+ \item The proposed simple repository design yields acceptable performance for relatively medium-sized unindexed collections.
+ \item The comparative experiments with DSpace\index{DSpace} indicate that---comparable performance can be achieved if the simple repository were to be integrated with a third-party search\index{Search} service.
+ \item The majority of operations would be dependent on parsing\index{Parsing} for unindexed collections.
+\end{itemize}

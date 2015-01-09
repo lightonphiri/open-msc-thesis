@@ -1,0 +1,84 @@
+%\begin{longtable}{p{0.10\linewidth} p{0.15\linewidth}
+%p{0.20\linewidth} p{0.15\linewidth} p{0.15\linewidth}}
+%%%\begin{longtable}{ccccc}
+\begin{longtable}{
+>{\arraybackslash}m{0.07\linewidth}|
+>{\centering\arraybackslash}m{0.10\linewidth}|
+>{\centering\arraybackslash}m{0.10\linewidth}|
+>{\centering\arraybackslash}m{0.10\linewidth}|
+>{\centering\arraybackslash}m{0.10\linewidth}
+}
+
+\caption{Workload incremental indexing times}
+\label{tab:experimentation:performance:indexing:incremental-indexing-phases} \\
+
+ %%%%%\toprule
+ \hline
+ {} &
+ \multicolumn{4}{c}{\textbf{Batch size}}\\
+ \cline{2-5}
+ {} &
+ \textbf{1} &
+ \textbf{10} &
+ \textbf{100} &
+ \textbf{1000} \\
+ %%%%%\midrule
+ \hline \hline
+ \endfirsthead
+
+ \caption[]{(continued)}\\
+ %%%%%\toprule
+ \hline
+ {} &
+ \multicolumn{4}{c}{\textbf{Batch size}}\\
+ \cline{2-5}
+ {} &
+ \textbf{1} &
+ \textbf{10} &
+ \textbf{100} &
+ \textbf{1000} \\
+ %%%%%\midrule
+ \hline \hline
+ \endhead
+
+ % Page footer
+ %%%%\midrule
+ \hline
+ \multicolumn{5}{r}{(Continued on next page)} \\
+ \endfoot
+
+ % Last page footer
+ \bottomrule
+ \endlastfoot
+
+ \textbf{W1} & {\tablenum[table-format=4.2]{34.92}} & {\tablenum[table-format=4.2]{71.80}} & {\tablenum[table-format=4.2]{432.94}} & {\tablenum[table-format=4.2]{4348.86}} \\ 
+
+ \textbf{W2} & {\tablenum[table-format=4.2]{32.62}} & {\tablenum[table-format=4.2]{63.55}} & {\tablenum[table-format=4.2]{645.40}} & {\tablenum[table-format=4.2]{3923.20}} \\ 
+
+ \textbf{W3} & {\tablenum[table-format=4.2]{26.57}} & {\tablenum[table-format=4.2]{62.29}} & {\tablenum[table-format=4.2]{646.19}} & {\tablenum[table-format=4.2]{3825.05}} \\ 
+
+ \textbf{W4} & {\tablenum[table-format=4.2]{22.85}} & {\tablenum[table-format=4.2]{61.73}} & {\tablenum[table-format=4.2]{635.37}} & {\tablenum[table-format=4.2]{3804.49}} \\ 
+
+ \textbf{W5} & {\tablenum[table-format=4.2]{26.79}} & {\tablenum[table-format=4.2]{61.45}} & {\tablenum[table-format=4.2]{563.93}} & {\tablenum[table-format=4.2]{3829.80}} \\ 
+
+ \textbf{W6} & {\tablenum[table-format=4.2]{22.25}} & {\tablenum[table-format=4.2]{64.97}} & {\tablenum[table-format=4.2]{386.39}} & {\tablenum[table-format=4.2]{3828.78}} \\ 
+
+ \textbf{W7} & {\tablenum[table-format=4.2]{29.89}} & {\tablenum[table-format=4.2]{62.29}} & {\tablenum[table-format=4.2]{650.06}} & {\tablenum[table-format=4.2]{3969.72}} \\ 
+
+ \textbf{W8} & {\tablenum[table-format=4.2]{24.21}} & {\tablenum[table-format=4.2]{61.86}} & {\tablenum[table-format=4.2]{645.51}} & {\tablenum[table-format=4.2]{3952.96}} \\ 
+
+ \textbf{W9} & {\tablenum[table-format=4.2]{31.36}} & {\tablenum[table-format=4.2]{62.02}} & {\tablenum[table-format=4.2]{646.18}} & {\tablenum[table-format=4.2]{3813.33}} \\ 
+
+\textbf{W10} & {\tablenum[table-format=4.2]{31.48}} & {\tablenum[table-format=4.2]{64.96}} & {\tablenum[table-format=4.2]{644.80}} & {\tablenum[table-format=4.2]{3958.49}} \\ 
+
+\textbf{W11} & {\tablenum[table-format=4.2]{30.50}} & {\tablenum[table-format=4.2]{61.71}} & {\tablenum[table-format=4.2]{385.42}} & {\tablenum[table-format=4.2]{3962.76}} \\ 
+
+\textbf{W12} & {\tablenum[table-format=4.2]{21.66}} & {\tablenum[table-format=4.2]{36.20}} & {\tablenum[table-format=4.2]{383.34}} & {\tablenum[table-format=4.2]{3819.12}} \\ 
+
+\textbf{W13} & {\tablenum[table-format=4.2]{21.55}} & {\tablenum[table-format=4.2]{36.70}} & {\tablenum[table-format=4.2]{384.59}} & {\tablenum[table-format=4.2]{3947.94}} \\ 
+
+\textbf{W14} & {\tablenum[table-format=4.2]{21.90}} & {\tablenum[table-format=4.2]{36.77}} & {\tablenum[table-format=4.2]{383.57}} & {\tablenum[table-format=4.2]{3937.60}} \\ 
+
+\textbf{W15} & {\tablenum[table-format=4.2]{23.50}} & {\tablenum[table-format=4.2]{37.95}} & {\tablenum[table-format=4.2]{381.11}} & {\tablenum[table-format=4.2]{3802.84}} \\ 
+
+ \end{longtable}

@@ -1,0 +1,21 @@
+Aspect,Feature,Scale,Count
+Understandability,Metadata,Strongly Agree,4
+Understandability,Metadata,Agree,12
+Understandability,Metadata,Neutral,7
+Understandability,Metadata,Disagree,3
+Understandability,Metadata,Strongly Disagree,0
+Simplicity,Metadata,Strongly Agree,2
+Simplicity,Metadata,Agree,16
+Simplicity,Metadata,Neutral,3
+Simplicity,Metadata,Disagree,5
+Simplicity,Metadata,Strongly Disagree,0
+Understandability,Structure,Strongly Agree,2
+Understandability,Structure,Agree,10
+Understandability,Structure,Neutral,8
+Understandability,Structure,Disagree,6
+Understandability,Structure,Strongly Disagree,0
+Simplicity,Structure,Strongly Agree,5
+Simplicity,Structure,Agree,11
+Simplicity,Structure,Neutral,7
+Simplicity,Structure,Disagree,3
+Simplicity,Structure,Strongly Disagree,0

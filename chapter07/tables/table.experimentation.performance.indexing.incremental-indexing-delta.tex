@@ -1,0 +1,177 @@
+%\begin{longtable}{p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth}
+%p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth}}
+\begin{longtable}{
+>{\centering\arraybackslash}m{0.03\linewidth} 
+>{\centering\arraybackslash}m{0.03\linewidth} 
+>{\centering\arraybackslash}m{0.08\linewidth}
+>{\centering\arraybackslash}m{0.08\linewidth}
+>{\centering\arraybackslash}m{0.03\linewidth} 
+>{\centering\arraybackslash}m{0.08\linewidth}
+>{\centering\arraybackslash}m{0.08\linewidth}
+>{\centering\arraybackslash}m{0.03\linewidth} 
+>{\centering\arraybackslash}m{0.08\linewidth}
+>{\centering\arraybackslash}m{0.08\linewidth}
+>{\centering\arraybackslash}m{0.03\linewidth} 
+>{\centering\arraybackslash}m{0.08\linewidth}
+>{\centering\arraybackslash}m{0.08\linewidth}}
+\caption{Incremental indexing for varying batch sizes}
+\label{tab:experimentation:performance:indexing:incremental-indexing}\\
+
+ \toprule
+ {} & 
+ \multicolumn{12}{c}{\textbf{Batch size}}\\
+ \midrule
+ {} & 
+ \multicolumn{3}{c}{\textbf{1}} &  
+ \multicolumn{3}{c}{\textbf{10}} &
+ \multicolumn{3}{c}{\textbf{100}} & 
+ \multicolumn{3}{c}{\textbf{1000}}\\
+ \midrule
+ {} & 
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{Indexing}\end{sideways}}&
+{\begin{sideways}\textbf{Parsing}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{Indexing}\end{sideways}}&
+{\begin{sideways}\textbf{Parsing}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{Indexing}\end{sideways}}&
+{\begin{sideways}\textbf{Parsing}\end{sideways}}\\
+\midrule
+ \endfirsthead
+
+ \caption[]{(continued)}\\
+ \toprule
+ {} & 
+ \multicolumn{12}{c}{\textbf{Batch size}}\\
+ \midrule
+ {} & 
+ \multicolumn{3}{c}{\textbf{1}} &  
+ \multicolumn{3}{c}{\textbf{10}} &
+ \multicolumn{3}{c}{\textbf{100}} & 
+ \multicolumn{3}{c}{\textbf{1000}}\\
+ \midrule
+ {} & 
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{Indexing}\end{sideways}}&
+{\begin{sideways}\textbf{Parsing}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{Indexing}\end{sideways}}&
+{\begin{sideways}\textbf{Parsing}\end{sideways}}&
+{\begin{sideways}\textbf{Processing}\end{sideways}}&
+{\begin{sideways}\textbf{Indexing}\end{sideways}}&
+{\begin{sideways}\textbf{Parsing}\end{sideways}}\\
+\midrule
+ \endhead
+
+ % Page footer
+ \midrule
+ \multicolumn{13}{r}{(Continued on next page)} \\
+ \endfoot
+
+ % Last page footer
+ \bottomrule
+ \endlastfoot
+
+ \textbf{W1} & {\tablenum[table-format=4.2]{34.92}} & {\SI{88.78}{\percent}} & {\SI{11.22}{\percent}} & {\tablenum[table-format=4.2]{71.8}} & {\SI{45.96}{\percent}} & {\SI{54.04}{\percent}} & {\tablenum[table-format=4.2]{432.94}} & {\SI{45.04}{\percent}} & {\SI{54.96}{\percent}} & {\tablenum[table-format=4.2]{4348.86}} & {\SI{39.44}{\percent}} & {\SI{60.56}{\percent}} \\ 
+
+ \textbf{W2} & {\tablenum[table-format=4.2]{32.62}} & {\SI{88.89}{\percent}} & {\SI{11.11}{\percent}} & {\tablenum[table-format=4.2]{63.55}} & {\SI{39.34}{\percent}} & {\SI{60.66}{\percent}} & {\tablenum[table-format=4.2]{645.4}} & {\SI{40.44}{\percent}} & {\SI{59.56}{\percent}} & {\tablenum[table-format=4.2]{3923.2}} & {\SI{39.08}{\percent}} & {\SI{60.92}{\percent}} \\ 
+
+ \textbf{W3} & {\tablenum[table-format=4.2]{26.57}} & {\SI{90.32}{\percent}} & {\SI{9.68}{\percent}} & {\tablenum[table-format=4.2]{62.29}} & {\SI{40.13}{\percent}} & {\SI{59.87}{\percent}} & {\tablenum[table-format=4.2]{646.19}} & {\SI{42.4}{\percent}} & {\SI{57.6}{\percent}} & {\tablenum[table-format=4.2]{3825.05}} & {\SI{40.6}{\percent}} & {\SI{59.4}{\percent}} \\ 
+
+ \textbf{W4} & {\tablenum[table-format=4.2]{22.85}} & {\SI{87.52}{\percent}} & {\SI{12.48}{\percent}} & {\tablenum[table-format=4.2]{61.73}} & {\SI{35.64}{\percent}} & {\SI{64.36}{\percent}} & {\tablenum[table-format=4.2]{635.37}} & {\SI{41.08}{\percent}} & {\SI{58.92}{\percent}} & {\tablenum[table-format=4.2]{3804.49}} & {\SI{39.95}{\percent}} & {\SI{60.05}{\percent}} \\ 
+
+ \textbf{W5} & {\tablenum[table-format=4.2]{26.79}} & {\SI{85.85}{\percent}} & {\SI{14.15}{\percent}} & {\tablenum[table-format=4.2]{61.45}} & {\SI{47.19}{\percent}} & {\SI{52.81}{\percent}} & {\tablenum[table-format=4.2]{563.93}} & {\SI{42.56}{\percent}} & {\SI{57.44}{\percent}} & {\tablenum[table-format=4.2]{3829.8}} & {\SI{39.61}{\percent}} & {\SI{60.39}{\percent}} \\ 
+
+ \textbf{W6} & {\tablenum[table-format=4.2]{22.25}} & {\SI{89.87}{\percent}} & {\SI{10.13}{\percent}} & {\tablenum[table-format=4.2]{64.97}} & {\SI{41.56}{\percent}} & {\SI{58.44}{\percent}} & {\tablenum[table-format=4.2]{386.39}} & {\SI{39.86}{\percent}} & {\SI{60.14}{\percent}} & {\tablenum[table-format=4.2]{3828.78}} & {\SI{40.07}{\percent}} & {\SI{59.93}{\percent}} \\ 
+
+ \textbf{W7} & {\tablenum[table-format=4.2]{29.89}} & {\SI{90.35}{\percent}} & {\SI{9.65}{\percent}} & {\tablenum[table-format=4.2]{62.29}} & {\SI{41.74}{\percent}} & {\SI{58.26}{\percent}} & {\tablenum[table-format=4.2]{650.06}} & {\SI{42.77}{\percent}} & {\SI{57.23}{\percent}} & {\tablenum[table-format=4.2]{3969.72}} & {\SI{43.2}{\percent}} & {\SI{56.8}{\percent}} \\ 
+
+ \textbf{W8} & {\tablenum[table-format=4.2]{24.21}} & {\SI{90.86}{\percent}} & {\SI{9.14}{\percent}} & {\tablenum[table-format=4.2]{61.86}} & {\SI{45.26}{\percent}} & {\SI{54.74}{\percent}} & {\tablenum[table-format=4.2]{645.51}} & {\SI{43.07}{\percent}} & {\SI{56.93}{\percent}} & {\tablenum[table-format=4.2]{3952.96}} & {\SI{39.31}{\percent}} & {\SI{60.69}{\percent}} \\ 
+
+ \textbf{W9} & {\tablenum[table-format=4.2]{31.36}} & {\SI{92.49}{\percent}} & {\SI{7.51}{\percent}} & {\tablenum[table-format=4.2]{62.02}} & {\SI{41.92}{\percent}} & {\SI{58.08}{\percent}} & {\tablenum[table-format=4.2]{646.18}} & {\SI{42.09}{\percent}} & {\SI{57.91}{\percent}} & {\tablenum[table-format=4.2]{3813.33}} & {\SI{40.25}{\percent}} & {\SI{59.75}{\percent}} \\ 
+
+\textbf{W10} & {\tablenum[table-format=4.2]{31.48}} & {\SI{88.96}{\percent}} & {\SI{11.04}{\percent}} & {\tablenum[table-format=4.2]{64.96}} & {\SI{41.57}{\percent}} & {\SI{58.43}{\percent}} & {\tablenum[table-format=4.2]{644.8}} & {\SI{42.65}{\percent}} & {\SI{57.35}{\percent}} & {\tablenum[table-format=4.2]{3958.49}} & {\SI{42.01}{\percent}} & {\SI{57.99}{\percent}} \\ 
+
+\textbf{W11} & {\tablenum[table-format=4.2]{30.5}} & {\SI{88.53}{\percent}} & {\SI{11.47}{\percent}} & {\tablenum[table-format=4.2]{61.71}} & {\SI{37.27}{\percent}} & {\SI{62.73}{\percent}} & {\tablenum[table-format=4.2]{385.42}} & {\SI{42.29}{\percent}} & {\SI{57.71}{\percent}} & {\tablenum[table-format=4.2]{3962.76}} & {\SI{42.92}{\percent}} & {\SI{57.08}{\percent}} \\ 
+
+\textbf{W12} & {\tablenum[table-format=4.2]{21.66}} & {\SI{87.71}{\percent}} & {\SI{12.29}{\percent}} & {\tablenum[table-format=4.2]{36.2}} & {\SI{38.68}{\percent}} & {\SI{61.32}{\percent}} & {\tablenum[table-format=4.2]{383.34}} & {\SI{41.74}{\percent}} & {\SI{58.26}{\percent}} & {\tablenum[table-format=4.2]{3819.12}} & {\SI{39.96}{\percent}} & {\SI{60.04}{\percent}} \\ 
+
+\textbf{W13} & {\tablenum[table-format=4.2]{21.55}} & {\SI{88.15}{\percent}} & {\SI{11.85}{\percent}} & {\tablenum[table-format=4.2]{36.7}} & {\SI{40.87}{\percent}} & {\SI{59.13}{\percent}} & {\tablenum[table-format=4.2]{384.59}} & {\SI{39.52}{\percent}} & {\SI{60.48}{\percent}} & {\tablenum[table-format=4.2]{3947.94}} & {\SI{42.76}{\percent}} & {\SI{57.24}{\percent}} \\ 
+
+\textbf{W14} & {\tablenum[table-format=4.2]{21.9}} & {\SI{86.77}{\percent}} & {\SI{13.23}{\percent}} & {\tablenum[table-format=4.2]{36.77}} & {\SI{32.63}{\percent}} & {\SI{67.37}{\percent}} & {\tablenum[table-format=4.2]{383.57}} & {\SI{41.71}{\percent}} & {\SI{58.29}{\percent}} & {\tablenum[table-format=4.2]{3937.6}} & {\SI{42.72}{\percent}} & {\SI{57.28}{\percent}} \\ 
+
+\textbf{W15} & {\tablenum[table-format=4.2]{23.5}} & {\SI{89.37}{\percent}} & {\SI{10.63}{\percent}} & {\tablenum[table-format=4.2]{37.95}} & {\SI{36.89}{\percent}} & {\SI{63.11}{\percent}} & {\tablenum[table-format=4.2]{381.11}} & {\SI{38.05}{\percent}} & {\SI{61.95}{\percent}} & {\tablenum[table-format=4.2]{3802.84}} & {\SI{40.15}{\percent}} & {\SI{59.85}{\percent}} \\ 
+
+
+%%%\textbf{W1} & {0.03} & {0.03} & {0.03} & {0.07} & {0.2} & {0.43} & {1.72} & {4.35} \\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%\textbf{W2} & {0.03} & {0.03} & {0.03} & {0.06} & {0.26} & {0.65} & {1.53} & {3.92} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%\textbf{W3} & {0.02} & {0.03} & {0.03} & {0.06} & {0.27} & {0.65} & {1.55} & {3.83} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+ %%%\textbf{W4} & {0.02} & {0.02} & {0.02} & {0.06} & {0.26} & {0.64} & {1.52} & {3.8} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+
+ %%%\textbf{W5} & {0.02} & {0.03} & {0.03} & {0.06} & {0.24} & {0.56} & {1.52} & {3.83}\\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+
+%%%\textbf{W6} & {0.02} & {0.02} & {0.03} & {0.06} & {0.15} & {0.39} & {1.53} & {3.83} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+
+%%%\textbf{W7} & {0.03} & {0.03} & {0.03} & {0.06} & {0.28} & {0.65} & {1.72} & {3.97} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+
+ %%%\textbf{W8} & {0.02} & {0.02} & {0.03} & {0.06} & {0.28} & {0.65} & {1.55} & {3.95}\\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+
+%%%\textbf{W9} & {0.03} & {0.03} & {0.03} & {0.06} & {0.27} & {0.65} & {1.54} & {3.81} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+
+ %%%\textbf{W10} & {0.03} & {0.03} & {0.03} & {0.06} & {0.28} & {0.64} & {1.66} & {3.96}\\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+
+%%%\textbf{W11} & {0.03} & {0.03} & {0.02} & {0.06} & {0.16} & {0.39} & {1.7} & {3.96} \\ 
+ 
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+
+ %%%\textbf{W12} & {0.02} & {0.02} & {0.01} & {0.04} & {0.16} & {0.38} & {1.53} & {3.82}\\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+ 
+
+ %%%\textbf{W13} & {0.02} & {0.02} & {0.02} & {0.04} & {0.15} & {0.38} & {1.69} & {3.95}\\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+%%%\textbf{W14} & {0.02} & {0.02} & {0.01} & {0.04} & {0.16} & {0.38} & {1.68} & {3.94}\\
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+
+%%%\textbf{W15} & {0.02} & {0.02} & {0.01} & {0.04} & {0.15} & {0.38} & {1.53} & {3.8} \\ 
+
+ %\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-3}
+
+ \end{longtable}

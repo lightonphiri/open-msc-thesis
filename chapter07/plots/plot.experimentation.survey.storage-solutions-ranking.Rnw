@@ -1,0 +1,73 @@
+<<fig=FALSE, echo=FALSE>>=
+# Author: Lighton Phiri
+# Date: December 2012
+# Purpose: ggplot2 kiviat (polar coordinate system) chart
+# 
+# Summary kiviat plot showing performance degradation of 
+# performance evaluation aspects
+# 
+
+# import libraries 
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+require(ggthemes)
+
+# generate tikZ-LaTeX input file
+tikz('plot.experimentation.survey.storage-solutions-ranking.tex', width=5.5, height=3.0)
+
+# import datafeeds
+dataset <- read.table("../data/survey-storage-rankings.dat", header=TRUE, sep=",")
+##dataset$Storage <- c("Cloud", "Database", "File")
+
+#experimentdataset[] <- c(paste("Cloud","$\\;\\;\\;$"), paste("Database","$\\;\\;\\;$"), paste("File","$\\;\\;\\;$"))
+
+# convert experimentdataset to molten form for ggplot2
+experimentdataset <- melt(dataset, id.vars="Storage")
+
+# add dummy column for faceting
+experimentdataset["yaba"] <- "Storage ranking order"
+
+# Change variable titles
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="Ranking.1"] <- "Rank \\#1"
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="Ranking.2"] <- "Rank \\#2"
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="Ranking.3"] <- "Rank \\#3"
+
+# rename storage options
+levels(experimentdataset$Storage)[levels(experimentdataset$Storage)=="Cloud-based"] <-paste ("Cloud storage", "$\\;\\;\\;\\;\\;$")
+levels(experimentdataset$Storage)[levels(experimentdataset$Storage)=="Database-based"] <- paste("Database storage", "$\\;\\;\\;\\;\\;$")
+levels(experimentdataset$Storage)[levels(experimentdataset$Storage)=="File-based"] <- paste("File storage", "$\\;\\;\\;\\;\\;$")
+
+#ggplot(experimentdataset, aes(x=variable, y=value, fill=Storage, width=0.75)) + geom_bar(stat="identity") + labs(x="", y="")  + theme(legend.title=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank(), legend.position = "bottom", axis.ticks.x=element_blank(), axis.ticks.y=element_blank()) + scale_fill_brewer(palette="Dark2", labels=c(paste("$\\;$","Cloud Storage","$\\;\\;\\;\\;$"), paste("$\\;$","Database Storage","$\\;\\;\\;\\;\\;$"), paste("$\\;$","File Storage","$\\;\\;\\;\\;$"))) + coord_flip()
+
+# create colored plot
+##ggplot(experimentdataset, aes(x=variable, y=value, fill=Storage, width=0.75)) + geom_bar(stat="identity") + labs(x="", y="")  + theme(legend.title=element_blank(), legend.position="bottom", axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.ticks.y=element_blank()) + scale_fill_brewer(palette="Dark2", labels=c(paste("$\\;$","Cloud Storage","$\\;\\;\\;\\;$"), paste("$\\;$","Database Storage","$\\;\\;\\;\\;\\;$"), paste("$\\;$","File Storage","$\\;\\;\\;\\;$"))) + coord_flip()
+
+# create colored plot
+ggplot(experimentdataset, 
+       aes(x=variable, 
+           y=value, 
+           fill=Storage, 
+           width=0.75)) + 
+             geom_bar(stat="identity") + 
+             labs(x="Ranking orders", y="Number of subjects")  +
+	     #ggtitle("Storage solutions rankings") + 
+	     facet_wrap(~ yaba) +
+	     theme_igray() +
+             theme(legend.title=element_blank(), 
+                   legend.position="bottom", 
+		   legend.text=element_text(size=8),
+		   legend.key.height=unit(0.35,"cm"),
+                   axis.ticks.y=element_blank(),
+		   axis.title.x = element_text(vjust=-0.8,size=10),
+		   axis.title.y = element_text(vjust=-0.2,size=10),
+		   axis.text = element_text(size=8),
+		   strip.text = element_text(size=9),
+		   #plot.margin=unit(c(0.2,0.15,0.01,0.8), "cm")) + 
+		   plot.margin=unit(c(0.5,0.5,0.01,0.8), "cm")) +
+             scale_y_continuous(breaks=seq(from=0,to=25,by=5)) +
+	     coord_flip() +
+	     #scale_fill_grey(breaks=c(paste ("Cloud Storage", "$\\;\\;\\;\\;\\;$"), paste("Database Storage", "$\\;\\;\\;\\;\\;$"), paste("File Storage", "$\\;\\;\\;\\;\\;$")))
+	     scale_fill_stata(breaks=c(paste ("Cloud storage", "$\\;\\;\\;\\;\\;$"), paste("Database storage", "$\\;\\;\\;\\;\\;$"), paste("File storage", "$\\;\\;\\;\\;\\;$")))
+@

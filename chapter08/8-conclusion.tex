@@ -1,0 +1,99 @@
+\chapter{Conclusions\label{ch:conclusion}}
+
+%%%\input{chapter08/8-1-conclusion} % Conclusion
+
+% 
+% http://linguistics.byu.edu/faculty/henrichsenl/researchmethods/RM_3_06
+% http://explorable.com/drawing-conclusions
+
+%Simplicity has many facets, in the context of this research it's about
+%replacing legacy components to simplify management and ...
+
+%Repositories need to scale...
+%Repositories need to be extensible...
+%Repositories need to be interoperable...
+
+%We have done x things: firstly we have xxx, secondly, we have xxx and finally
+%we have xxx.
+
+%
+% What has been learned?
+
+%
+% Leads for future research
+%%%\begin{itemize}
+%%% \item Simple services\& UI definition
+%%% \item Reference implementation
+%%%\end{itemize}
+
+%
+% Flaws in research process
+
+% 
+% Advantages& benefits of the research
+%%%\begin{itemize}
+%%% \item Advantages\& benefits of the research
+%%% \begin{itemize}
+%%%  \item Principled \gls{dls} design
+%%% \end{itemize}
+%%%\end{itemize}
+
+
+% 
+% Summarise the main points you made in your introduction\& review of the literature
+
+This research was motivated by the observation that most contemporary \gls{dl} tools are complex and thus difficult to manage. The design of simpler and more manageable tools for storage and management of digital content was subsequently identified as a potential solution. A literature synthesis of the two-decades long study of \glspl{dl} suggests that there is now a firm understanding of the basic underpinning concepts associated with \glspl{dls}. This is evident from the varying existing designs of tools and services specifically tailored to store, manage and preserve digital content. In Chapter~\ref{ch:background}, some prominent \gls{dl} frameworks and software tools were presented to illustrate the differences in the design approach. Furthermore, the relevant background information was also presented.
+
+% 
+% Review (very briefly) the research methods and/or design you employed
+
+An exploratory study, discussed in Chapter~\ref{ch:exploratory-study}, was conducted using Grounded Theory as the overarching research method to help derive a set of guiding design principles that would aid the overall design of simple \glspl{dls}. A practical application of the guiding principles, discussed in Chapter~\ref{ch:implementation}, was assessed through the design of a simple repository sub-layer for a typical \gls{dls} and the effectiveness of the design subsequently evaluated through the implementation of two real-world case studies that are discussed in Chapter~\ref{ch:case-studies}. In addition to assessing the effectiveness of this research through the case studies implementations, a developer survey (see Section ~\ref{sec:evaluation:developer-survey}) was conducted to assess the simplicity and usefulness of the approach. Finally, a series of performance benchmarks, discussed in Section~\ref{sec:evaluation:performance}, were conducted to assess the implications of simplifying \gls{dls} design relative to the collection size.
+
+% 
+% Repeat (in abbreviated form) your findings
+
+
+% 
+% Discuss the broader implications of your research (due to its scope or its weakness)
+
+
+
+%\subsubsection*{Simple \gls{dls} architectures}
+%\label{sec:conclusion:simple-architectures}
+
+%xxx
+
+%\subsubsection*{Implications of simplicity}
+%\label{sec:conclusion:implications-of-simplicity}
+
+%xxx
+
+
+% 
+% Offer suggestions for future research related to your research
+
+\section{Research questions}
+\label{sec:conclusion:research-questions}
+
+The research questions that were formulated at the onset of this research, as described in Section~\ref{sec:introduction:research-questions} were addressed through the exploratory study discussed in Chapter~\ref{ch:exploratory-study}; the prototype repository design described in Chapter~\ref{ch:implementation}; the case study implementation presented in Chapter~\ref{ch:case-studies}; and through experiments outlined in Chapter~\ref{ch:evaluation}. In summary, the research questions were resolved as follows:
+
+\subsubsection*{Is it feasible to implement a \gls{dls} based on simple architectures?}
+
+The prototype repository design in Chapter~\ref{ch:implementation}, together with the real-world case study implementations discussed in Chapter~\ref{ch:case-studies} prove the feasibility of simple designs. This assertion is further supported by the various Web services that were developed during the developer study described in Section~\ref{sec:evaluation:developer-survey}.
+
+\begin{enumerate}[label=\roman*]
+ \item \subsubsection*{How should simplicity for \gls{dls} storage and service architectures be defined?}
+ 
+ A major outcome, and perhaps a significant contribution of this research revolves around a principled approach to simple \gls{dls} design. This approached offers the advantage of ensuring that domain and application-specific needs are met. Furthermore, such a principled design approach could have potential practical application to other applications, other than \glspl{dls}, with distinct domain-specific needs. This outcome was implicitly derived as a direct manifestation of results from the research questions discussed in Chapter~\ref{ch:intro}.
+ 
+ \item \subsubsection*{What are the potential implications of simplifying \gls{dls}---adverse or otherwise?}
+ 
+ The results from the developer survey suggest that the proposed approach does not adversely impact the overall extensibility of the prototype repository design. This inference is supported by the varying implementation languages and techniques utilised by the survey participants. In addition, only four out of the 12 groups used additional back-end tools to develop a layered service on top of the simple repository sub-layer used in the survey.
+ 
+ \item \subsubsection*{What are some of the comparative advantages and disadvantages of simpler architectures to complex ones?}
+ 
+ The results from the performance-based experiments indicate that the performance of information discovery operations relative to the size of the collection is adversely impacted; the results show that a collection size exceeding \num{12800} items results in an response times exceeding 10 seconds for certain \gls{dls} operations. However, owing to the fact that the affected operations are information discovery related, this shortcoming can be resolved by integrating the \gls{dls} with an indexing service. Interestingly, ingest-related experiments resulted in superior response times.
+ 
+\end{enumerate}
+
+\input{chapter08/8-2-futurework} % Future work

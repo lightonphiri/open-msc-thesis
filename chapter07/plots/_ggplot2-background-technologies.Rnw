@@ -1,0 +1,33 @@
+<<fig=FALSE, echo=FALSE>>=
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+tikz('ggplot2-background-technologies.tex', width=5.9, height=5.5)
+dataset <- read.table("../data/survey-background-technologies.dat", header=TRUE, sep="\t")
+
+# Added column to facilitate long data format
+#dataset["Experience"] = c(paste("","$<$", "1 yr"), "1 - 3 yrs", "3 - 6 yrs", paste("","$>$","6 yrs"))
+dataset["Experience"] = c(paste("","$<$", "1 yr","$\\;\\;\\;$"), paste("1 - 3 yrs","$\\;\\;\\;$"), paste("3 - 6 yrs","$\\;\\;\\;$"), paste("","$>$","6 yrs","$\\;\\;\\;$"))
+
+#
+backgroundtechnologies <- melt(dataset, var.id="Experience")
+
+# Change variable titles
+levels(backgroundtechnologies$variable)[levels(backgroundtechnologies$variable)=="Web.Applications"] <- "Web Applications"
+levels(backgroundtechnologies$variable)[levels(backgroundtechnologies$variable)=="Data.Driven.Applications"] <- "Data Applications"
+levels(backgroundtechnologies$variable)[levels(backgroundtechnologies$variable)=="RDBMS"] <- "Database Systems"
+levels(backgroundtechnologies$variable)[levels(backgroundtechnologies$variable)=="XML"] <- "XML Documents"
+
+#
+ggplot(backgroundtechnologies, 
+       aes(x=Experience, y=value, fill=Experience)) + 
+         geom_bar() + 
+         facet_wrap(~ variable, scales = "free", ncol = 2) + 
+         coord_cartesian(ylim=c(0, 20)) + 
+         labs(x = "", y = "", fill = "") + 
+         theme(axis.text.x = element_blank(), legend.position = "bottom", legend.title=element_blank()) + 
+         scale_x_discrete(breaks = NULL) + 
+         theme(legend.text = element_text(size = 9)) + 
+         scale_fill_brewer(palette="Dark2", labels = c(paste("","$<$", "1 yr","$\\;\\;\\;$"), paste("1 - 3 yrs","$\\;\\;\\;$"), paste("3 - 6 yrs","$\\;\\;\\;$"), paste("","$>$","6 yrs","$\\;\\;\\;$")))
+@

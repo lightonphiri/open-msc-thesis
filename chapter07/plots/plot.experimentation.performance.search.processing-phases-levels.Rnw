@@ -1,0 +1,81 @@
+<<fig=FALSE, echo=FALSE>>=
+# Author: Lighton Phiri
+# Date: February 2013
+# Purpose: ggplot2 kiviat (polar coordinate system) chart
+# 
+# Summary kiviat plot showing performance degradation of 
+# performance evaluation aspects
+# 
+
+# import libraries 
+require(tikzDevice)
+require(ggplot2)
+require(reshape2)
+require(grid)
+require(scales)
+require(ggthemes)
+
+# generate tikZ-LaTeX input file
+tikz('plot.experimentation.performance.search.processing-phases-levels.tex', width=5.5, height=7.5)
+
+# import datafeeds
+dataset <- read.table("../data/experiments-performance-search-basic-barplot.dat", header=TRUE, sep=",")
+
+# add derived total column
+##dataset$Total <- rowSums(dataset[2:4])
+
+# convert dataset to molten form for ggplot2
+experimentdataset <- melt(dataset, id.vars=c(1,6))
+manualbreaks <- seq(0, max(experimentdataset$value/1000))
+#experimentdataset <- melt(dataset[dataset$Structure=="h1",][1:4], id.vars=c(1))
+#experimentdataset <- melt(dataset[c(1,5)], id.vars=c(1))
+
+# rename search query phases
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="Processing"] <- paste("Total","$\\;\\;\\;$")
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="Traversal"] <- paste("Traversal","$\\;\\;\\;$")
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="Parsing"] <- paste("Parsing","$\\;\\;\\;$")
+levels(experimentdataset$variable)[levels(experimentdataset$variable)=="XPath"] <- paste("XPath","$\\;\\;\\;$")
+
+# rename levels
+levels(experimentdataset$Structure)[levels(experimentdataset$Structure)=="h1"] <- paste("Dataset\\#1","$\\;\\;\\;$")
+levels(experimentdataset$Structure)[levels(experimentdataset$Structure)=="h2"] <- paste("Dataset\\#2","$\\;\\;\\;$")
+levels(experimentdataset$Structure)[levels(experimentdataset$Structure)=="h3"] <- paste("Dataset\\#3","$\\;\\;\\;$")
+
+
+# create colored plot
+##ggplot(data=experimentdataset, aes(x=as.factor(Workload), y=(value), group=Structure, color=Structure, shape=Structure, linetype=Structure)) + geom_line() + geom_point() + scale_shape_manual(values=c(18,4,13)) + scale_linetype_manual(values=c("solid","dotdash","longdash")) + facet_wrap(~ variable) + scale_x_discrete(labels=c("100","200","400","800","1.6k","3.2k","6.4k","12.8k","25.6k","51.2k","102.4k","204.8k","409.6k","819.2k","1638.4k")) +  scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x), labels = trans_format("log10", math_format(10^.x))) +  labs(x="",y="")  + theme(legend.title=element_blank(), legend.position=c(0.115,0.92), plot.margin=unit(c(0.2,0.15,0.05,0.05),"cm"), axis.text.x = element_text(angle=90, vjust=0.5))
+
+# create black& white plot. Notice that you are NOT using theme_bw() here Phiri --DO NOT forget this
+ggplot(data=experimentdataset[experimentdataset$variable!=paste("Total","$\\;\\;\\;$"),], 
+       aes(x=as.factor(Workload), 
+           y=(value), 
+	   colour=Structure,
+           group=Structure)) +
+             geom_line(aes(linetype=Structure), size=1.5) + 
+             geom_point(aes(shape=Structure), size=2.5) + 
+             scale_shape_manual(values=c(1,4,13)) + 
+             scale_linetype_manual(values=c("solid","dotdash","longdash")) + 
+             #facet_wrap(~ variable, scales="free_x") + 
+             facet_wrap(~ variable, ncol=1, scales="free_x") + 
+             scale_x_discrete(labels=c("100","200","400","800","1.6k","3.2k","6.4k","12.8k","25.6k","51.2k","102.4k","204.8k","409.6k","819.2k","1638.4k")) +  
+             scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x), labels = trans_format("log10", math_format(10^.x))) +  
+             labs(x="Workload size",y="log10(Time [ms])")  + 
+	     theme_igray() +
+	     scale_colour_stata() +
+             theme(legend.title=element_blank(), 
+		   #legend.position=c(0.115,0.92), 
+		   legend.position="bottom",
+		   legend.text=element_text(size=8),
+		   legend.key.height=unit(0.35,"cm"),
+		   #plot.margin=unit(c(0.2,0.15,0.05,0.05),"cm"), 
+		   plot.margin=unit(c(0.5,0.5,0,0.8),"cm"),
+		   strip.text = element_text(size=9),
+		   axis.title.x = element_text(vjust=-0.8,size=10),
+		   axis.title.y = element_text(vjust=-0.2,size=10),
+		   axis.text = element_text(size=8),
+		   axis.text.x = element_text(angle=90, vjust=0.5),
+		   panel.margin = unit(1, "lines"))
+
+# Too tired to figure out what this comment plot block is for --will leave it here for now... so tired to think straight
+#ggplot(data=experimentdataset, aes(x=as.factor(Workload), y=(value/1000), group=variable, color=variable, shape=variable, linetype=variable)) + geom_line() + geom_point() + scale_shape_manual(values=c(18,4,13,1)) + scale_linetype_manual(values=c("solid","dotdash","longdash","dotted")) + scale_x_discrete(labels=c("100","200","400","800","1.6k","3.2k","6.4k","12.8k","25.6k","51.2k","102.4k","204.8k","409.6k","819.2k","1638.4k")) + scale_y_log10() + labs(x="",y="")  + theme(legend.title=element_blank(), legend.position="none", plot.margin=unit(c(0.2,0.15,0.05,0.05),"cm"), axis.text.x = element_text(angle=90, vjust=0.5))
+@

@@ -1,0 +1,20 @@
+\section{Summary}
+\label{sec:evaluation-summary}
+
+The results from the developer survey (see Section~\ref{sec:evaluation:developer-survey}) have shown that the resulting simple file-based repository design is easy to work with and could potentially simplify repository management tasks. Furthermore, the results also indicate that a simple file-based repository design would have little impact on the extensibility of an application built on top of such a repository design.
+
+The implementation case study collections outlined in Section~\ref{ch:case-studies} serve as proof that the proposed approach is effective; the Bleek and Lloyd\index{Bleek and Lloyd} case study (see Section~\ref{sec:case-studies:bleek-and-lloyd}) in particular serves as proof that system functionalities and features of existing services based on conventional storage solutions can be replicated using a simple file-based digital object store with little adverse effect.
+
+The scalability performance experiments yielded results that strongly indicate that the performance would be within generally acceptable limits for medium-sized collections, as evidenced in the Kiviat\index{Kiviat} plot shown in Figure~\ref{fig:experimentation:performance:summary:kiviat}. Figure~\ref{fig:experimentation:performance:summary:kiviat} also indicates that ingestion\index{Ingestion} performance is significantly better than the other services. In addition, the performance degradation for all other services occurs for collections with larger than \num{12800} objects. It was further shown that performance degradation of operations such as information discovery and OAI-PMH\index{OAI-PMH} associated services are largely as a result of parsing, a problem that can easily be remedied through the use of an index. 
+
+Finally, it was shown that the superior performance results from the comparative experiments done with DSpace\index{DSpace} are attributed to the external index\index{Index} service---Apache Solr\index{Apache!Solr} and Lucene\index{Lucene}---integrated with DSpace\index{DSpace} to facilitate fast search. However, it was shown in the indexing experiments (see Section~\ref{sec:evaluation:performance:indexing}) that integration of such an external search service could easily be performed using the proposed approach.
+
+\begin{figure}
+ \centering
+ \framebox[\textwidth]{%
+\input{chapter07/plots/plot.experimentation.performance.summary.kiviat.tex}
+ }
+\caption[DL aspects performance summary]{A Kiviat plot showing performance degradation (increase in response times) of evaluation aspects---batch indexing, full-text search, OAI-PMH data provider, RSS feed generator and single item ingestion---relative to increasing workload sizes, with each polar line representing the \num{15} experiment workloads.}
+ \label{fig:experimentation:performance:summary:kiviat}
+\end{figure}
+

@@ -1,0 +1,119 @@
+%\begin{longtable}{p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth}
+%p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth} p{0.12\linewidth}}
+%%%%%\begin{longtable}{ccccccc}
+\begin{longtable}{
+>{\arraybackslash}m{0.07\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}|
+>{\centering\arraybackslash}m{0.11\linewidth}}
+
+\caption{ListRecords response times for varying resumptionToken sizes}
+\label{tab:experimentation:performance:oaipmh:resumptiontoken-size} \\
+
+ %%%%%\toprule
+ \hline
+ %%%%%{} & 
+ %%%%%\multicolumn{6}{c}{\textbf{resumptionToken Size}}\\
+ %%%%%\midrule
+ %%%%%\hline
+ {} & 
+ \multicolumn{2}{c|}{\textbf{Size = 10}} &  
+ \multicolumn{2}{c|}{\textbf{Size = 100}} &
+ \multicolumn{2}{c}{\textbf{Size = 1000}}\\
+ %%%%%\midrule
+ \cline{2-7}
+ {} & 
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} &
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} &
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} \\
+ %%%%%\midrule
+ \hline \hline
+ \endfirsthead
+
+ \caption[]{(continued)}\\
+ %%%%%\toprule
+ \hline
+ %%%%%{} & 
+ %%%%%\multicolumn{6}{c}{\textbf{resumptionToken Size}}\\
+ %%%%%\midrule
+ {} & 
+ \multicolumn{2}{c|}{\textbf{Size = 10}} &  
+ \multicolumn{2}{c|}{\textbf{Size = 100}} &
+ \multicolumn{2}{c}{\textbf{Size = 1000}}\\
+ %%%%%\midrule
+ \cline{2-7}
+ {} &
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} &
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} &
+ {\begin{sideways}\textbf{Listset 1}\end{sideways}} & 
+ {\begin{sideways}\textbf{Listset N}\end{sideways}} \\
+ %%%%%\midrule
+ \hline \hline
+ \endhead
+
+ % Page footer
+ %%%%%\midrule
+ \hline
+ \multicolumn{7}{r}{(Continued on next page)} \\
+ \endfoot
+
+ % Last page footer
+ \bottomrule
+ \endlastfoot
+
+\textbf{W1} & {\tablenum[table-format=7]{60}} & {\tablenum[table-format=7]{60}} & {\tablenum[table-format=7]{480}} & {--} & {\tablenum[table-format=7]{490}} & {--} \\ 
+\textbf{W2} & {\tablenum[table-format=7]{60}} & {\tablenum[table-format=7]{60}} & {\tablenum[table-format=7]{480}} & {\tablenum[table-format=7]{500}} & {\tablenum[table-format=7]{980}} & {--} \\ 
+\textbf{W3} & {\tablenum[table-format=7]{70}} & {\tablenum[table-format=7]{70}} & {\tablenum[table-format=7]{510}} & {\tablenum[table-format=7]{520}} & {\tablenum[table-format=7]{1980}} & {--} \\ 
+\textbf{W4} & {\tablenum[table-format=7]{90}} & {\tablenum[table-format=7]{80}} & {\tablenum[table-format=7]{540}} & {\tablenum[table-format=7]{550}} & {\tablenum[table-format=7]{4080}} & {--} \\ 
+\textbf{W5} & {\tablenum[table-format=7]{120}} & {\tablenum[table-format=7]{120}} & {\tablenum[table-format=7]{590}} & {\tablenum[table-format=7]{620}} & {\tablenum[table-format=7]{5410}} & {\tablenum[table-format=7]{3390}} \\ 
+\textbf{W6} & {\tablenum[table-format=7]{180}} & {\tablenum[table-format=7]{180}} & {\tablenum[table-format=7]{700}} & {\tablenum[table-format=7]{690}} & {\tablenum[table-format=7]{5910}} & {\tablenum[table-format=7]{6010}} \\ 
+\textbf{W7} & {\tablenum[table-format=7]{310}} & {\tablenum[table-format=7]{310}} & {\tablenum[table-format=7]{890}} & {\tablenum[table-format=7]{880}} & {\tablenum[table-format=7]{6720}} & {\tablenum[table-format=7]{6890}} \\ 
+\textbf{W8} & {\tablenum[table-format=7]{570}} & {\tablenum[table-format=7]{560}} & {\tablenum[table-format=7]{1280}} & {\tablenum[table-format=7]{1270}} & {\tablenum[table-format=7]{8440}} & {\tablenum[table-format=7]{8570}} \\ 
+\textbf{W9} & {\tablenum[table-format=7]{1090}} & {\tablenum[table-format=7]{1070}} & {\tablenum[table-format=7]{2060}} & {\tablenum[table-format=7]{2050}} & {\tablenum[table-format=7]{11780}} & {\tablenum[table-format=7]{12690}} \\ 
+\textbf{W10} & {\tablenum[table-format=7]{2130}} & {\tablenum[table-format=7]{2100}} & {\tablenum[table-format=7]{3680}} & {\tablenum[table-format=7]{3670}} & {\tablenum[table-format=7]{19090}} & {\tablenum[table-format=7]{19920}} \\ 
+\textbf{W11} & {\tablenum[table-format=7]{4280}} & {\tablenum[table-format=7]{4210}} & {\tablenum[table-format=7]{6910}} & {\tablenum[table-format=7]{6960}} & {\tablenum[table-format=7]{34260}} & {\tablenum[table-format=7]{36850}} \\ 
+\textbf{W12} & {\tablenum[table-format=7]{8680}} & {\tablenum[table-format=7]{8550}} & {\tablenum[table-format=7]{13700}} & {\tablenum[table-format=7]{13860}} & {\tablenum[table-format=7]{67590}} & {\tablenum[table-format=7]{73030}} \\ 
+\textbf{W13} & {\tablenum[table-format=7]{17380}} & {\tablenum[table-format=7]{16930}} & {\tablenum[table-format=7]{27400}} & {\tablenum[table-format=7]{27380}} & {\tablenum[table-format=7]{143860}} & {\tablenum[table-format=7]{157450}} \\ 
+\textbf{W14} & {\tablenum[table-format=7]{262480}} & {\tablenum[table-format=7]{37020}} & {\tablenum[table-format=7]{57020}} & {\tablenum[table-format=7]{57000}} & {\tablenum[table-format=7]{552250}} & {\tablenum[table-format=7]{611790}} \\ 
+\textbf{W15} & {\tablenum[table-format=7]{1276840}} & {\tablenum[table-format=7]{1266520}} & {\tablenum[table-format=7]{1096860}} & {\tablenum[table-format=7]{1145490}} & {\tablenum[table-format=7]{1827780}} & {\tablenum[table-format=7]{1976550}} \\ 
+
+
+%\textbf{W1} & {\tablenum[table-format=7]{0.06}} & {\tablenum[table-format=7]{0.06}} & {\tablenum[table-format=7]{0.48}} & {--} & {\tablenum[table-format=7]{0.49}} & {--} \\ 
+
+%\textbf{W2} & {\tablenum[table-format=7]{0.06}} & {\tablenum[table-format=7]{0.06}} & {\tablenum[table-format=7]{0.48}} & {\tablenum[table-format=7]{0.50}} & {\tablenum[table-format=7]{0.98}} & {--} \\ 
+
+%\textbf{W3} & {\tablenum[table-format=7]{0.07}} & {\tablenum[table-format=7]{0.07}} & {\tablenum[table-format=7]{0.51}} & {\tablenum[table-format=7]{0.52}} & {\tablenum[table-format=7]{1.98}} & {--} \\ 
+
+%\textbf{W4} & {\tablenum[table-format=7]{0.09}} & {\tablenum[table-format=7]{0.08}} & {\tablenum[table-format=7]{0.54}} & {\tablenum[table-format=7]{0.55}} & {\tablenum[table-format=7]{4.08}} & {--} \\ 
+
+%\textbf{W5} & {\tablenum[table-format=7]{0.12}} & {\tablenum[table-format=7]{0.12}} & {\tablenum[table-format=7]{0.59}} & {\tablenum[table-format=7]{0.62}} & {\tablenum[table-format=7]{5.41}} & {\tablenum[table-format=7]{3.39}} \\ 
+
+%\textbf{W6} & {\tablenum[table-format=7]{0.18}} & {\tablenum[table-format=7]{0.18}} & {\tablenum[table-format=7]{0.70}} & {\tablenum[table-format=7]{0.69}} & {\tablenum[table-format=7]{5.91}} & {\tablenum[table-format=7]{6.01}} \\ 
+
+%\textbf{W7} & {\tablenum[table-format=7]{0.31}} & {\tablenum[table-format=7]{0.31}} & {\tablenum[table-format=7]{0.89}} & {\tablenum[table-format=7]{0.88}} & {\tablenum[table-format=7]{6.72}} & {\tablenum[table-format=7]{6.89}} \\ 
+
+%\textbf{W8} & {\tablenum[table-format=7]{0.57}} & {\tablenum[table-format=7]{0.56}} & {\tablenum[table-format=7]{1.28}} & {\tablenum[table-format=7]{1.27}} & {\tablenum[table-format=7]{8.44}} & {\tablenum[table-format=7]{8.57}} \\ 
+
+%\textbf{W9} & {\tablenum[table-format=7]{1.09}} & {\tablenum[table-format=7]{1.07}} & {\tablenum[table-format=7]{2.06}} & {\tablenum[table-format=7]{2.05}} & {\tablenum[table-format=7]{11.78}} & {\tablenum[table-format=7]{12.69}} \\ 
+
+%\textbf{W10} & {\tablenum[table-format=7]{2.13}} & {\tablenum[table-format=7]{2.10}} & {\tablenum[table-format=7]{3.68}} & {\tablenum[table-format=7]{3.67}} & {\tablenum[table-format=7]{19.09}} & {\tablenum[table-format=7]{19.92}} \\ 
+
+%\textbf{W11} & {\tablenum[table-format=7]{4.28}} & {\tablenum[table-format=7]{4.21}} & {\tablenum[table-format=7]{6.91}} & {\tablenum[table-format=7]{6.96}} & {\tablenum[table-format=7]{34.26}} & {\tablenum[table-format=7]{36.85}} \\ 
+
+%\textbf{W12} & {\tablenum[table-format=7]{8.68}} & {\tablenum[table-format=7]{8.55}} & {\tablenum[table-format=7]{13.70}} & {\tablenum[table-format=7]{13.86}} & {\tablenum[table-format=7]{67.59}} & {\tablenum[table-format=7]{73.03}} \\ 
+
+%\textbf{W13} & {\tablenum[table-format=7]{17.38}} & {\tablenum[table-format=7]{16.93}} & {\tablenum[table-format=7]{27.40}} & {\tablenum[table-format=7]{27.38}} & {\tablenum[table-format=7]{143.86}} & {\tablenum[table-format=7]{157.45}} \\ 
+
+%\textbf{W14} & {\tablenum[table-format=7]{262.48}} & {\tablenum[table-format=7]{37.02}} & {\tablenum[table-format=7]{57.02}} & {\tablenum[table-format=7]{57.00}} & {\tablenum[table-format=7]{552.25}} & {\tablenum[table-format=7]{611.79}} \\ 
+
+%\textbf{W15} & {\tablenum[table-format=7]{1276.84}} & {\tablenum[table-format=7]{1266.52}} & {\tablenum[table-format=7]{1096.86}} & {\tablenum[table-format=7]{1145.49}} & {\tablenum[table-format=7]{1827.78}} & {\tablenum[table-format=7]{1976.55}} \\ 
+
+ \end{longtable}

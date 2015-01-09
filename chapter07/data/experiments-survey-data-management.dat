@@ -1,0 +1,17 @@
+Action,Approach,Count
+Reading,Both,5
+Reading,File-Based Store,13
+Reading,Database-Centric Store,7
+Reading,Neither,1
+Updating,Both,6
+Updating,File-Based Store,12
+Updating,Database-Centric Store,8
+Updating,Neither,0
+Deleting,Both,6
+Deleting,File-Based Store,9
+Deleting,Database-Centric Store,11
+Deleting,Neither,0
+Copying,Both,1
+Copying,File-Based Store,19
+Copying,Database-Centric Store,5
+Copying,Neither,1

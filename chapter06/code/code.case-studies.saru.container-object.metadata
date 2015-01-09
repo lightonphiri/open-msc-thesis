@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource xmlns:dc="http://purl.org/dc/elements/1.1/" 
+	  xmlns:dcterms="http://purl.org/dc/terms/">
+  <dc:title>Posen</dc:title>
+  <dcterms:hasPart>POS1</dcterms:hasPart>
+  <dcterms:hasPart>POS2</dcterms:hasPart>
+  ...
+  <dcterms:hasPart>POS11</dcterms:hasPart>
+  <dcterms:hasPart>POS12</dcterms:hasPart>
+</resource>

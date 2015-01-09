@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+  <recordId>2809</recordId>
+  <siteNo>POS12</siteNo>
+  <mapSheet>
+    ...
+  </mapSheet>
+  <localName>Posen 12</localName>
+  <commonName>NULL</commonName>
+  <project>
+    ...
+  </project>
+  <recorder>
+    ...
+  </recorder>
+  <date>2007-04-02 00:00:00</date>
+  <directionsToSite>NULL</directionsToSite>
+  <plottedOnMap>0</plottedOnMap>
+  <commentsOnSite>NULL</commentsOnSite>
+  <width>NULL</width>
+  <depth>NULL</depth>
+  <length>NULL</length>
+  <breadth>NULL</breadth>
+  <previousRecordings>NULL</previousRecordings>
+  <gpsLatitude>-34.04872</gpsLatitude>
+  <gpsLongitude>22.27378</gpsLongitude>
+  <altitude>NULL</altitude>
+  <time>NULL</time>
+  <grading>NULL</grading>
+  <f12>NULL</f12>
+  <siteType>
+    ...
+  </siteType>
+  <category>
+    ...
+  </category>
+  <description>
+    ...
+  </description>
+  <contents>
+    ...
+  </contents>
+</site>

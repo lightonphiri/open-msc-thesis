@@ -1,0 +1,254 @@
+\section{General approach}
+\label{sec:exploratory-study:methodology}
+
+\subsection{Data collection}
+\label{sec:exploratory-study:methodology:case-software-tools}
+
+A meta-analysis\index{Meta-analysis} involving a total of 12 software applications
+was systematically conducted to facilitate the compilation of a comprehensive
+and inclusive set of principles. The set of tools comprised six
+\gls{dl} software applications and six non-\gls{dl}
+software applications. The selection of the six \gls{dl} software
+was done on the basis of popularity as depicted on
+OpenDOAR\footnote{\url{http://www.opendoar.org}}\index{OpenDOAR}. Table~\ref{tab:exploratory-study:methodology:case-software} outlines the 12 candidate tools that were considered.
+
+The relevant software attributes that may have influenced the design decisions
+of the applications were then identified. The pairwise comparisons method,
+outlined in Section~\ref{sec:exploratory-study:research-methods:ahp:pairwise} was then used as
+the constant comparison method during the data analysis stage. The data
+analysis stage is discussed in more detail in Section~\ref{sec:exploratory-study:methodology:data-analysis}
+
+% Software applications table
+
+\tablespacing
+\input{chapter04/tables/table.design-principles.methodology.case-software-tools.tex}
+\bodyspacing
+
+\subsection{Data analysis}
+\label{sec:exploratory-study:methodology:data-analysis}
+
+The set of all possible software attributes that can potentially influence
+design decisions of software applications were identified and arranged based on
+whether they were specific to the two sets of software applications---Digital
+Library software and non-\gls{dl} software---or both sets. Table~\ref{tab:exploratory-study:methodology:software-attributes} shows the
+software attributes, that were considered,  as pertains to whether they affect
+\gls{dl} software, non-\gls{dl} software, or both.
+
+\tablespacing
+\input{chapter04/tables/table.design-principles.methodology.exploratory-study-software-attributes.tex}
+\bodyspacing
+
+Open coding\index{Open Coding} \citep{Glaser1992} was used during the data analysis
+process, and a head-to-head pairwise comparison was then performed on each of
+the 12 applications against the other alternatives using the
+pairwise comparisons method procedure described in Section~\ref{sec:exploratory-study:research-methods:ahp:pairwise}. All in all, a total
+of 66 pairwise comparisons, derived using the equation in Section~\ref{sec:exploratory-study:research-methods:ahp:pairwise}, were conducted. 
+%A template showing the detailed comparative attributes is shown in Table~\ref{tab:exploratory-study:methodology:digital-library-software} in Appendix~\ref{ch:appendex-a:exploratory-study}
+
+The Memoing process\index{Memoing}, for each of the 66 comparisons, involved
+identifying design choice for each software attribute and the possible
+corresponding design rationale\index{Design Rationale}. All possible potential design decisions that
+could be applicable to the design of simple and minimalistic architectures were
+subsequently identified. Figure~\ref{fig:exploratory-study:general-approach:data-analysis:memoing-process}
+shows an excerpt of the memoing process.
+
+\begin{figure}
+ \begin{center}
+ \fbox{
+ \includegraphics[width=0.95\textwidth]{%
+chapter04/figures/grounded-theory-memoing.eps}
+ }
+ \caption[Screenshot showing an excerpt of the GT memoing process]{Screenshot showing an excerpt of the grounded theory memoing process}
+ \label{fig:exploratory-study:general-approach:data-analysis:memoing-process}
+ \end{center}
+\end{figure}
+
+
+
+% Defunct now---September 19, 2012
+%
+%Table showing attributes considered during general pairwise comparisons for all
+%tools
+
+%\tablespacing
+%\begin{landscape}
+%\input{chapter04/tables/general-pairwise-comparisons.tex}
+%\end{landscape}
+%\bodyspacing
+
+\subsection{Design principles}
+\label{sec:exploratory-study:methodology:design-principles}
+
+The major outcome of the exploratory study is a set of eight
+guiding design principles for simple and minimalistic architectures of digital
+libraries tools and/or services. It is premised that \gls{dl} software
+designed and implemented based on these guiding principles could ultimately
+be easy to use and maintain in the long run. The design principles are as
+follows:
+
+\begin{comment}
+ design principles illustration
+ https://www-01.ibm.com/software/ucd/designconcepts/designbasics.html
+\end{comment}
+
+
+\paragraph{Principle 1.} Hardware and/or software platform independence
+
+\subparagraph{Description} It should be possible to operate tools and services
+on
+a wide variety of hardware and software platforms. The rationale behind this
+principle is to ensure that the least possible cost associated to technological
+infrastructure is incurred during the collection management life-cycle.
+
+%\paragraph{Rationale} xxx
+
+\subparagraph{Discussion} The preservation\index{Preservation} life-cycle of digital objects is an
+on-going process that typically involves the management of digital content and
+its associated representational information. The cost implications of long-term
+digital preservation\index{Preservation} is a crucial task for both small and large-scale
+preservation projects \citep{View2002}. However, the vast majority of
+organisations involved in the curation and preservation\index{Preservation} of digital information
+usually do not have adequate funding to support this process. In addition, a
+number of such organisations, in particular heritage organisations, do not have
+sustainable funding models to ensure the on-going process of managing digital
+objects.
+
+A reduction in the cost associated to the collection management process could be
+archived in various ways including, but not limited to the following:
+
+\begin{itemize}
+ \item Designing tools that require minimal technical expertise to manage
+ \item Designing tools capable of being run on popular of operating systems
+ \item Designing tools capable of being operated on hardware platforms with
+minimal specifications
+\end{itemize}
+
+
+\paragraph{Principle 2.} Heterogeneous object, metadata and service integration
+
+\subparagraph{Description} There should be explicit support for integration of
+any
+digital object type, metadata format or new service.
+
+%\paragraph{Rationale} xxx
+
+\subparagraph{Discussion} The proliferation of both born-digital and digitised
+information has given rise to various data formats and a corresponding increase
+in the number of metadata standards, as discussed in Section~\ref{sec:background:fundamental-concepts:metadata}. In addition, there is a
+growing demand for \gls{dl} services in order to facilitate ubiquitous
+access to information.
+
+Due to the aforementioned, it is imperative that the designed of digital
+library tools be flexible enough to accommodate heterogeneous
+objects, metadata and services. In a nutshell, the design should be based on a
+``one size fits all'' approach.
+
+\paragraph{Principle 3.} Support for community and international standards
+
+\subparagraph{Description} The design of tools and services should take into
+account community-based standards and international standards in order to
+facilitate interoperability.
+
+%\paragraph{Rationale}
+
+\subparagraph{Discussion} The increase in the amount of digital content
+generated and made available publicly has brought about a need to
+standardise processes in the digital curation workflow. Section~\ref{sec:background:fundamental-concepts:standards} outlines the important
+role that standards play and also discusses some of the popular \gls{dl}
+standards.
+
+Incorporating standards in the initial stages of the design process would
+effectively ensure that the resulting \gls{dl} services becomes
+interoperable with other external services. It also makes it easier for service
+to be customised.
+
+\paragraph{Principle 4.} Flexible design to facilitate extensibility
+
+\subparagraph{Description} The design should be flexible enough to enable end
+users to adapt the tools and services to their own needs.
+
+%\paragraph{Rationale} xxx
+
+\subparagraph{Discussion} Digital curation is slowly becoming a ubiquitous
+process, and \glspl{dl} are increasingly being used in a wide array of
+application domains---example application domains are highlighted in Section~\ref{sec:background:digital-libraries:application-domains}. 
+
+The services offered by these different application domains varying and it is
+imperative that the overall design be flexible enough to facilitate
+customisation and extensibility.
+
+\paragraph{Principle 5.} Minimalist design approach
+
+\subparagraph{Description} There should be minimal use of external software
+components in order to simplify the overall design. This would arguably result
+in tools that are easier to manage.
+
+%\paragraph{Rationale} xxx
+
+\subparagraph{Discussion} The design of services should, at a minimum, only be
+composed of the least number of components that are required for it to
+function. Auxiliary external components should be made optional, making them
+available only when required.
+
+In addition, mandatory components should be critically analysed to ensure that
+they make use of simplest possible solutions and/or technologies.
+
+\paragraph{Principle 6.} Simplified preservation\index{Preservation} process
+
+\subparagraph{Description} The preservation\index{Preservation} process should be simplified as much
+as possible to make it possible to easily migrate digital content.
+
+%\paragraph{Rationale} xxx
+
+\subparagraph{Discussion} The preservation\index{Preservation} lifecylce is an on-going process
+that requires dedicated staff. The majority of contemporary \gls{dl}
+services require technology experts to perform the routine preservation\index{Preservation} tasks.
+
+The overall design should thus be made as simple as possible so that novice
+users are able to perform the most basic of preservation\index{Preservation} tasks.
+
+\paragraph{Principle 7.} Structured Organisation of Data
+
+\subparagraph{Description} There should be explicit support for hierarchical
+logical organisation of information.
+
+%\paragraph{Rationale} xxx
+
+\subparagraph{Discussion} The majority of data that is curated and made
+accessible publicly necessitates the logical organisation of information to
+facilitate relationships that might exist between different data views. In
+addition, data consumers usually visualise information using varying logical
+views.
+
+The design should thus explicitly support the logical organisation of
+information, and optionally make it flexible enough for users to define the
+desired logical views and structures.
+
+\paragraph{Principle 8.} Design for least possible resources
+
+\subparagraph{Description} There should be support for access to digital
+collections in environments with resource constraints.
+
+%\paragraph{Rationale} xxx
+
+\subparagraph{Discussion} One of the motivating factors, outlined in Section~\ref{sec:introduction:motivation}, behind this research was the
+unavailability of \gls{dl} tools that can effectively operate in
+resource constrained environments. This is still a growing need for most
+environments in developing countries, such as those found in Africa.
+
+The design of \gls{dl} services should thus be based on the least
+possible resources to enable resulting service operate in environments with
+limited resources.
+
+\subsection{Summary}
+\label{sec:exploratory-study:methodology:summary}
+
+This section discussed the procedure that was followed to derived a set of
+design guiding principles that, when employed during the design of digital
+library services, may potentially result in simpler services. Grounded Theory
+was used as the overarching method during the derivation process and Table~\ref{tab:exploratory-study:methodology:grounded-theory-approach} shows a
+summary of how the Grounded Theory steps were undertaken.
+
+\tablespacing
+\input{chapter04/tables/table.design-principles.methodology.grounded-theory-steps.tex}
+\bodyspacing

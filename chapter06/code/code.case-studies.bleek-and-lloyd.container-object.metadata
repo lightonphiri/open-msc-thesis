@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource xmlns:dc="http://purl.org/dc/elements/1.1/" 
+	  xmlns:dcterms="http://purl.org/dc/terms/">
+  <dc:title>BC_151_A1_4_001</dc:title>
+  <dcterms:hasPart>A1_4_1_FUCOV.JPG</dcterms:hasPart>
+  <dcterms:hasPart>A1_4_1_IFCOV.JPG</dcterms:hasPart>
+  <dcterms:hasPart>A1_4_1_00001.JPG</dcterms:hasPart>
+  ...
+  <dcterms:hasPart>A1_4_1_INS45.JPG</dcterms:hasPart>
+  <dcterms:hasPart>A1_4_1_IBCOV.JPG</dcterms:hasPart>
+  <dcterms:hasPart>A1_4_1_BUCOV.JPG</dcterms:hasPart>
+  <dcterms:hasPart>A1_4_1_SPINE.JPG</dcterms:hasPart>
+</resource>

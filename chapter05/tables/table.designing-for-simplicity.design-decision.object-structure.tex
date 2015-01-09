@@ -1,0 +1,80 @@
+%%%%%\begin{longtable}{p{0.3\linewidth} p{0.6\linewidth}}
+\begin{longtable}{
+>{\arraybackslash}p{0.20\linewidth}|
+>{\arraybackslash}p{0.70\linewidth}}
+
+\caption{Simple repository object storage structure design decision}
+\label{tab:designing-for-simplicity:design-decisions:object-structure} \\
+
+ %%%%%\toprule
+ %%%%%\hline
+ \textbf{Element} & \textbf{Description}\\
+ %%%%%\midrule
+ %%%%%\hline
+ \cline{1-2}
+ \endfirsthead
+
+ \caption[]{(continued)}\\
+ %%%%%\toprule
+ %%%%%\hline
+ \textbf{Element} & \textbf{Description}\\
+ %%%%%\midrule
+ %%%%%\hline
+ \cline{1-2}
+ \endhead
+
+ % Page footer
+ %%%%%\midrule
+ %%%%%\hline
+ \multicolumn{2}{r}{(Continued on next page)} \\
+ \endfoot
+
+ % Last page footer
+ %%%%%\bottomrule
+ \endlastfoot
+
+ {\textbf{Issues}}&
+ {Principles 6 and 7} \\
+
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ {\textbf{Decision}}&
+ {Store bitstreams alongside metadata records --at the same directory level on the filesystem; filesystem directory to be used as container structures for repository objects} \\
+
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ %%%%%{\textbf{Status}} &
+ %%%%%{Approved} \\
+
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ %%%%%\cline{1-2}
+
+ {\textbf{Assumptions}} &
+ {The other sub-layers of the \gls{dls} have read, write and execute access to the repository root node} \\
+
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ {\textbf{Alternatives}} &
+ {Separate storage locations for bitstreams and metadata records} \\
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ {\textbf{Rationale}} &
+ {Storing bitstreams and corresponding metadata records alongside each other could ultimately make potential migration processes easier; container structures could potentially make it easier to move repository objects across different platforms} \\
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ {\textbf{Implications}} &
+ {None} \\
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ \cline{1-2}
+
+ {\textbf{Notes}} &
+ {None} \\
+ %%%%%\cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+ %%%%%\cline{1-2}
+
+ \end{longtable}
