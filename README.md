@@ -1,8 +1,18 @@
-# Simple Digital Libraries
+# LaTeX Thesis Template
 
 ## About
 
-This is the home of the source code of [Simple Digital Libraries](../master/phiri-thesis.pdf), a manuscript submitted to the [University of Cape Town](http://www.uct.ac.za) in partial fulfillment of the requirements for the degree of Master of Science in Computer Science. This source code is released under a [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License](http://creativecommons.org/licenses/by-nc/4.0).
+This is the home of the source code of [Simple Digital Libraries](http://pubs.cs.uct.ac.za/archive/00000887), a manuscript submitted to the [University of Cape Town](http://www.uct.ac.za) in partial fulfillment of the requirements for the degree of Master of Science in Computer Science. This source code is released under a [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License](http://creativecommons.org/licenses/by-nc/4.0).
+
+### Dependencies
+
+* Make
+* [R](http://www.r-project.org)
+* LaTeX
+
+### LaTeX Packages
+
+[LaTeX Packages](../master/packages.md)
 
 ## Contributing
 
@@ -14,8 +24,6 @@ I appreciate any and all efforts to help improve this source---I am actually in 
 * chapterxx/tables - houses tables
 * chapterxx/code - houses code snippets
 * chapterxxfigures - houses figures
-
-If you would like to submit pull requests, please feel free to apply them against the relevant markdown file in `chapter`. These can be previewed by running the build script via `make`, which will also generate updated versions of the other formats we support. Please ensure that you are only submitting the modified chapter file for your changes and not the compiled HTML/other format binaries. 
 
 ## Building
 
@@ -54,8 +62,3 @@ dvipdf phiri-thesis.dvi
 dvips -P pdf G0 -t a4 phiri-thesis.dvi
 ps2pdf phiri-thesis.ps
 ```
-### Dependencies
-
-* Make
-* [R](http://www.r-project.org)
-* LaTeX
